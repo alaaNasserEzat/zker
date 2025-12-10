@@ -12,11 +12,12 @@ class SphaDataSourceImp implements SphaDataSource {
   SphaDataSourceImp({required this.box});
 
   @override
+
   Future<void> addSpha(SphaModel sphaModel ) async {
 
-final model=SphaModel(modelId: sphaModel.modelId, modelName: sphaModel.modelName, modelCurrentcount: 0, modelCyclesCount: 0, modelTotalCount: 0);
+//final model=SphaModel(modelId: sphaModel.modelId, modelName: sphaModel.modelName, modelCurrentcount: 0, modelCyclesCount: 0, modelTotalCount: 0, modelBeadsCount: sphaModel.modelBeadsCount);
 
-    await box.put(sphaModel.modelId, model); // use id as key
+    await box.put(sphaModel.modelId, sphaModel); // use id as key
   }
 
   @override

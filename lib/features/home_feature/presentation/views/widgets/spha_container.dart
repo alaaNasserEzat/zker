@@ -44,7 +44,7 @@ final SphaEntity sphaModel;
                     
                      
                     
-                        Text(sphaModel.currentcount.toString(), style: AppTextStyles.titles),
+                        Text(sphaModel.beadsCount.toString(), style: AppTextStyles.titles),
                       ],
                     ),
                   ),

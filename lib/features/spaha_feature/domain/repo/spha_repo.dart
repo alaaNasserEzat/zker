@@ -6,5 +6,5 @@ import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 
 abstract class SphaRepo {
   Either<ErrorModel,List<SphaEntity>> getSpha();
-  Future<void> addSpha({required SphaModel sphaModel});
+  Future<void> addSpha({required SphaEntity spha});
 }

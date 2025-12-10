@@ -10,9 +10,9 @@ class SphaRepoImpl extends SphaRepo{
 
   SphaRepoImpl({required this.sphaDataSource});
   @override
-  Future<void> addSpha({required SphaModel sphaModel}) async{
-
-  await sphaDataSource.addSpha(sphaModel);
+  Future<void> addSpha({required SphaEntity spha}) async{
+final model=SphaModel(modelId: spha.id, modelName: spha.name, modelCurrentcount: 0, modelCyclesCount: 0, modelTotalCount: 0, modelBeadsCount: spha.beadsCount);
+ await sphaDataSource.addSpha(model);
   
   }
 

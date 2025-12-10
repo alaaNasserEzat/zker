@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
+import 'package:go_router/go_router.dart';
+import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_state.dart';
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/views/widgets/dailog_btn.dart';
-
 
 void showAddSphaDialog(BuildContext context) {
   final nameController = TextEditingController();
@@ -25,13 +25,10 @@ void showAddSphaDialog(BuildContext context) {
             if (state is AddSphaSuccess) {
               // نحدث الـ List فورًا
               context.read<SphaCubit>().getSpha();
-
-       
-
+context.pop();  
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('تمت إضافة السبحة بنجاح!')),
               );
-          
             } else if (state is AddSphaError) {
               ScaffoldMessenger.of(
                 context,
@@ -122,12 +119,13 @@ void showAddSphaDialog(BuildContext context) {
                                 0xFFFFFFFF;
 
                             // إنشاء كيان السبحة
-                            final newSpha = SphaModel(
-                              modelId: modelId,
-                              modelName: name,
-                              modelCurrentcount: count,
-                              modelCyclesCount: 0,
-                              modelTotalCount: 0,
+                            final newSpha = SphaEntity(
+                              id: modelId,
+                              name: name,
+                              currentcount: 0,
+                              cyclesCount: 0,
+                              totalCount: 0,
+                              beadsCount: count,
                             );
                             // استدعاء Cubit لإضافة السبحة
                             await context.read<AddSphaCubit>().addSpha(newSpha);

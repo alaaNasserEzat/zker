@@ -4,6 +4,7 @@ class SphaEntity {
   final int currentcount;
   final int cyclesCount;
   final int totalCount;
+  final int  beadsCount;
 
   SphaEntity({
     required this.id,
@@ -11,5 +12,6 @@ class SphaEntity {
     required this.currentcount,
     required this.cyclesCount,
     required this.totalCount,
+    required this.beadsCount
   });
 }

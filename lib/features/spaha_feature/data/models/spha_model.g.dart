@@ -22,13 +22,14 @@ class SphaModelAdapter extends TypeAdapter<SphaModel> {
       modelCurrentcount: (fields[2] as num).toInt(),
       modelCyclesCount: (fields[3] as num).toInt(),
       modelTotalCount: (fields[4] as num).toInt(),
+      modelBeadsCount: (fields[5] as num).toInt(),
     );
   }
 
   @override
   void write(BinaryWriter writer, SphaModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.modelId)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class SphaModelAdapter extends TypeAdapter<SphaModel> {
       ..writeByte(3)
       ..write(obj.modelCyclesCount)
       ..writeByte(4)
-      ..write(obj.modelTotalCount);
+      ..write(obj.modelTotalCount)
+      ..writeByte(5)
+      ..write(obj.modelBeadsCount);
   }
 
   @override

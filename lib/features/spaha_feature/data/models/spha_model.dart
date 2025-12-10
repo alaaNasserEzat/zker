@@ -20,17 +20,22 @@ class SphaModel extends SphaEntity {
   @HiveField(4)
   final int modelTotalCount;
 
+  @HiveField(5)
+  final int modelBeadsCount;
+
   SphaModel({
     required this.modelId,
     required this.modelName,
     required this.modelCurrentcount,
     required this.modelCyclesCount,
     required this.modelTotalCount,
+    required this.modelBeadsCount,
   }) : super(
           id: modelId,
           name: modelName,
           currentcount: modelCurrentcount,
           cyclesCount: modelCyclesCount,
           totalCount: modelTotalCount,
+          beadsCount: modelBeadsCount,
         );
 }

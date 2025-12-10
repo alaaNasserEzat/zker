@@ -11,7 +11,7 @@ class AddSphaCubit extends Cubit<AddSphaState> {
 
   AddSphaCubit(this.addSphaUseCase) : super(AddSphaInitial());
 
-  Future<void> addSpha(SphaModel spha) async {
+  Future<void> addSpha(SphaEntity spha) async {
     try {
       emit(AddSphaLoading());
       await addSphaUseCase(sphaModel: spha);

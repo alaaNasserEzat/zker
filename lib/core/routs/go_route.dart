@@ -56,7 +56,8 @@ GoRoute(
           create: (_) => sl<AddSphaCubit>(),
         ),
       ],
-      child: SphaView(title: title),
+      child:
+       SphaView(title: title),
     );
   },
 ),
