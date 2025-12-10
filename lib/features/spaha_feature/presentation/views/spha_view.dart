@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zker/core/services/service_locator.dart';
+import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/widgets/custom_app_bar.dart';
 import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
@@ -18,8 +19,10 @@ class SphaView extends StatelessWidget {
       appBar: buildAppBar(context, title),
       body: SphaList(),
       floatingActionButton: CircleAvatar(
+        backgroundColor: AppColors.mainColor,
+        radius: 28,
         child: IconButton(
-          icon: const Icon(Icons.add),
+          icon: const Icon(Icons.add,color: AppColors.white,),
           onPressed: () {
             showAddSphaDialog(context); // دلوقتي ال dialog هيلاقي AddSphaCubit
           },

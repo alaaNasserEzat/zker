@@ -25,4 +25,9 @@ try {
 return left(ErrorModel(message: e.toString()));
 }
   }
+  
+  @override
+  Future<void> deletSpha({required int id})async {
+await sphaDataSource.deletSpha(id);
+  }
 }

@@ -7,6 +7,7 @@ import 'package:zker/features/home_feature/presentation/views/azkar_details_view
 import 'package:zker/features/home_feature/presentation/views/azkar_view.dart';
 import 'package:zker/features/home_feature/presentation/views/spha_details_view.dart';
 import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_cubit.dart';
+import 'package:zker/features/spaha_feature/presentation/delete_spha_cubit/delete_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/views/spha_view.dart';
 import 'package:zker/features/quran_feature/presentation/views/bottom_nav_bar.dart';
@@ -49,6 +50,9 @@ GoRoute(
 
     return MultiBlocProvider(
       providers: [
+            BlocProvider(
+          create: (_) => sl<DeleteSphaCubit>(),
+        ),
         BlocProvider(
           create: (_) => sl<SphaCubit>()..getSpha(),
         ),

@@ -4,6 +4,7 @@ import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 abstract class SphaDataSource {
   List<SphaModel> getSpha();
   Future<void> addSpha(SphaModel sphaModel);
+  Future<void> deletSpha(int id);
 }
 
 class SphaDataSourceImp implements SphaDataSource {
@@ -23,5 +24,10 @@ class SphaDataSourceImp implements SphaDataSource {
   @override
   List<SphaModel> getSpha()  {
     return  box.values.toList();
+  }
+  
+  @override
+  Future<void> deletSpha(int id)async {
+    return await box.delete(id);
   }
 }
