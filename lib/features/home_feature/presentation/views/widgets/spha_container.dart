@@ -4,9 +4,11 @@ import 'package:zker/core/routs/app_routs.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 
-class SphaContainer extends StatelessWidget {
-  const SphaContainer({super.key});
+import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 
+class SphaContainer extends StatelessWidget {
+  const SphaContainer({super.key, required this.sphaModel});
+final SphaEntity sphaModel;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -37,12 +39,12 @@ class SphaContainer extends StatelessWidget {
                           height: 30,
                         ),
                            const SizedBox(width: 10),
-                        Text("سبحان الله", style: AppTextStyles.titles),
+                        Text(sphaModel.name, style: AppTextStyles.titles),
                         Spacer(),
                     
                      
                     
-                        Text("33", style: AppTextStyles.titles),
+                        Text(sphaModel.currentcount.toString(), style: AppTextStyles.titles),
                       ],
                     ),
                   ),

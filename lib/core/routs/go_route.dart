@@ -1,10 +1,14 @@
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zker/core/routs/app_routs.dart';
+import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/features/home_feature/presentation/views/azkar_details_view.dart';
 import 'package:zker/features/home_feature/presentation/views/azkar_view.dart';
 import 'package:zker/features/home_feature/presentation/views/spha_details_view.dart';
-import 'package:zker/features/home_feature/presentation/views/spha_view.dart';
+import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_cubit.dart';
+import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
+import 'package:zker/features/spaha_feature/presentation/views/spha_view.dart';
 import 'package:zker/features/quran_feature/presentation/views/bottom_nav_bar.dart';
 import 'package:zker/features/quran_feature/presentation/views/surah_list_view.dart';
 
@@ -37,14 +41,25 @@ final GoRouter appRouter = GoRouter(
         return AzkarDetailsView(title: title);
       },
     ),
-     GoRoute(
-      path: AppRoutes.sphaView,
-      name: 'sphaView',
-      builder: (context, state) {
-        final title = state.extra as String;
-        return SphaView(title: title);
-      },
-    ),
+GoRoute(
+  path: AppRoutes.sphaView,
+  name: 'sphaView',
+  builder: (context, state) {
+    final title = state.extra as String;
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => sl<SphaCubit>()..getSpha(),
+        ),
+        BlocProvider(
+          create: (_) => sl<AddSphaCubit>(),
+        ),
+      ],
+      child: SphaView(title: title),
+    );
+  },
+),
     GoRoute(
       path: AppRoutes.sphaDetailsView,
       name: 'sphaDetailsView',
