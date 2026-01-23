@@ -3,9 +3,8 @@ import 'package:equatable/equatable.dart';
 import 'package:zker/core/errors/error_model.dart';
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 
-abstract class SphaState extends Equatable {
-  @override
-  List<Object?> get props => [];
+abstract class SphaState   {
+
 }
 
 class SphaInitial extends SphaState {}
@@ -17,8 +16,7 @@ class SphaLoaded extends SphaState {
 
   SphaLoaded(this.sphas);
 
-  @override
-  List<Object?> get props => [sphas];
+
 }
 
 class SphaError extends SphaState {
@@ -26,6 +24,5 @@ class SphaError extends SphaState {
 
   SphaError(this.error);
 
-  @override
-  List<Object?> get props => [error];
+
 }

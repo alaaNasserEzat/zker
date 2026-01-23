@@ -1,10 +1,10 @@
 class SphaEntity {
   final int id;
   final String name;
-  final int currentcount;
-  final int cyclesCount;
-  final int totalCount;
-  final int  beadsCount;
+   int currentcount;
+   int cyclesCount;
+   int totalCount;
+   int  beadsCount;
 
   SphaEntity({
     required this.id,
@@ -14,4 +14,20 @@ class SphaEntity {
     required this.totalCount,
     required this.beadsCount
   });
+
+
+    SphaEntity copyWith({
+    int? currentcount,
+    int? totalCount,
+    int? cyclesCount,
+  }) {
+    return SphaEntity(
+      id: id,
+      name: name,
+      beadsCount: beadsCount,
+      currentcount: currentcount ?? this.currentcount,
+      totalCount: totalCount ?? this.totalCount,
+      cyclesCount: cyclesCount ?? this.cyclesCount,
+    );
+  }
 }

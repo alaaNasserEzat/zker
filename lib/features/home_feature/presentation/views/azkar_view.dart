@@ -34,7 +34,7 @@ class AzkarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context,title ),
+      appBar: buildAppBar(context:  context,title: title ),
       body: Column(
         children: [
           Expanded(

@@ -6,4 +6,6 @@ abstract class SphaRepo {
   Either<ErrorModel,List<SphaEntity>> getSpha();
   Future<void> addSpha({required SphaEntity spha});
  Future<void> deletSpha({required int id});
+
+Future< Either<ErrorModel,SphaEntity>> increment({required SphaEntity spha});
 }

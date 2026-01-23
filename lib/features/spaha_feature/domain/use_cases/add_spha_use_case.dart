@@ -1,4 +1,4 @@
-import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
+
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 import 'package:zker/features/spaha_feature/domain/repo/spha_repo.dart';
 

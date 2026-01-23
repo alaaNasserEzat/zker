@@ -1,10 +1,14 @@
+
 import 'package:hive_ce/hive.dart';
+
 import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 
 abstract class SphaDataSource {
   List<SphaModel> getSpha();
   Future<void> addSpha(SphaModel sphaModel);
   Future<void> deletSpha(int id);
+  Future<void> putSpha(SphaModel sphaModel);
+  Future< SphaModel> getSphaById(int id);
 }
 
 class SphaDataSourceImp implements SphaDataSource {
@@ -30,4 +34,21 @@ class SphaDataSourceImp implements SphaDataSource {
   Future<void> deletSpha(int id)async {
     return await box.delete(id);
   }
+  
+  @override
+  Future<void> putSpha(SphaModel sphaModel)async {
+
+  await box.put(sphaModel.modelId, sphaModel);
+
+ //await sphaModel.save();
+
+  }
+  
+  @override
+  Future< SphaModel> getSphaById(int id) async{
+final SphaModel sphaModel = box.get(id)!;
+  return (sphaModel);
+  }
+
+  
 }

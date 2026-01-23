@@ -1,27 +1,25 @@
 import 'package:hive_ce/hive.dart';
-import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
-
 part 'spha_model.g.dart';
 
 @HiveType(typeId: 0)
-class SphaModel extends SphaEntity {
+class SphaModel extends HiveObject {
   @HiveField(0)
   final int modelId;
 
   @HiveField(1)
-  final String modelName;
+   String modelName;
 
   @HiveField(2)
-  final int modelCurrentcount;
+   int modelCurrentcount;
 
   @HiveField(3)
-  final int modelCyclesCount;
+   int modelCyclesCount;
 
   @HiveField(4)
-  final int modelTotalCount;
+   int modelTotalCount;
 
   @HiveField(5)
-  final int modelBeadsCount;
+   int modelBeadsCount;
 
   SphaModel({
     required this.modelId,
@@ -30,12 +28,6 @@ class SphaModel extends SphaEntity {
     required this.modelCyclesCount,
     required this.modelTotalCount,
     required this.modelBeadsCount,
-  }) : super(
-          id: modelId,
-          name: modelName,
-          currentcount: modelCurrentcount,
-          cyclesCount: modelCyclesCount,
-          totalCount: modelTotalCount,
-          beadsCount: modelBeadsCount,
-        );
+  }) ;
 }
+  

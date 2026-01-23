@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/widgets/custom_app_bar.dart';
-import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_cubit.dart';
-import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
-
 import 'package:zker/features/spaha_feature/presentation/views/widgets/add_dilog.dart';
 import 'package:zker/features/spaha_feature/presentation/views/widgets/spha_list.dart';
 
@@ -16,7 +11,7 @@ class SphaView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context, title),
+      appBar: buildAppBar(context:context, title:title),
       body: SphaList(),
       floatingActionButton: CircleAvatar(
         backgroundColor: AppColors.mainColor,

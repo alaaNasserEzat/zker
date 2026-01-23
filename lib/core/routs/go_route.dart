@@ -5,7 +5,9 @@ import 'package:zker/core/routs/app_routs.dart';
 import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/features/home_feature/presentation/views/azkar_details_view.dart';
 import 'package:zker/features/home_feature/presentation/views/azkar_view.dart';
-import 'package:zker/features/home_feature/presentation/views/spha_details_view.dart';
+import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
+import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_spha_cubit.dart';
+import 'package:zker/features/spaha_feature/presentation/views/spha_details_view.dart';
 import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/delete_spha_cubit/delete_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
@@ -69,8 +71,10 @@ GoRoute(
       path: AppRoutes.sphaDetailsView,
       name: 'sphaDetailsView',
       builder: (context, state) {
-        final title = state.extra as String;
-        return SphaDetailsView(title: title);
+        final spaha = state.extra as SphaEntity;
+        return BlocProvider(
+          create: (context) => sl<IncrementSphaCubit>(),
+          child: SphaDetailsView(sphaEntity: spaha));
       },
     ),
        GoRoute(

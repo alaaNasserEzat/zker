@@ -7,7 +7,6 @@ import 'package:zker/core/utils/app_text_styles.dart';
 
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 import 'package:zker/features/spaha_feature/presentation/delete_spha_cubit/delete_spha_cubit.dart';
-import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
 
 class SphaContainer extends StatelessWidget {
   const SphaContainer({super.key, required this.sphaModel});
@@ -16,7 +15,7 @@ final SphaEntity sphaModel;
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.push(AppRoutes.sphaDetailsView,extra: "سبحان الله");
+        context.push(AppRoutes.sphaDetailsView,extra:sphaModel);
       },
       child: Container(
   

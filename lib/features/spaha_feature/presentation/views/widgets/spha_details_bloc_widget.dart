@@ -1,0 +1,66 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zker/core/utils/app_text_styles.dart';
+import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
+import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_Spha_state.dart';
+import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_spha_cubit.dart';
+import 'package:zker/features/spaha_feature/presentation/views/widgets/circle_present_indecator.dart';
+
+class SphaDetailsBlocWidget extends StatelessWidget {
+  const SphaDetailsBlocWidget({super.key, required this.sphaEntity});
+  final SphaEntity sphaEntity;
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<IncrementSphaCubit, IncrementSphaState>(
+      builder: (context, state) {
+     
+          return Column(
+            textDirection: TextDirection.rtl,
+            spacing: 15,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 100),
+              Text(
+                textDirection: TextDirection.rtl,
+                sphaEntity.name,
+                style: AppTextStyles.titles,
+              ),
+
+              Row(
+                children: [
+                  Text(
+                    "${sphaEntity.beadsCount}عدد الحبات ",
+                    style: AppTextStyles.titles,
+                  ),
+                  Spacer(),
+                  Text(
+                    "${sphaEntity.cyclesCount}عدد الدورات ",
+                    style: AppTextStyles.titles,
+                  ),
+                ],
+              ),
+              CirclePresentIndecator(
+                sphaEntity: sphaEntity,
+                ontap: () {
+                  BlocProvider.of<IncrementSphaCubit>(
+                    context,
+                  ).incrementSpha(sphaEntity);
+
+                  print(
+                    " cuurrent count ${sphaEntity.currentcount} name ${sphaEntity.name} total count ${sphaEntity.totalCount}",
+                  );
+                },
+              ),
+              Text(
+                "${sphaEntity.totalCount}  العدد الكلي",
+                style: AppTextStyles.titles,
+              ),
+            ],
+      
+      );
+      },
+    );
+  
+  }
+}
