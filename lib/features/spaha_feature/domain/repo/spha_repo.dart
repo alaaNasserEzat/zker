@@ -7,5 +7,7 @@ abstract class SphaRepo {
   Future<void> addSpha({required SphaEntity spha});
  Future<void> deletSpha({required int id});
 
-Future< Either<ErrorModel,SphaEntity>> increment({required SphaEntity spha});
+Future< Either<ErrorModel,void>> increment({required SphaEntity spha});
+Future< Either<ErrorModel,void>> zero({required SphaEntity spha});
+
 }

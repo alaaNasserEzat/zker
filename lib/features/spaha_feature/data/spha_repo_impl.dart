@@ -44,7 +44,7 @@ for (var element in sphaList) {
 
   @override
 
-  Future<Either<ErrorModel, SphaEntity>> increment({required SphaEntity spha}) async {
+  Future<Either<ErrorModel, void>> increment({required SphaEntity spha}) async {
 
     try {
       if(spha.currentcount==spha.beadsCount){
@@ -54,7 +54,7 @@ for (var element in sphaList) {
   spha.totalCount++;
   spha.cyclesCount=spha.totalCount~/spha.beadsCount;
   await sphaDataSource.putSpha(SphaMapper.toModel(spha));
-  return right(spha);
+  return right(unit);
 } 
 
 on Exception catch (e) {
@@ -62,28 +62,18 @@ return left(ErrorModel(message: e.toString()));
 }
 
 
-  //   try {
-      
-  //     final sphaModel = await sphaDataSource.getSphaById(spha.id);
-      
-  //     if (sphaModel.modelCurrentcount == sphaModel.modelBeadsCount) {
-  //       sphaModel.modelCurrentcount = 0;
-       
-    
-  //     }
-  //     sphaModel.modelCurrentcount++;
-  //     sphaModel.modelTotalCount++;
-  //     sphaModel.modelCyclesCount=sphaModel.modelTotalCount~/sphaModel.modelBeadsCount;
-
-
-
-  //     print("spha model ${spha.currentcount}");
-  //  await sphaDataSource.putSpha(   sphaModel);
-
- 
-  //     return right(SphaMapper.toEntity(sphaModel));
-  //   } on Exception catch (e) {
-  //     return left(ErrorModel(message: e.toString()));
-  //   }
+  }
+  
+  @override
+  Future<Either<ErrorModel, void>> zero({required SphaEntity spha}) async{
+    try {
+      spha.currentcount=0;
+      spha.totalCount=0;
+      spha.cyclesCount=0;
+      await sphaDataSource.putSpha(SphaMapper.toModel(spha));
+      return right(unit);
+    } on Exception catch (e) {
+      return left(ErrorModel(message: e.toString()));
+    }
   }
 }

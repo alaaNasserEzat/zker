@@ -1,6 +1,5 @@
-import 'package:equatable/equatable.dart';
+
 import 'package:zker/core/errors/error_model.dart';
-import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 
 abstract class IncrementSphaState  {
 
@@ -12,9 +11,9 @@ class IncrementSphaInitial extends IncrementSphaState {}
 class IncrementSphaLoading extends IncrementSphaState {}
 
 class IncrementSphaSuccess extends IncrementSphaState {
-  final SphaEntity sphaEntity;
 
-  IncrementSphaSuccess(this.sphaEntity);
+
+  IncrementSphaSuccess();
 }
 
 class IncrementSphaError extends IncrementSphaState {
@@ -25,3 +24,5 @@ class IncrementSphaError extends IncrementSphaState {
   @override
   List<Object?> get props => [error];
 }
+
+class ZeroState extends IncrementSphaState {}

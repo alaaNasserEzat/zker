@@ -13,6 +13,7 @@ import 'package:zker/features/spaha_feature/domain/use_cases/add_spha_use_case.d
 import 'package:zker/features/spaha_feature/domain/use_cases/delet_spha_use_case.dart';
 import 'package:zker/features/spaha_feature/domain/use_cases/get_spha_use_case.dart';
 import 'package:zker/features/spaha_feature/domain/use_cases/increment_use_case.dart';
+import 'package:zker/features/spaha_feature/domain/use_cases/zero_spha_use_case.dart';
 import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/delete_spha_cubit/delete_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
@@ -42,11 +43,13 @@ Future<void> setupServiceLocator() async{
       () => AddSphaUseCase(sl()));
 sl.registerLazySingleton(()=>DeletSphaUseCase(sphaRepo: sl()));
 sl.registerLazySingleton(()=>IncrementUseCase(sphaRepo: sl()));
+sl.registerLazySingleton(()=>ZeroSphaUseCase(sphaRepo: sl()));
+
   // 5. تسجيل Cubit
   sl.registerFactory<SphaCubit>(() => SphaCubit(sl()));
   sl.registerFactory<AddSphaCubit>(() => AddSphaCubit(sl()));
   sl.registerFactory<DeleteSphaCubit>(() => DeleteSphaCubit(sl()));
-  sl.registerFactory<IncrementSphaCubit>(() => IncrementSphaCubit(sl()));
+  sl.registerFactory<IncrementSphaCubit>(() => IncrementSphaCubit(incrementUseCase: sl(),zeroSphaUseCase: sl()));
   /// ✅ Data Source
   sl.registerLazySingleton<QuranLocalDataSource>(
     () => QuranLocalDataSourceImpl(),

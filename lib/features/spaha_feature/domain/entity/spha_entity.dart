@@ -16,18 +16,18 @@ class SphaEntity {
   });
 
 
-    SphaEntity copyWith({
-    int? currentcount,
-    int? totalCount,
-    int? cyclesCount,
-  }) {
-    return SphaEntity(
-      id: id,
-      name: name,
-      beadsCount: beadsCount,
-      currentcount: currentcount ?? this.currentcount,
-      totalCount: totalCount ?? this.totalCount,
-      cyclesCount: cyclesCount ?? this.cyclesCount,
-    );
-  }
-}
+//     SphaEntity copyWith({
+//     int? currentcount,
+//     int? totalCount,
+//     int? cyclesCount,
+//   }) {
+//     return SphaEntity(
+//       id: id,
+//       name: name,
+//       beadsCount: beadsCount,
+//       currentcount: currentcount ?? this.currentcount,
+//       totalCount: totalCount ?? this.totalCount,
+//       cyclesCount: cyclesCount ?? this.cyclesCount,
+//     );
+//   }
+ }

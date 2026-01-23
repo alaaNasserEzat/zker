@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_Spha_state.dart';
 import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/views/widgets/circle_present_indecator.dart';
+import 'package:zker/features/spaha_feature/presentation/views/widgets/zero_dilog.dart';
 
 class SphaDetailsBlocWidget extends StatelessWidget {
   const SphaDetailsBlocWidget({super.key, required this.sphaEntity});
@@ -56,6 +58,27 @@ class SphaDetailsBlocWidget extends StatelessWidget {
                 "${sphaEntity.totalCount}  العدد الكلي",
                 style: AppTextStyles.titles,
               ),
+GestureDetector(
+  onTap: () {
+    final cubit = context.read<IncrementSphaCubit>(); // ✅ context الصح
+
+    showDialog(
+      context: context,
+      builder: (_) {
+        return BlocProvider.value(
+          value: cubit,
+          child: ZeroDilog(spha: sphaEntity),
+        );
+      },
+    );
+  },
+  child: Icon(
+    Icons.restart_alt_outlined,
+    color: AppColors.mainColor,
+    size: 50,
+  ),
+),
+
             ],
       
       );

@@ -3,8 +3,11 @@ import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 
 class CustomBtn extends StatelessWidget {
-  const CustomBtn({super.key});
-
+  const CustomBtn({super.key, required this.title, required this.onTap,this.width,this.height});
+final String title;
+final VoidCallback onTap;
+ final double ?width;
+final double? height;
   @override
   Widget build(BuildContext context) {
     return  InkWell(
@@ -12,7 +15,8 @@ class CustomBtn extends StatelessWidget {
         
       },
       child: Container(
-        width: double.infinity,
+        width:width?? double.infinity,
+        height: height,
         padding: EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -23,7 +27,7 @@ class CustomBtn extends StatelessWidget {
       colors: [AppColors.mainColor,AppColors.mainColor,AppColors.pink,AppColors.white],
         ),
       ),
-      child: Center(child: Text("0/3",style: AppTextStyles.titles.copyWith(color: AppColors.mainColor),)),
+      child: Center(child: Text(title,style: AppTextStyles.titles.copyWith(color: AppColors.mainColor),)),
       ),
     );
   }
