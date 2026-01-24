@@ -15,7 +15,7 @@ final List<Map<String, String>> items = [
   {
     "title": "الأذكار",
     "image": "assets/images/islamic.png",
-       "widget": AppRoutes.azkar
+       "widget": AppRoutes.azkarCategoryView
   },
   {
     "title": "المسبحه",

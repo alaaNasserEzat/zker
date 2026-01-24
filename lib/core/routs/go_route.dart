@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zker/core/routs/app_routs.dart';
 import 'package:zker/core/services/service_locator.dart';
-import 'package:zker/features/home_feature/presentation/views/azkar_details_view.dart';
-import 'package:zker/features/home_feature/presentation/views/azkar_view.dart';
+import 'package:zker/features/azkar_feature/domain/entites/azkar_category_entity.dart';
+import 'package:zker/features/azkar_feature/presentation/views/azkar_category_view.dart';
+import 'package:zker/features/azkar_feature/presentation/views/azkar_details_view.dart';
+import 'package:zker/features/azkar_feature/presentation/views/azkar_view.dart';
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/views/spha_details_view.dart';
@@ -40,8 +42,9 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutes.azkarDetails,
       name: 'azkarDetails',
       builder: (context, state) {
-        final title = state.extra as String;
-        return AzkarDetailsView(title: title);
+        
+        final azkarCategoryEntity = state.extra as AzkarCategoryEntity;
+        return AzkarDetailsView(azkarCategoryEntity: azkarCategoryEntity,);
       },
     ),
 GoRoute(
@@ -82,6 +85,14 @@ GoRoute(
       name: 'surahList',
       builder: (context, state) {
         return SurahListView();
+      },
+    ),
+         GoRoute(
+      path: AppRoutes.azkarCategoryView,
+      name: 'azkarCategoryView',
+      builder: (context, state) {
+                final title = state.extra as String;
+        return AzkarCategoryView(title: title,);
       },
     ),
   ],

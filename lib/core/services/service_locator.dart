@@ -1,5 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_ce/hive.dart';
+import 'package:zker/features/azkar_feature/data/azkar_local_data_source/azkar_local_data_source.dart';
+import 'package:zker/features/azkar_feature/data/repo_impl/azkar_repo_impl.dart';
+import 'package:zker/features/azkar_feature/domain/repo/azkar_repo.dart';
+import 'package:zker/features/azkar_feature/domain/usecases/gat_azkar_item_use_case.dart';
+import 'package:zker/features/azkar_feature/domain/usecases/get_azkar_category_use_case.dart';
+import 'package:zker/features/azkar_feature/presentation/cubits/azkar_category_cubit/azkar_category_cubit.dart';
+import 'package:zker/features/azkar_feature/presentation/cubits/azkar_cubit.dart';
 import 'package:zker/features/quran_feature/data/local_data_source/quran_local_data_source.dart';
 import 'package:zker/features/quran_feature/data/repo_impl/quran_repo_imp.dart';
 import 'package:zker/features/quran_feature/domain/reop/quran_repo.dart';
@@ -19,37 +26,48 @@ import 'package:zker/features/spaha_feature/presentation/delete_spha_cubit/delet
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_spha_cubit.dart';
 
-
 final sl = GetIt.instance;
 
-Future<void> setupServiceLocator() async{
-    // 1. فتح الـ Hive Box
+Future<void> setupServiceLocator() async {
+  // 1. فتح الـ Hive Box
   // 1. فتح الـ Hive Box
   final sphaBox = await Hive.openBox<SphaModel>('spha_box');
   sl.registerSingleton<Box<SphaModel>>(sphaBox);
 
   // 2. تسجيل DataSource
-  sl.registerLazySingleton<SphaDataSource>(
-      () => SphaDataSourceImp(box: sl()));
-
+  sl.registerLazySingleton<SphaDataSource>(() => SphaDataSourceImp(box: sl()));
+  sl.registerLazySingleton<AzkarLocalDataSource>(
+    () => AzkarLocalDataSourceImp(),
+  );
   // 3. تسجيل Repository
-  sl.registerLazySingleton<SphaRepo>(
-      () => SphaRepoImpl(sphaDataSource: sl()));
+  sl.registerLazySingleton<SphaRepo>(() => SphaRepoImpl(sphaDataSource: sl()));
+  sl.registerLazySingleton<AzkarRepo>(() => AzkarRepoImpl(sl()));
 
   // 4. تسجيل Use Cases
   sl.registerLazySingleton<GetSphaUseCase>(
-      () => GetSphaUseCase(sphaRepo: sl()));
-  sl.registerLazySingleton<AddSphaUseCase>(
-      () => AddSphaUseCase(sl()));
-sl.registerLazySingleton(()=>DeletSphaUseCase(sphaRepo: sl()));
-sl.registerLazySingleton(()=>IncrementUseCase(sphaRepo: sl()));
-sl.registerLazySingleton(()=>ZeroSphaUseCase(sphaRepo: sl()));
+    () => GetSphaUseCase(sphaRepo: sl()),
+  );
+  sl.registerLazySingleton<AddSphaUseCase>(() => AddSphaUseCase(sl()));
+  sl.registerLazySingleton(() => DeletSphaUseCase(sphaRepo: sl()));
+  sl.registerLazySingleton(() => IncrementUseCase(sphaRepo: sl()));
+  sl.registerLazySingleton(() => ZeroSphaUseCase(sphaRepo: sl()));
+  sl.registerLazySingleton(() => GetAzkarCategoryUseCase(sl()));
+  sl.registerLazySingleton(() => GatAzkarItemUseCase(sl()));
 
   // 5. تسجيل Cubit
   sl.registerFactory<SphaCubit>(() => SphaCubit(sl()));
   sl.registerFactory<AddSphaCubit>(() => AddSphaCubit(sl()));
   sl.registerFactory<DeleteSphaCubit>(() => DeleteSphaCubit(sl()));
-  sl.registerFactory<IncrementSphaCubit>(() => IncrementSphaCubit(incrementUseCase: sl(),zeroSphaUseCase: sl()));
+  sl.registerFactory<IncrementSphaCubit>(
+    () => IncrementSphaCubit(incrementUseCase: sl(), zeroSphaUseCase: sl()),
+  );
+    sl.registerFactory<AzkarCategoryCubit>(
+    () => AzkarCategoryCubit( sl()),
+  );
+    sl.registerFactory<AzkarItemCubit>(
+    () => AzkarItemCubit( sl()),
+  );
+
   /// ✅ Data Source
   sl.registerLazySingleton<QuranLocalDataSource>(
     () => QuranLocalDataSourceImpl(),
@@ -57,18 +75,12 @@ sl.registerLazySingleton(()=>ZeroSphaUseCase(sphaRepo: sl()));
 
   /// ✅ Repository
   sl.registerLazySingleton<QuranRepo>(
-    () => QuranRepoImp(
-      quranLocalDataSource: sl(),
-    ),
+    () => QuranRepoImp(quranLocalDataSource: sl()),
   );
 
   /// ✅ Use Case
-  sl.registerLazySingleton<GetQuranUseCase>(
-    () => GetQuranUseCase(sl()),
-  );
+  sl.registerLazySingleton<GetQuranUseCase>(() => GetQuranUseCase(sl()));
 
   /// ✅ Cubit
-  sl.registerFactory<QuranCubit>(
-    () => QuranCubit(sl()),
-  );
+  sl.registerFactory<QuranCubit>(() => QuranCubit(sl()));
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
+import 'package:zker/features/azkar_feature/domain/entites/azkar_item_entity.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/custom_btn.dart';
 
 class AzkarDetailContainer extends StatelessWidget {
-  const AzkarDetailContainer({super.key});
-
+  const AzkarDetailContainer({super.key, required this.azkarItemEntity});
+final AzkarItemEntity azkarItemEntity;
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -34,13 +35,16 @@ class AzkarDetailContainer extends StatelessWidget {
                         SizedBox(width: 10,),
                         Icon(Icons.favorite,color: AppColors.mainColor,),
                         Spacer(),
-                        CircleAvatar(backgroundColor: AppColors.darkPink,radius: 20,child: Text("1",style: AppTextStyles.titles.copyWith(color: AppColors.mainColor),),)
+                        CircleAvatar(backgroundColor: AppColors.darkPink,radius: 20,child: Text(azkarItemEntity.id.toString(),style: AppTextStyles.titles.copyWith(color: AppColors.mainColor),),)
                       ],
                     ),
                     Text(
-                      textDirection: TextDirection.rtl,         "﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾"),
+                      textDirection: TextDirection.rtl,    
+                      azkarItemEntity.text
+                      //     "﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۚ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَن ذَا الَّذِي يَشْفَعُ عِندَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهُوَ الْعَلِيُّ الْعَظِيمُ﴾"
+                      ),
                     Divider(color: AppColors.mainColor,radius: BorderRadius.circular(16),),
-                    CustomBtn(title: "0/3", onTap: () {  },)
+                    CustomBtn(title: "0/${azkarItemEntity.count}", onTap: () {  },)
                     ]),
                 ),
               ),
