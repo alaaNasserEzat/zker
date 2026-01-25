@@ -9,6 +9,7 @@ class AzkarCategoryModel extends AzkarCategoryEntity {
     required super.id,
     required super.category,
     required super.azkar,
+    required super.image,
     this.audio,
     this.filename,
   });
@@ -16,6 +17,7 @@ class AzkarCategoryModel extends AzkarCategoryEntity {
   factory AzkarCategoryModel.fromJson(Map<String, dynamic> json) {
     return AzkarCategoryModel(
       id: json['id'],
+      image: json['image']??"🤲🏻",
       category: json['category'],
       azkar: (json['array'] as List? ?? [])
           .map((e) => AzkarItemModel.fromJson(e))

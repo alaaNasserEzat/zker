@@ -25,7 +25,7 @@ final List<Map<String, String>> items = [
   {
     "title": " ادعيه ",
     "image": "assets/images/window.png",
-       "widget": AppRoutes.azkar
+       "widget": AppRoutes.doaaCategoryView
   },
 ];
 

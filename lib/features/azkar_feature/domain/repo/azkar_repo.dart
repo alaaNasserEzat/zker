@@ -5,5 +5,5 @@ import 'package:zker/features/azkar_feature/domain/entites/azkar_category_entity
 
 abstract class AzkarRepo {
   Future<Either<ErrorModel, List<AzkarCategoryEntity>>> getAzkarCategories();
-  Future<Either<ErrorModel, List<AzkarItemModel>>> getAzkarItems();
+  Future<Either<ErrorModel, List<AzkarCategoryEntity>>> getCategoryDoaa();
 }

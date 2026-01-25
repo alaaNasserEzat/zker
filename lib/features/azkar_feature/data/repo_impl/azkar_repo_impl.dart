@@ -20,10 +20,10 @@ try {
   }
 
   @override
-  Future<Either<ErrorModel, List<AzkarItemModel>>> getAzkarItems()async {
+  Future<Either<ErrorModel, List<AzkarCategoryEntity>>> getCategoryDoaa()async {
 
 try {
- final data= await azkarLocalDataSource.getAzkarItems();
+ final data= await azkarLocalDataSource.getCategoryDoaa();
  return right(data);
 } on Exception catch (e) {
  return left(ErrorModel(message: e.toString()));

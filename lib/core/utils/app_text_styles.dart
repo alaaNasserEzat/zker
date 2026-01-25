@@ -17,7 +17,7 @@ class AppTextStyles {
                   color: AppColors.white,
                 );
                  static const TextStyle zekerTextBold18 =  TextStyle(
-                  fontSize: 18,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: AppColors.black,
                 );
