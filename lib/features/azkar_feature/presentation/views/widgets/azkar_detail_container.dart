@@ -6,8 +6,10 @@ import 'package:zker/features/azkar_feature/domain/entites/azkar_item_entity.dar
 import 'package:zker/features/home_feature/presentation/views/widgets/custom_btn.dart';
 
 class AzkarDetailContainer extends StatefulWidget {
-  const AzkarDetailContainer({super.key, required this.azkarItemEntity});
+  const AzkarDetailContainer({super.key, required this.azkarItemEntity, required this.onCountChanged});
   final AzkarItemEntity azkarItemEntity;
+    final VoidCallback onCountChanged;
+
 
   @override
   State<AzkarDetailContainer> createState() => _AzkarDetailContainerState();
@@ -81,6 +83,7 @@ class _AzkarDetailContainerState extends State<AzkarDetailContainer> {
                         widget.azkarItemEntity.count) {
                       widget.azkarItemEntity.currCount += 1;
                     }
+                      widget.onCountChanged(); 
                     print(
                       "+++++++++++++++++++++++++++++${widget.azkarItemEntity.currCount}",
                     );

@@ -10,25 +10,40 @@ final void Function() onTap;
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.white,
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [AppColors.pink, AppColors.darkPink, AppColors.white],
-            ),
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black12,
-                offset: Offset(0, .2),
-                blurRadius: 10,
+      child: Stack(
+
+        children: [
+          Container(
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [AppColors.pink, AppColors.darkPink, AppColors.white],
+                ),
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black12,
+                    offset: Offset(0, .2),
+                    blurRadius: 10,
+                  ),
+                ],
               ),
-            ],
-          ),
-          child: child,
-        ),
+              child: child,
+            ),
+            // Positioned(
+            //   top: 8,
+            //   right: 8,
+            //   child: CircleAvatar(
+            //     radius: 15,
+            //     backgroundColor: AppColors.green,
+            //     child: Icon(Icons.check, color: AppColors.white,size: 25,),
+               
+            //   ),
+            // )
+        ],
+      ),
     );
   }
 }
