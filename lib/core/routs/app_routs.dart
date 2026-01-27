@@ -6,5 +6,6 @@ class AppRoutes {
   static const String sphaView = '/sphaView';
   static const String sphaDetailsView = '/sphaDetailsView';
   static const String azkarCategoryView = '/azkarCategoryView';
+    static const String profile = '/profile';
     static const String doaaCategoryView = '/doaaCategoryView';
 }

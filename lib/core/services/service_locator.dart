@@ -7,11 +7,6 @@ import 'package:zker/features/azkar_feature/domain/usecases/gat_doaa_category_us
 import 'package:zker/features/azkar_feature/domain/usecases/get_azkar_category_use_case.dart';
 import 'package:zker/features/azkar_feature/presentation/cubits/azkar_category_cubit/azkar_category_cubit.dart';
 import 'package:zker/features/azkar_feature/presentation/cubits/doaa_cubit.dart';
-import 'package:zker/features/quran_feature/data/local_data_source/quran_local_data_source.dart';
-import 'package:zker/features/quran_feature/data/repo_impl/quran_repo_imp.dart';
-import 'package:zker/features/quran_feature/domain/reop/quran_repo.dart';
-import 'package:zker/features/quran_feature/domain/use_case/get_quran_use_case.dart';
-import 'package:zker/features/quran_feature/presentation/cubits/auran_cubit.dart';
 import 'package:zker/features/spaha_feature/data/data_source/spha_data_source.dart';
 import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 import 'package:zker/features/spaha_feature/data/spha_repo_impl.dart';
@@ -69,18 +64,5 @@ Future<void> setupServiceLocator() async {
   );
 
   /// ✅ Data Source
-  sl.registerLazySingleton<QuranLocalDataSource>(
-    () => QuranLocalDataSourceImpl(),
-  );
 
-  /// ✅ Repository
-  sl.registerLazySingleton<QuranRepo>(
-    () => QuranRepoImp(quranLocalDataSource: sl()),
-  );
-
-  /// ✅ Use Case
-  sl.registerLazySingleton<GetQuranUseCase>(() => GetQuranUseCase(sl()));
-
-  /// ✅ Cubit
-  sl.registerFactory<QuranCubit>(() => QuranCubit(sl()));
 }
