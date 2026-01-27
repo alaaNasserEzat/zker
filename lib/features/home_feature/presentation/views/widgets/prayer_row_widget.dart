@@ -21,7 +21,7 @@ class PrayerRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 95,
+      height: 98,
       child: BlocBuilder<PrayerCubit, PrayerTimeState>(
         builder: (context, state) {
           if (state is PrayerTimeLoading) {

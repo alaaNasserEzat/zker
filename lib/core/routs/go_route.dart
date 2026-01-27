@@ -8,6 +8,7 @@ import 'package:zker/features/azkar_feature/presentation/views/azkar_category_vi
 import 'package:zker/features/azkar_feature/presentation/views/azkar_details_view.dart';
 import 'package:zker/features/azkar_feature/presentation/views/azkar_view.dart';
 import 'package:zker/features/azkar_feature/presentation/views/doaa_category_view.dart';
+import 'package:zker/features/quran_feature/presentation/views/quran_view.dart';
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/views/spha_details_view.dart';
@@ -83,9 +84,9 @@ GoRoute(
     ),
        GoRoute(
       path: AppRoutes.quran,
-      name: 'surahList',
+      name: 'quran',
       builder: (context, state) {
-        return SurahListView();
+        return QuranView();
       },
     ),
          GoRoute(
