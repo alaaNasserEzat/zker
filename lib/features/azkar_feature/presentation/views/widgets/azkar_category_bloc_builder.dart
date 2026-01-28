@@ -47,6 +47,7 @@ class AzkarCategoryBlocBuilder extends StatelessWidget {
                         children: [
                           Text(state.categories[index].image??"" ,style: AppTextStyles.zekerTextBold18.copyWith(fontSize: 30),),
                           Text(
+                            textAlign: TextAlign.center,
                             state.categories[index].category,
                             style: AppTextStyles.zekerTextBold18,
                           ),

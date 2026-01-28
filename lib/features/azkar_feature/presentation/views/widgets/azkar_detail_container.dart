@@ -6,10 +6,13 @@ import 'package:zker/features/azkar_feature/domain/entites/azkar_item_entity.dar
 import 'package:zker/features/home_feature/presentation/views/widgets/custom_btn.dart';
 
 class AzkarDetailContainer extends StatefulWidget {
-  const AzkarDetailContainer({super.key, required this.azkarItemEntity, required this.onCountChanged});
+  const AzkarDetailContainer({
+    super.key,
+    required this.azkarItemEntity,
+    required this.onCountChanged,
+  });
   final AzkarItemEntity azkarItemEntity;
-    final VoidCallback onCountChanged;
-
+  final VoidCallback onCountChanged;
 
   @override
   State<AzkarDetailContainer> createState() => _AzkarDetailContainerState();
@@ -36,16 +39,14 @@ class _AzkarDetailContainerState extends State<AzkarDetailContainer> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 5,
+            spacing: 10,
             children: [
               Row(
                 children: [
                   GestureDetector(
                     onTap: () {
                       SharePlus.instance.share(
-                        ShareParams(
-                          text: widget.azkarItemEntity.text,
-                        ),
+                        ShareParams(text: widget.azkarItemEntity.text),
                       );
                     },
                     child: Icon(Icons.share, color: AppColors.mainColor),
@@ -67,10 +68,12 @@ class _AzkarDetailContainerState extends State<AzkarDetailContainer> {
                 ],
               ),
               Text(
-                textDirection: TextDirection.rtl,
                 widget.azkarItemEntity.text,
+                textAlign: TextAlign.center,
+                textDirection: TextDirection.rtl,
               ),
               Divider(
+                thickness: 1.5,
                 color: AppColors.mainColor,
                 radius: BorderRadius.circular(16),
               ),
@@ -83,7 +86,7 @@ class _AzkarDetailContainerState extends State<AzkarDetailContainer> {
                         widget.azkarItemEntity.count) {
                       widget.azkarItemEntity.currCount += 1;
                     }
-                      widget.onCountChanged(); 
+                    widget.onCountChanged();
                     print(
                       "+++++++++++++++++++++++++++++${widget.azkarItemEntity.currCount}",
                     );

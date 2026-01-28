@@ -48,6 +48,7 @@ class DoaaCategoryBlocBuilder extends StatelessWidget {
                         children: [
                           Text(state.azkar[index].image??"" ,style: AppTextStyles.zekerTextBold18.copyWith(fontSize: 30),),
                           Text(
+                            textAlign: TextAlign.center,
                             state.azkar[index].category,
                             style: AppTextStyles.zekerTextBold18,
                           ),
