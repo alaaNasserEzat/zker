@@ -45,12 +45,13 @@ class _AzkarDetailBodyState extends State<AzkarDetailBody> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
-            height: MediaQuery.heightOf(context) * 0.83,
+            height:  MediaQuery.heightOf(context) * 0.83,
             child: ListView.builder(
               itemCount: widget.azkarCategoryEntity.azkar.length,
               itemBuilder: (context, index) {
                 return AzkarDetailContainer(
                   azkarItemEntity: widget.azkarCategoryEntity.azkar[index],
+                  categoryId: widget.azkarCategoryEntity.id,
                   onCountChanged: (){
                     setState(() {
                       

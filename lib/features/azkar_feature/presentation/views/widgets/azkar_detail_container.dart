@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
+import 'package:zker/core/widgets/custom_shadow_contanier.dart';
+import 'package:zker/core/widgets/snack_bar.dart';
 import 'package:zker/features/azkar_feature/domain/entites/azkar_item_entity.dart';
+import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
+import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
+import 'package:zker/features/favourite/presentation/cubits/favourite_state.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/custom_btn.dart';
 
 class AzkarDetailContainer extends StatefulWidget {
   const AzkarDetailContainer({
     super.key,
     required this.azkarItemEntity,
-    required this.onCountChanged,
+    required this.onCountChanged, required this.categoryId,
   });
   final AzkarItemEntity azkarItemEntity;
+  final int categoryId;
+
   final VoidCallback onCountChanged;
 
   @override
@@ -23,18 +31,7 @@ class _AzkarDetailContainerState extends State<AzkarDetailContainer> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: AppColors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black12,
-              offset: Offset(.5, .5),
-              blurRadius: 10,
-            ),
-          ],
-        ),
+      child: CustomShadowContanier(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -53,7 +50,49 @@ class _AzkarDetailContainerState extends State<AzkarDetailContainer> {
                   ),
 
                   SizedBox(width: 10),
-                  Icon(Icons.favorite, color: AppColors.mainColor),
+                 BlocConsumer<FavouriteCubit, FavouriteState>(
+      builder: (context, state) {
+        final favCubit = context.read<FavouriteCubit>();
+
+        final isFav = favCubit.isFavourite(
+          FavouriteItemModel(id: widget.azkarItemEntity.id, text: widget.azkarItemEntity.text, categoryId: widget.categoryId
+           // azkar مفيهاش صورة
+          ),
+        );
+
+        return GestureDetector(
+          onTap: () {
+            final favItem = FavouriteItemModel(
+              id: widget.azkarItemEntity.id,
+              text: widget.azkarItemEntity.text,
+              categoryId: widget.categoryId,
+            );
+
+            if (isFav) {
+              favCubit.removeFromFavourite(favItem);
+              showSankBar(context, "تمت ازالتها من المفضله");
+            } else {
+              
+              favCubit.addToFavourite(favItem);
+                   showSankBar(context, "تمت الاضافه الي المفضله");
+            }
+          },
+          child: Icon(
+            isFav ? Icons.favorite : Icons.favorite_border,
+            color: isFav ? AppColors.mainColor : AppColors.mainColor,
+          ),
+        );
+      },
+  
+       listener: (BuildContext context, FavouriteState state) { 
+        // if(state is AddToFavouriteState){
+        //   showSankBar(context, "تمت الاضافه الي المفضله");
+        // }
+        // if(state is RemoveFromFavouriteState){
+        //   showSankBar(context, "تمت ازالتها من المفضله");
+        // }
+       },
+    ),
                   Spacer(),
                   CircleAvatar(
                     backgroundColor: AppColors.darkPink,

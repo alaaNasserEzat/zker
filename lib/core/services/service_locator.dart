@@ -7,6 +7,11 @@ import 'package:zker/features/azkar_feature/domain/usecases/gat_doaa_category_us
 import 'package:zker/features/azkar_feature/domain/usecases/get_azkar_category_use_case.dart';
 import 'package:zker/features/azkar_feature/presentation/cubits/azkar_category_cubit/azkar_category_cubit.dart';
 import 'package:zker/features/azkar_feature/presentation/cubits/doaa_cubit.dart';
+import 'package:zker/features/favourite/data/data_source/favourite_local_data_source.dart';
+import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
+import 'package:zker/features/favourite/data/repo/favourite_repo_impl.dart';
+import 'package:zker/features/favourite/domain/repo/favourite_repo.dart';
+import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
 import 'package:zker/features/spaha_feature/data/data_source/spha_data_source.dart';
 import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 import 'package:zker/features/spaha_feature/data/spha_repo_impl.dart';
@@ -28,15 +33,21 @@ Future<void> setupServiceLocator() async {
   // 1. فتح الـ Hive Box
   final sphaBox = await Hive.openBox<SphaModel>('spha_box');
   sl.registerSingleton<Box<SphaModel>>(sphaBox);
+    final fav = await Hive.openBox<FavouriteItemModel>('fav_box');
+  sl.registerSingleton<Box<FavouriteItemModel>>(fav);
 
   // 2. تسجيل DataSource
   sl.registerLazySingleton<SphaDataSource>(() => SphaDataSourceImp(box: sl()));
   sl.registerLazySingleton<AzkarLocalDataSource>(
     () => AzkarLocalDataSourceImp(),
   );
+    sl.registerLazySingleton<FavouriteLocalDataSource>(
+    () => FavouriteLocalDataSourceImpl(box: sl()),
+  );
   // 3. تسجيل Repository
   sl.registerLazySingleton<SphaRepo>(() => SphaRepoImpl(sphaDataSource: sl()));
   sl.registerLazySingleton<AzkarRepo>(() => AzkarRepoImpl(sl()));
+  sl.registerLazySingleton<FavouriteRepo>(() => FavouriteRepoImpl( favouriteLocalDataSource: sl()));
 
   // 4. تسجيل Use Cases
   sl.registerLazySingleton<GetSphaUseCase>(
@@ -61,6 +72,9 @@ Future<void> setupServiceLocator() async {
   );
     sl.registerFactory<DoaaCubit>(
     () => DoaaCubit( sl()),
+  );
+      sl.registerFactory<FavouriteCubit>(
+    () => FavouriteCubit( sl()),
   );
 
   /// ✅ Data Source

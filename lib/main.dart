@@ -5,6 +5,7 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:zker/core/routs/go_route.dart';
 import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/core/utils/app_colors.dart';
+import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
 import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 
 void main() async{
@@ -12,7 +13,7 @@ void main() async{
       await QuranLibrary.init();
   await Hive.initFlutter();
   Hive.registerAdapter(SphaModelAdapter());
-
+Hive.registerAdapter(FavouriteItemModelAdapter());
 await setupServiceLocator();
 tz.initializeTimeZones();
 

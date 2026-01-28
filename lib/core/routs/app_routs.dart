@@ -8,4 +8,5 @@ class AppRoutes {
   static const String azkarCategoryView = '/azkarCategoryView';
     static const String profile = '/profile';
     static const String doaaCategoryView = '/doaaCategoryView';
+        static const String favouriteView = '/favouriteView';
 }

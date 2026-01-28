@@ -8,6 +8,8 @@ import 'package:zker/features/azkar_feature/presentation/views/azkar_category_vi
 import 'package:zker/features/azkar_feature/presentation/views/azkar_details_view.dart';
 import 'package:zker/features/azkar_feature/presentation/views/azkar_view.dart';
 import 'package:zker/features/azkar_feature/presentation/views/doaa_category_view.dart';
+import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
+import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
 import 'package:zker/features/quran_feature/presentation/views/quran_view.dart';
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
@@ -46,7 +48,9 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         
         final azkarCategoryEntity = state.extra as AzkarCategoryEntity;
-        return AzkarDetailsView(azkarCategoryEntity: azkarCategoryEntity,);
+        return BlocProvider(
+          create: (context) => sl<FavouriteCubit>()..getFavourites(),
+          child: AzkarDetailsView(azkarCategoryEntity: azkarCategoryEntity,));
       },
     ),
 GoRoute(
@@ -94,6 +98,13 @@ GoRoute(
       name: 'profile',
       builder: (context, state) {
         return ProfileView();
+      },
+    ),
+       GoRoute(
+      path: AppRoutes.favouriteView,
+      name: 'favouriteView',
+      builder: (context, state) {
+        return FavouriteView();
       },
     ),
          GoRoute(

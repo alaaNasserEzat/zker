@@ -12,7 +12,73 @@ class SphaInitial extends SphaState {}
 class SphaLoading extends SphaState {}
 
 class SphaLoaded extends SphaState {
-  final List<SphaEntity> sphas;
+List<SphaEntity> sphas = [
+  SphaEntity(
+    id: 1,
+    name: "سبحان الله",
+    currentcount: 0,
+    cyclesCount: 0,
+    totalCount: 0,
+    beadsCount: 33,
+  ),
+  SphaEntity(
+    id: 2,
+    name: "الحمد لله",
+    currentcount: 0,
+    cyclesCount: 0,
+    totalCount: 0,
+    beadsCount: 33,
+  ),
+  SphaEntity(
+    id: 3,
+    name: "الله أكبر",
+    currentcount: 0,
+    cyclesCount: 0,
+    totalCount: 0,
+    beadsCount: 33,
+  ),
+  SphaEntity(
+    id: 4,
+    name: "لا إله إلا الله",
+    currentcount: 0,
+    cyclesCount: 0,
+    totalCount: 0,
+    beadsCount: 100,
+  ),
+  SphaEntity(
+    id: 5,
+    name: "أستغفر الله",
+    currentcount: 0,
+    cyclesCount: 0,
+    totalCount: 0,
+    beadsCount: 100,
+  ),
+  SphaEntity(
+    id: 6,
+    name: "لا حول ولا قوة إلا بالله",
+    currentcount: 0,
+    cyclesCount: 0,
+    totalCount: 0,
+    beadsCount: 100,
+  ),
+  SphaEntity(
+    id: 7,
+    name: "سبحان الله وبحمده",
+    currentcount: 0,
+    cyclesCount: 0,
+    totalCount: 0,
+    beadsCount: 100,
+  ),
+  SphaEntity(
+    id: 8,
+    name: "سبحان الله العظيم",
+    currentcount: 0,
+    cyclesCount: 0,
+    totalCount: 0,
+    beadsCount: 100,
+  ),
+];
+
 
   SphaLoaded(this.sphas);
 

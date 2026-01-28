@@ -3,16 +3,19 @@
 // Check in to version control
 
 import 'package:hive_ce/hive.dart';
+import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
 import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
+    registerAdapter(FavouriteItemModelAdapter());
     registerAdapter(SphaModelAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
+    registerAdapter(FavouriteItemModelAdapter());
     registerAdapter(SphaModelAdapter());
   }
 }

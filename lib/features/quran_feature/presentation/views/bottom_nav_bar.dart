@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_texts.dart';
+import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
 import 'package:zker/features/home_feature/presentation/views/home_view.dart';
 import 'package:zker/features/home_feature/presentation/views/prayer_time_view.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
@@ -16,7 +17,7 @@ class CustomBottomNav extends StatefulWidget {
 
 class _CustomBottomNavState extends State<CustomBottomNav> {
   int currentIndex = 0;
-List<Widget> screens = [HomeView(),PrayerTimeView(),QuranView(),ProfileView()];
+List<Widget> screens = [HomeView(),FavouriteView(),PrayerTimeView(),ProfileView()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +54,7 @@ body: screens[currentIndex],
               ),
               bottomItem(
                 index: 2,
-                icon: Icons.shopping_cart,
+                icon: Icons.timer,
                 text: AppTexts.cart,
               ),
               bottomItem(
