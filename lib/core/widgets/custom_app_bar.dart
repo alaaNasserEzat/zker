@@ -5,11 +5,11 @@ import 'package:zker/core/utils/app_texts.dart';
 
 buildAppBar({required context,String? title}) {
   return AppBar(
-    backgroundColor: AppColors.mainColor,
-    title: Text(title?? AppTexts.appTitle, style: AppTextStyles.zekerTitle),
+    backgroundColor: AppColors.white,
+    title: Text(title?? AppTexts.appTitle, style: AppTextStyles.appBarTitle),
     centerTitle: true,
     leading: IconButton(
-      icon: Icon(Icons.arrow_back_ios, color: AppColors.white),
+      icon: Icon(Icons.arrow_back_ios, color: AppColors.mainColor),
       onPressed: () {
         Navigator.pop(context);
       },

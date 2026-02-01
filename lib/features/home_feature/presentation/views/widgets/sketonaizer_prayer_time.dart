@@ -19,7 +19,7 @@ class SketonaizerPrayerTime extends StatelessWidget {
             padding: const EdgeInsets.only(right: 8.0,left: 8),
             child: Container(
               decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [AppColors.pink, AppColors.darkPink,AppColors.white], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+                          gradient: LinearGradient(colors: [Colors.transparent,AppColors.white], begin: Alignment.topCenter, end: Alignment.bottomCenter),
          
                           borderRadius: BorderRadius.all(Radius.circular(10)),
           border: Border.all(color: AppColors.mainColor,width: .5),

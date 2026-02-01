@@ -17,11 +17,11 @@ class CustomContainer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.white,
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [AppColors.pink, AppColors.darkPink, AppColors.white],
-          ),
+          // gradient: LinearGradient(
+          //   begin: Alignment.topLeft,
+          //   end: Alignment.bottomRight,
+          //   colors: [AppColors.white, AppColors.white, const Color.fromARGB(255, 193, 224, 250)],
+          // ),
           borderRadius: BorderRadius.circular(15),
           boxShadow: const [
             BoxShadow(

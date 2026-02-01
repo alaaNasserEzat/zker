@@ -38,7 +38,7 @@ final List<Map<String, String>> items = [
       crossAxisCount: 2, // عدد العناصر في الصف
       crossAxisSpacing: 12,
       mainAxisSpacing: 12,
-      childAspectRatio: 9/8,
+      childAspectRatio: 8/5,
         ),
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -47,7 +47,7 @@ final List<Map<String, String>> items = [
       return CustomContainer(
         title: item["title"]!,
 widget: item["widget"]!,
-child:CustomColom(title: item["title"]!, imagePath: item["image"]!),
+child:CustomColom(title: item["title"]!, imagePath: item["image"]!,onTap: (){},),
        
       );
         },

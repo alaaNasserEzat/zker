@@ -10,10 +10,10 @@ class PrayerRowWidget extends StatelessWidget {
   PrayerRowWidget({super.key});
 
   final List<PrayerModel> prayerList = [
-    PrayerModel(name: "الفجر", icon: "assets/images/sun.png"),
-    PrayerModel(name: "الشروق", icon: "assets/images/day.png"),
-    PrayerModel(name: "الظهر", icon: "assets/images/summer.png"),
-    PrayerModel(name: "العصر", icon: "assets/images/sun (2).png"),
+    PrayerModel(name: "الفجر", icon: "assets/images/cloudy.png"),
+    PrayerModel(name: "الشروق", icon: "assets/images/clear-sky.png"),
+    PrayerModel(name: "الظهر", icon: "assets/images/sun.png"),
+    PrayerModel(name: "العصر", icon: "assets/images/cloudy (1).png"),
     PrayerModel(name: "المغرب", icon: "assets/images/cloud.png"),
     PrayerModel(name: "العشاء", icon: "assets/images/moon.png"),
   ];
@@ -21,7 +21,7 @@ class PrayerRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 98,
+      height: 110,
       child: BlocBuilder<PrayerCubit, PrayerTimeState>(
         builder: (context, state) {
           if (state is PrayerTimeLoading) {

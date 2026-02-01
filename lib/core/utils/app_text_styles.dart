@@ -16,9 +16,19 @@ class AppTextStyles {
                   fontWeight: FontWeight.bold,
                   color: AppColors.white,
                 );
+                 static const TextStyle appBarTitle =  TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.mainColor,
+                );
                  static const TextStyle zekerTextBold18 =  TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.bold,
                   color: AppColors.black,
+                );
+                    static const TextStyle zekerTextBold17wihte =  TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.white,
                 );
 }

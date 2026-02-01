@@ -6,14 +6,14 @@ import 'package:zker/features/azkar_feature/presentation/cubits/azkar_category_c
 import 'package:zker/features/azkar_feature/presentation/views/widgets/azkar_category_bloc_builder.dart';
 
 class AzkarCategoryView extends StatelessWidget {
-  const AzkarCategoryView({super.key, required this.title});
-final String title;
+  const AzkarCategoryView({super.key,});
+
   @override
   Widget build(BuildContext context) {
     return  BlocProvider(
       create: (context) => sl<AzkarCategoryCubit>()..getCategories(),
       child: Scaffold(
-        appBar: buildAppBar(context:  context,title: title ),
+        appBar: buildAppBar(context:  context,title: "ازكار" ),
         body: AzkarCategoryBlocBuilder()
       ),
     );

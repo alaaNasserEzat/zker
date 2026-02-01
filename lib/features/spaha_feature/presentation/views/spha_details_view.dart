@@ -10,7 +10,7 @@ final SphaEntity sphaEntity;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar: buildAppBar(context:context),
+      appBar: buildAppBar(context:context,),
       body: Stack(
         children: [
           BackGroundImage(),

@@ -9,14 +9,16 @@ final String time;
   @override
   Widget build(BuildContext context) {
     return  Padding(
-      padding: const EdgeInsets.only(left: 3,right: 3),
+      padding: const EdgeInsets.all(3),
       child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [AppColors.pink, AppColors.darkPink,AppColors.white], begin: Alignment.topCenter, end: Alignment.bottomCenter),
-          ///color: Colors.transparent,
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          border: Border.all(color: AppColors.mainColor,width: .5),
-        ),
+        // decoration: BoxDecoration(
+        //   color: AppColors.white,
+        //   boxShadow: [BoxShadow(color: Color(0x40000000), offset: Offset(0, 1), blurRadius: 4)],
+        //  // gradient: LinearGradient(colors: [AppColors.pink, AppColors.darkPink,AppColors.white], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+        //   ///color: Colors.transparent,
+        //   borderRadius: BorderRadius.all(Radius.circular(10)),
+        //   // border: Border.all(color: AppColors.mainColor,width: .5),
+        // ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -27,6 +29,7 @@ final String time;
               text,
                 style: TextStyle(
                   fontSize: 15,
+                  color: AppColors.white
 
                 ),
               ),
@@ -35,6 +38,7 @@ final String time;
                 time,
                 style: TextStyle(
                   fontSize: 10,
+                  color: AppColors.white,
                           fontFamily: "Nunito",
                       fontVariations: [FontVariation('wght', 900)],
                 ),

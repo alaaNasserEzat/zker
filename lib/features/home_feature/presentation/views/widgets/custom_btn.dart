@@ -50,24 +50,25 @@ class _CustomBtnState extends State<CustomBtn> {
           height: widget.height ?? 50,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
+     
             borderRadius: BorderRadius.circular(15),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black12,
-                offset: Offset(.5, .5),
-                blurRadius: 10,
-              )
-            ],
-            gradient: const LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.topRight,
-              colors: [
-                AppColors.mainColor,
-                AppColors.mainColor,
-                AppColors.pink,
-                AppColors.white,
-              ],
-            ),
+                   gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            AppColors.mainColor,        // يبدأ باللون الأساسي
+            Color(0xff5fa0b0),         // لون أفتح للأناقة
+            Color(0xff8fc2d0),         // لون Fade خفيف
+          ],
+        ),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black26,
+            offset: Offset(0, 4),
+            blurRadius: 8,
+          ),
+        ],
+
           ),
           child: Center(
             child: Text(

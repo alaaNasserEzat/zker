@@ -6,7 +6,6 @@ import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/features/azkar_feature/domain/entites/azkar_category_entity.dart';
 import 'package:zker/features/azkar_feature/presentation/views/azkar_category_view.dart';
 import 'package:zker/features/azkar_feature/presentation/views/azkar_details_view.dart';
-import 'package:zker/features/azkar_feature/presentation/views/azkar_view.dart';
 import 'package:zker/features/azkar_feature/presentation/views/doaa_category_view.dart';
 import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
 import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
@@ -32,15 +31,7 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const CustomBottomNav(),
     ),
 
-    GoRoute(
-      path: AppRoutes.azkar,
-      name: 'azkar',
-      builder: (context, state){
-        final title = state.extra as String;
-        return
-        AzkarView(title: title,);
-      }  
-    ),
+   
 
     GoRoute(
       path: AppRoutes.azkarDetails,
@@ -57,7 +48,6 @@ GoRoute(
   path: AppRoutes.sphaView,
   name: 'sphaView',
   builder: (context, state) {
-    final title = state.extra as String;
 
     return MultiBlocProvider(
       providers: [
@@ -72,7 +62,7 @@ GoRoute(
         ),
       ],
       child:
-       SphaView(title: title),
+       SphaView(),
     );
   },
 ),
@@ -111,16 +101,16 @@ GoRoute(
       path: AppRoutes.azkarCategoryView,
       name: 'azkarCategoryView',
       builder: (context, state) {
-                final title = state.extra as String;
-        return AzkarCategoryView(title: title,);
+                
+        return AzkarCategoryView();
       },
     ),
            GoRoute(
       path: AppRoutes.doaaCategoryView,
       name: 'doaaCategoryView',
       builder: (context, state) {
-                final title = state.extra as String;
-        return DoaaCategoryView(title: title,);
+              
+        return DoaaCategoryView();
       },
     ),
   ],

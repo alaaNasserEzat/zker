@@ -12,6 +12,7 @@ import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
 import 'package:zker/features/favourite/data/repo/favourite_repo_impl.dart';
 import 'package:zker/features/favourite/domain/repo/favourite_repo.dart';
 import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
+import 'package:zker/features/home_feature/data/data_source/home_data_source.dart';
 import 'package:zker/features/spaha_feature/data/data_source/spha_data_source.dart';
 import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 import 'package:zker/features/spaha_feature/data/spha_repo_impl.dart';
@@ -40,6 +41,10 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton<SphaDataSource>(() => SphaDataSourceImp(box: sl()));
   sl.registerLazySingleton<AzkarLocalDataSource>(
     () => AzkarLocalDataSourceImp(),
+  );
+  
+    sl.registerLazySingleton<HomeDataSource>(
+    () => HomeDataSourceImpl(locationService: sl()),
   );
     sl.registerLazySingleton<FavouriteLocalDataSource>(
     () => FavouriteLocalDataSourceImpl(box: sl()),

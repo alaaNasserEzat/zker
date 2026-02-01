@@ -9,7 +9,7 @@ class BackGroundImage extends StatelessWidget {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                  "assets/images/bacground.jpg",
+                  "assets/images/spha_bacground.webp",
                 ), // غيّري المسار حسب صورتك
                 fit: BoxFit.cover,
               ),

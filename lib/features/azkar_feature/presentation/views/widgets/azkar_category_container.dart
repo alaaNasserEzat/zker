@@ -15,20 +15,28 @@ final void Function() onTap;
         children: [
           Container(
               decoration: BoxDecoration(
-                color: AppColors.white,
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [AppColors.pink, AppColors.darkPink, AppColors.white],
-                ),
+               color: AppColors.white,
+  // gradient: LinearGradient(
+  //               begin: Alignment.topLeft,
+  //               end: Alignment.bottomRight,
+  //               colors: [
+  //                 AppColors.mainColor.withOpacity(0.8),
+  //                 AppColors.mainColor.withOpacity(0.6),
+  //                 AppColors.mainColor.withOpacity(0.4),
+  //                 Colors.white.withOpacity(0.2),
+  //               ],
+              
+  //             ),
                 borderRadius: BorderRadius.circular(15),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black12,
-                    offset: Offset(0, .2),
-                    blurRadius: 10,
-                  ),
-                ],
+              boxShadow: const [
+      BoxShadow(
+        color: Colors.black26, // اضبط الشادو عشان يكون واضح
+        offset: Offset(0, 3),
+        blurRadius: 6,
+        spreadRadius: 1,
+      ),
+    ],
+  
               ),
               child: child,
             ),

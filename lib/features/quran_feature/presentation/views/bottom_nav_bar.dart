@@ -26,12 +26,12 @@ body: screens[currentIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 70,
+          height: 65,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
-            color: AppColors.mainColor,
+            color: AppColors.white,
             //Colors.white.withOpacity(.8),
-            borderRadius: BorderRadius.circular(30),
+           borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
                 color: Colors.black12,
@@ -89,8 +89,8 @@ body: screens[currentIndex],
             icon,
             size: 24,
             color: isSelected
-                ? AppColors.darkPink
-                : AppColors.white,
+                ? AppColors.orange
+                : AppColors.mainColor,
           ),
           const SizedBox(height: 5),
           Text(
@@ -98,8 +98,8 @@ body: screens[currentIndex],
             style: TextStyle(
               fontSize: 12,
               color: isSelected
-                  ? AppColors.darkPink
-                  : AppColors.white,
+                  ? AppColors.orange
+                  : AppColors.mainColor,
             ),
           ),
         ],

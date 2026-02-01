@@ -5,13 +5,13 @@ import 'package:zker/features/spaha_feature/presentation/views/widgets/add_dilog
 import 'package:zker/features/spaha_feature/presentation/views/widgets/spha_list.dart';
 
 class SphaView extends StatelessWidget {
-  const SphaView({super.key, required this.title});
-  final String title;
+  const SphaView({super.key, });
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context:context, title:title),
+      appBar: buildAppBar(context:context, title:"السبحه"),
       body: SphaList(),
       floatingActionButton: CircleAvatar(
         backgroundColor: AppColors.mainColor,
