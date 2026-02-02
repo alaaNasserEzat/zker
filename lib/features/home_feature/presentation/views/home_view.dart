@@ -47,7 +47,7 @@ class HomeView extends StatelessWidget {
                     SizedBox(height: 30,),
                      Text(
                     "باقي علي صلاه الفجر",
-                    style: AppTextStyles.zekerTitle,
+                    style: AppTextStyles.zekerTextBold17wihte,
                   ),
                   Text("10:33:00", style: AppTextStyles.zekerTitle),
                      Padding(
@@ -78,10 +78,10 @@ class HomeView extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Column(
-                          spacing: 20,
+                          spacing: 30,
                           children: [
                         HomeCategoryRow(),
-                        HomeCategoryRow()
+                     
                                
                         
                           ],

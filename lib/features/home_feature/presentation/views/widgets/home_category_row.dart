@@ -9,12 +9,14 @@ class HomeCategoryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Wrap(
+      spacing: 20,
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 CustomColom(    title: "القرآن الكريم",
                             imagePath: AppImage.quran,
                             onTap: (){
+                              print("pppppppppppppppp");
                               context.push(AppRoutes.quran);
                             },
                             ),
@@ -36,6 +38,20 @@ class HomeCategoryRow extends StatelessWidget {
                               context.push(AppRoutes.sphaView);
                             },
                             ),
+  
+                                   CustomColom(    title: "اسماء الله",
+                            imagePath:AppImage.allah,
+                          onTap: (){
+                             
+                            },
+                            ),
+                                   CustomColom(    title: "سنن الجمعه ",
+                            imagePath: AppImage.mosque,
+                               onTap: (){
+                   
+                            },
+                            ),
+     
                               ],
                             );
   }

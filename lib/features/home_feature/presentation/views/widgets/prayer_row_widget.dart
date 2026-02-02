@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:zker/core/utils/app_image.dart';
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_cubit.dart';
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_state.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/prayer_time_item.dart';
@@ -10,12 +11,12 @@ class PrayerRowWidget extends StatelessWidget {
   PrayerRowWidget({super.key});
 
   final List<PrayerModel> prayerList = [
-    PrayerModel(name: "الفجر", icon: "assets/images/cloudy.png"),
-    PrayerModel(name: "الشروق", icon: "assets/images/clear-sky.png"),
-    PrayerModel(name: "الظهر", icon: "assets/images/sun.png"),
-    PrayerModel(name: "العصر", icon: "assets/images/cloudy (1).png"),
-    PrayerModel(name: "المغرب", icon: "assets/images/cloud.png"),
-    PrayerModel(name: "العشاء", icon: "assets/images/moon.png"),
+    PrayerModel(name: "الفجر", icon: AppImage.moon),// "assets/images/cloudy.png"),
+    PrayerModel(name: "الشروق", icon:AppImage.shrook),// "assets/images/clear-sky.png"),
+    PrayerModel(name: "الظهر", icon:AppImage.sun),// "assets/images/sun.png"),
+    PrayerModel(name: "العصر", icon:AppImage.cloudSun),// "assets/images/cloudy (1).png"),
+    PrayerModel(name: "المغرب", icon:AppImage.sunFog),// "assets/images/cloud.png"),
+    PrayerModel(name: "العشاء", icon: AppImage.helal),//"assets/images/moon.png"),
   ];
 
   @override

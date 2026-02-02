@@ -31,9 +31,9 @@ final void Function() onTap;
               boxShadow: const [
       BoxShadow(
         color: Colors.black26, // اضبط الشادو عشان يكون واضح
-        offset: Offset(0, 3),
-        blurRadius: 6,
-        spreadRadius: 1,
+        offset: Offset(0, 2),
+        blurRadius: 4,
+
       ),
     ],
   

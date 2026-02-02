@@ -13,7 +13,7 @@ final SphaEntity sphaEntity;
       appBar: buildAppBar(context:context,),
       body: Stack(
         children: [
-          BackGroundImage(),
+          //BackGroundImage(),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SingleChildScrollView(

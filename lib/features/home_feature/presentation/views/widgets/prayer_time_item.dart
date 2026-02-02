@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:zker/core/utils/app_colors.dart';
+import 'package:zker/core/utils/app_text_styles.dart';
 
 class PrayerTimeItem extends StatelessWidget {
   const PrayerTimeItem({super.key, required this.text, required this.time, required this.img});
@@ -33,14 +35,16 @@ final String time;
 
                 ),
               ),
-           Image.asset(img,width: 50,height: 30,),
+          // Image.asset(img,width: 50,height: 30,),
+          SvgPicture.asset(img,width: 50,height: 30,color: AppColors.white,),
               Text(
                 time,
                 style: TextStyle(
-                  fontSize: 10,
+                  fontSize: 12,
                   color: AppColors.white,
-                          fontFamily: "Nunito",
-                      fontVariations: [FontVariation('wght', 900)],
+                          fontFamily: FontFamily.cairo,
+                          fontWeight: FontWeight.w400
+                      
                 ),
               ),
             ],

@@ -87,7 +87,7 @@ body: screens[currentIndex],
         children: [
           Icon(
             icon,
-            size: 24,
+            size: 20,
             color: isSelected
                 ? AppColors.orange
                 : AppColors.mainColor,
