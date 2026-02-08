@@ -12,7 +12,7 @@ class AppColors {
     static const Color green = Colors.greenAccent;
    static const Color pink= Color(0xfff2f8fa);
      static const Color darkPink= Color(0xfff2f8fa);
-     static const Color orange=   Color(0xffd29f4c);
+     static const Color orange=   Color.fromARGB(255, 248, 213, 156);
 
 
 }

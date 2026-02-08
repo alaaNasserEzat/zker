@@ -31,7 +31,7 @@ final VoidCallback ontap;
                   ),
                   circularStrokeCap: CircularStrokeCap.butt,
                   backgroundColor: AppColors.mainColor,
-                  progressColor: AppColors.white,
+                  progressColor: AppColors.orange,
                 ),
     );
   }

@@ -9,4 +9,5 @@ class AppRoutes {
     static const String profile = '/profile';
     static const String doaaCategoryView = '/doaaCategoryView';
         static const String favouriteView = '/favouriteView';
+                static const String nameOfAllahView = '/nameOfAllahView';
 }

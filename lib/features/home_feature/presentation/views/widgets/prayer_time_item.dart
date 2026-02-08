@@ -4,10 +4,11 @@ import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 
 class PrayerTimeItem extends StatelessWidget {
-  const PrayerTimeItem({super.key, required this.text, required this.time, required this.img});
+  const PrayerTimeItem({super.key, required this.text, required this.time, required this.img,  this.iscurrentPrayer=false});
  final String text;
  final String img;
 final String time;
+ final bool iscurrentPrayer ;
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -31,17 +32,17 @@ final String time;
               text,
                 style: TextStyle(
                   fontSize: 15,
-                  color: AppColors.white
+                  color:iscurrentPrayer?AppColors.orange: AppColors.white
 
                 ),
               ),
           // Image.asset(img,width: 50,height: 30,),
-          SvgPicture.asset(img,width: 50,height: 30,color: AppColors.white,),
+          SvgPicture.asset(img,width: 25,height: 25,color: iscurrentPrayer?AppColors.orange:AppColors.white,),
               Text(
                 time,
                 style: TextStyle(
                   fontSize: 12,
-                  color: AppColors.white,
+                  color:iscurrentPrayer?AppColors.orange: AppColors.white,
                           fontFamily: FontFamily.cairo,
                           fontWeight: FontWeight.w400
                       

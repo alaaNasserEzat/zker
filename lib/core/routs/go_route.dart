@@ -4,9 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:zker/core/routs/app_routs.dart';
 import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/features/azkar_feature/domain/entites/azkar_category_entity.dart';
+import 'package:zker/features/azkar_feature/presentation/cubits/name_of_allah_cubit/name_of_allah_cubit.dart';
 import 'package:zker/features/azkar_feature/presentation/views/azkar_category_view.dart';
 import 'package:zker/features/azkar_feature/presentation/views/azkar_details_view.dart';
 import 'package:zker/features/azkar_feature/presentation/views/doaa_category_view.dart';
+import 'package:zker/features/azkar_feature/presentation/views/name_of_allah_view.dart';
 import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
 import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
@@ -74,6 +76,15 @@ GoRoute(
         return BlocProvider(
           create: (context) => sl<IncrementSphaCubit>(),
           child: SphaDetailsView(sphaEntity: spaha));
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.nameOfAllahView,
+      name: 'nameOfAllahView',
+      builder: (context, state) {
+        return BlocProvider(
+          create: (context) => sl<NameOfAllahCubit>()..getNameOfAllah(),
+          child: NameOfAllahView());
       },
     ),
        GoRoute(

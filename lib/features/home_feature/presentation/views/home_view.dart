@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:zker/core/services/location_service.dart';
 import 'package:zker/core/utils/app_colors.dart';
-import 'package:zker/core/utils/app_text_styles.dart';
 import 'package:zker/core/widgets/custom_shadow_contanier.dart';
-import 'package:zker/features/home_feature/data/data_source/home_data_source.dart';
-import 'package:zker/features/home_feature/data/repo_imp/home_repo_impl.dart';
-import 'package:zker/features/home_feature/domain/use_cases/get_prayer_time_use_case.dart';
-import 'package:zker/features/home_feature/presentation/cubits/prayer_time_cubit.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/home_category_row.dart';
 
-import 'package:zker/features/home_feature/presentation/views/widgets/prayer_row_widget.dart';
+import 'package:zker/features/home_feature/presentation/views/widgets/prayer_time_section.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -41,34 +34,7 @@ class HomeView extends StatelessWidget {
                       color: AppColors.mainColor.withOpacity(.90),
                     ),
                   ),
-                 Column(
-                  
-                  children: [
-                    SizedBox(height: 30,),
-                     Text(
-                    "باقي علي صلاه الفجر",
-                    style: AppTextStyles.zekerTextBold17wihte,
-                  ),
-                  Text("10:33:00", style: AppTextStyles.zekerTitle),
-                     Padding(
-                       padding: const EdgeInsets.all(8.0),
-                       child: Divider(thickness: .5,color: AppColors.white,),
-                     ),
-                                 BlocProvider(
-                                                 create: (context) => PrayerCubit(
-                                 GetPrayerTimeUseCase(
-                                   HomeRepoImpl(
-                                     homeDataSource: HomeDataSourceImpl(
-                                       locationService: LocationService(),
-                                     ),
-                                   ),
-                                 ),
-                                                 )..loadPrayerTimes(),
-                                                 child: PrayerRowWidget(),
-                                               ),
-                 
-                  ],
-                 ),
+                PrayerTimeSection(),
                   Positioned(
                     top: 270,
                     right: 25,

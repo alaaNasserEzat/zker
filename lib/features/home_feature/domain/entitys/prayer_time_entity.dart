@@ -5,6 +5,9 @@ class PrayerTimesEntity {
   final DateTime maghrib;
   final DateTime isha;
   final DateTime sunrise;
+  final  currentPrayerName;
+  final  nextPrayerTime;
+  final nextPrayerName;
 
   PrayerTimesEntity({
     required this.fajr,
@@ -12,6 +15,9 @@ class PrayerTimesEntity {
     required this.asr,
     required this.maghrib,
     required this.isha,
-    required this.sunrise
+    required this.sunrise,
+    required this.currentPrayerName,
+    required this.nextPrayerTime, 
+    required this.nextPrayerName
   });
 }

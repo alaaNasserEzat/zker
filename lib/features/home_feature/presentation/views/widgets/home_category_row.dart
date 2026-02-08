@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zker/core/routs/app_routs.dart';
+import 'package:zker/core/routs/go_route.dart';
 import 'package:zker/core/utils/app_image.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/custom_colom.dart';
 
@@ -9,11 +10,13 @@ class HomeCategoryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
+    return Column(
       spacing: 20,
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                CustomColom(    title: "القرآن الكريم",
+                                Row(
+                                  children: [
+                                    CustomColom(    title: "القرآن الكريم",
                             imagePath: AppImage.quran,
                             onTap: (){
                               print("pppppppppppppppp");
@@ -32,7 +35,12 @@ class HomeCategoryRow extends StatelessWidget {
                               context.push(AppRoutes.azkarCategoryView);
                             },
                             ),
-                                        CustomColom(    title: "سبحه ",
+                                  ],
+                                ),
+                                       Row(
+
+                                        children: [
+                                           CustomColom(    title: "سبحه ",
                             imagePath: AppImage.spha,
                                onTap: (){
                               context.push(AppRoutes.sphaView);
@@ -42,7 +50,7 @@ class HomeCategoryRow extends StatelessWidget {
                                    CustomColom(    title: "اسماء الله",
                             imagePath:AppImage.allah,
                           onTap: (){
-                             
+                            context.push(AppRoutes.nameOfAllahView);
                             },
                             ),
                                    CustomColom(    title: "سنن الجمعه ",
@@ -51,6 +59,8 @@ class HomeCategoryRow extends StatelessWidget {
                    
                             },
                             ),
+                                        ],
+                                       )
      
                               ],
                             );

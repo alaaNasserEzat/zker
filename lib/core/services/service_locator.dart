@@ -5,8 +5,10 @@ import 'package:zker/features/azkar_feature/data/repo_impl/azkar_repo_impl.dart'
 import 'package:zker/features/azkar_feature/domain/repo/azkar_repo.dart';
 import 'package:zker/features/azkar_feature/domain/usecases/gat_doaa_category_use_case.dart';
 import 'package:zker/features/azkar_feature/domain/usecases/get_azkar_category_use_case.dart';
+import 'package:zker/features/azkar_feature/domain/usecases/get_name_of_llah_use_case.dart';
 import 'package:zker/features/azkar_feature/presentation/cubits/azkar_category_cubit/azkar_category_cubit.dart';
 import 'package:zker/features/azkar_feature/presentation/cubits/doaa_cubit.dart';
+import 'package:zker/features/azkar_feature/presentation/cubits/name_of_allah_cubit/name_of_allah_cubit.dart';
 import 'package:zker/features/favourite/data/data_source/favourite_local_data_source.dart';
 import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
 import 'package:zker/features/favourite/data/repo/favourite_repo_impl.dart';
@@ -64,6 +66,7 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton(() => ZeroSphaUseCase(sphaRepo: sl()));
   sl.registerLazySingleton(() => GetAzkarCategoryUseCase(sl()));
   sl.registerLazySingleton(() => GatDoaaCategoryDoaaUseCase(sl()));
+  sl.registerLazySingleton(() => GetNameOfLlahUseCase(azkarRepo: sl()));
 
   // 5. تسجيل Cubit
   sl.registerFactory<SphaCubit>(() => SphaCubit(sl()));
@@ -80,6 +83,9 @@ Future<void> setupServiceLocator() async {
   );
       sl.registerFactory<FavouriteCubit>(
     () => FavouriteCubit( sl()),
+  );
+        sl.registerFactory<NameOfAllahCubit>(
+    () => NameOfAllahCubit( sl()),
   );
 
   /// ✅ Data Source

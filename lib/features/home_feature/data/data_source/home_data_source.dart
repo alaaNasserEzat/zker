@@ -13,22 +13,19 @@ class HomeDataSourceImpl implements HomeDataSource {
   HomeDataSourceImpl({required this.locationService});
   @override
   Future<PrayerTimesModel> getPrayerTimes() async {
-   
-  Position position = await locationService.getCurrentLocation();
-      final coordinates = Coordinates(
-    position.latitude,
-    position.longitude,
-  );
-  
-  final DateTime date = DateTime.now();
-  print(" datttttttttttttttttttttttttttttttttttttttttttttttttte $date");
-  CalculationParameters params = CalculationMethodParameters.egyptian()
-    ..madhab = Madhab.shafi;
-  PrayerTimes prayerTimes = PrayerTimes(coordinates: coordinates, date: date, calculationParameters: params, precision: true);
-  return PrayerTimesModel.fromAdhan(prayerTimes:   prayerTimes);
+    Position position = await locationService.getCurrentLocation();
+    final coordinates = Coordinates(position.latitude, position.longitude);
 
+    final DateTime date = DateTime.now();
+    CalculationParameters params = CalculationMethodParameters.egyptian()
+      ..madhab = Madhab.shafi;
+    PrayerTimes prayerTimes = PrayerTimes(
+      coordinates: coordinates,
+      date: date,
+      calculationParameters: params,
+      precision: true,
+    );
 
+    return PrayerTimesModel.fromAdhan(prayerTimes: prayerTimes);
   }
-    }
-    
- 
+}
