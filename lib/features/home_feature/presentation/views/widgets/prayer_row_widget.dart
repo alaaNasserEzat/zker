@@ -20,9 +20,9 @@ class PrayerRowWidget extends StatefulWidget {
 }
 
 class _PrayerRowWidgetState extends State<PrayerRowWidget> {
-   Timer? _timer;
-   Duration remaining = Duration.zero;
-   
+  Timer? _timer;
+  Duration remaining = Duration.zero;
+
   void startCountdown(DateTime nextPrayerTime) {
     _timer?.cancel();
 
@@ -41,7 +41,8 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
       }
     });
   }
-    @override
+
+  @override
   void dispose() {
     _timer?.cancel();
     super.dispose();
@@ -53,12 +54,27 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
   }
 
   final List<PrayerModel> prayerList = [
-    PrayerModel(name: "الفجر", icon: AppImage.moon),// "assets/images/cloudy.png"),
-    PrayerModel(name: "الشروق", icon:AppImage.shrook),// "assets/images/clear-sky.png"),
-    PrayerModel(name: "الظهر", icon:AppImage.sun),// "assets/images/sun.png"),
-    PrayerModel(name: "العصر", icon:AppImage.cloudSun),// "assets/images/cloudy (1).png"),
-    PrayerModel(name: "المغرب", icon:AppImage.sunFog),// "assets/images/cloud.png"),
-    PrayerModel(name: "العشاء", icon: AppImage.helal),//"assets/images/moon.png"),
+    PrayerModel(
+      name: "الفجر",
+      icon: AppImage.moon,
+    ), // "assets/images/cloudy.png"),
+    PrayerModel(
+      name: "الشروق",
+      icon: AppImage.shrook,
+    ), // "assets/images/clear-sky.png"),
+    PrayerModel(name: "الظهر", icon: AppImage.sun), // "assets/images/sun.png"),
+    PrayerModel(
+      name: "العصر",
+      icon: AppImage.cloudSun,
+    ), // "assets/images/cloudy (1).png"),
+    PrayerModel(
+      name: "المغرب",
+      icon: AppImage.sunFog,
+    ), // "assets/images/cloud.png"),
+    PrayerModel(
+      name: "العشاء",
+      icon: AppImage.helal,
+    ), //"assets/images/moon.png"),
   ];
 
   @override
@@ -66,21 +82,22 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
     return BlocBuilder<PrayerCubit, PrayerTimeState>(
       builder: (context, state) {
         if (state is PrayerTimeLoading) {
-          return const Center(child: SizedBox(
-            height: 110,
-            child: SketonaizerPrayerTime()));
+          return const Center(
+            child: SizedBox(height: 110, child: SketonaizerPrayerTime()),
+          );
         }
         if (state is PrayerTimeError) {
           return Center(child: Text(state.errorModel.message));
         }
         if (state is PrayerTimeLoaded) {
           final t = state.prayerTimesEntity;
-    print(t.nextPrayerName);
-           WidgetsBinding.instance.addPostFrameCallback((_) {
-    if (_timer == null) {
-      startCountdown(t.nextPrayerTime);
-    }
-  });
+          print(t.nextPrayerName);
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            if (_timer == null) {
+              startCountdown(t.nextPrayerTime);
+            }
+          });
+
           /// نربط الوقت الصحيح بكل صلاة
           final List<String> times = [
             DateFormat.jm().format(t.fajr),
@@ -90,19 +107,20 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
             formatTime(t.maghrib),
             formatTime(t.isha),
           ];
-    
+
           return Column(
             children: [
-              SizedBox(height: 30,),
-                        Text(
-          "باقي علي صلاه  ${getNextPrayername(t.nextPrayerName)}",
-          style: AppTextStyles.zekerTextBold17wihte,
-        ),
-        Text(formatDuration(  remaining), style: AppTextStyles.zekerTitle),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Divider(thickness: .5, color: AppColors.white),
-        ),
+              SizedBox(height: 5),
+              Text("باقي علي صلاه", style: AppTextStyles.zekerTextBold17wihte),
+              Text(
+                "${getNextPrayername(t.nextPrayerName)}",
+                style: AppTextStyles.textOrange18,
+              ),
+              Text(formatDuration(remaining), style: AppTextStyles.zekerTitle),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Divider(thickness: .5, color: AppColors.white),
+              ),
               SizedBox(
                 height: 110,
                 child: ListView.builder(
@@ -111,12 +129,13 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
                   itemBuilder: (context, index) {
                     final prayer = prayerList[index];
                     final time = times[index];
-                
+
                     return PrayerTimeItem(
                       text: prayer.name,
                       time: time,
                       img: prayer.icon,
-                      iscurrentPrayer: getNextPrayername(t.nextPrayerName)==prayer.name,
+                      iscurrentPrayer:
+                          getNextPrayername(t.nextPrayerName) == prayer.name,
                     );
                   },
                 ),
@@ -124,7 +143,7 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
             ],
           );
         }
-    
+
         return const Center(child: Text("حدث خطأ في تحميل المواقيت"));
       },
     );
@@ -142,8 +161,9 @@ class PrayerModel {
 
   PrayerModel({required this.name, required this.icon});
 }
-getNextPrayername(Prayer p){
-  switch(p){
+
+getNextPrayername(Prayer p) {
+  switch (p) {
     case Prayer.fajr:
       return "الفجر";
     case Prayer.sunrise:
@@ -159,6 +179,4 @@ getNextPrayername(Prayer p){
     default:
       return "";
   }
-
 }
-

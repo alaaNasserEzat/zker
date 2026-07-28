@@ -5,7 +5,6 @@ import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
 import 'package:zker/features/home_feature/presentation/views/home_view.dart';
 import 'package:zker/features/home_feature/presentation/views/prayer_time_view.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
-import 'package:zker/features/quran_feature/presentation/views/quran_view.dart';
 
 
 class CustomBottomNav extends StatefulWidget {
