@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zker/core/routs/app_routs.dart';
+import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_image.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/custom_colom.dart';
 
@@ -49,7 +50,8 @@ class HomeCategoryRow extends StatelessWidget {
 
         return Card(
           color: Colors.white,
-          elevation: 3,
+          shadowColor: Colors.black26,
+          elevation: 10,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),

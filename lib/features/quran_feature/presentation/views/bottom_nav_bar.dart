@@ -6,7 +6,6 @@ import 'package:zker/features/home_feature/presentation/views/home_view.dart';
 import 'package:zker/features/home_feature/presentation/views/prayer_time_view.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
 
-
 class CustomBottomNav extends StatefulWidget {
   const CustomBottomNav({super.key});
 
@@ -16,49 +15,45 @@ class CustomBottomNav extends StatefulWidget {
 
 class _CustomBottomNavState extends State<CustomBottomNav> {
   int currentIndex = 0;
-List<Widget> screens = [HomeView(),FavouriteView(),PrayerTimeView(),ProfileView()];
+  List<Widget> screens = [
+    HomeView(),
+    FavouriteView(),
+    PrayerTimeView(),
+    ProfileView(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBody: true, // ✅ دي أهم سطر
-body: screens[currentIndex],
+      extendBody: true,
+      body: screens[currentIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Container(
-          height: 65,
+          height: 60,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
             color: AppColors.white,
             //Colors.white.withOpacity(.8),
-           borderRadius: BorderRadius.circular(30),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 10,
-              ),
-            ],
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              bottomItem(
-                index: 0,
-                icon: Icons.home,
-                text: AppTexts.home,
-              ),
+              bottomItem(index: 0, icon: Icons.home, text: AppTexts.home),
               bottomItem(
                 index: 1,
-                icon: Icons.favorite,
+                icon: Icons.favorite_border_outlined,
                 text: AppTexts.favorite,
               ),
               bottomItem(
                 index: 2,
-                icon: Icons.timer,
+                icon: Icons.timer_outlined,
                 text: AppTexts.cart,
               ),
               bottomItem(
                 index: 3,
-                icon: Icons.person,
+                icon: Icons.person_outline_rounded,
                 text: AppTexts.profile,
               ),
             ],
@@ -82,23 +77,30 @@ body: screens[currentIndex],
         });
       },
       child: Column(
+        spacing: 5,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            icon,
-            size: 20,
-            color: isSelected
-                ? AppColors.orange
-                : AppColors.mainColor,
+          Container(
+            width: 60,
+            padding: EdgeInsets.only(top: 2, bottom: 2),
+            decoration: isSelected
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: AppColors.mainColor,
+                  )
+                : null,
+            child: Icon(
+              icon,
+              size: 20,
+              color: isSelected ? AppColors.white : AppColors.mainColor50,
+            ),
           ),
-          const SizedBox(height: 5),
+
           Text(
             text,
             style: TextStyle(
               fontSize: 12,
-              color: isSelected
-                  ? AppColors.orange
-                  : AppColors.mainColor,
+              color: isSelected ? AppColors.mainColor : AppColors.mainColor50,
             ),
           ),
         ],
