@@ -16,54 +16,62 @@ class FavouriteView extends StatelessWidget {
     return BlocProvider(
       create: (context) => sl<FavouriteCubit>()..getFavourites(),
       child: Scaffold(
-        appBar: buildAppBar(context:  context,title: "المفضلة"),
+        appBar: buildAppBar(context: context, title: "المفضلة"),
         body: BlocBuilder<FavouriteCubit, FavouriteState>(
           builder: (context, state) {
             if (state is FavouriteLoading) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const Center(child: CircularProgressIndicator());
             }
-      
+
             if (state is FavouriteError) {
-              return Center(
-                child: Text(state.error.message),
-              );
+              return Center(child: Text(state.error.message));
             }
-      
+
             if (state is FavouriteLoaded) {
               if (state.favourites.isEmpty) {
                 return const EmptyFavouriteView();
               }
-      
+
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListView.builder(
                   itemCount: state.favourites.length,
-                  itemBuilder:  (context, index) {
-                  final favourite = state.favourites[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CustomShadowContanier(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                           IconButton(
-                          icon: const Icon(Icons.delete,color: AppColors.mainColor,),
-                          onPressed: () {
-                            context.read<FavouriteCubit>().removeFromFavourite(favourite);
-                          },
+                  itemBuilder: (context, index) {
+                    final favourite = state.favourites[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CustomShadowContanier(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              IconButton(
+                                icon: const Icon(
+                                  Icons.delete_outline_rounded,
+                                  color: AppColors.mainColor,
+                                ),
+                                onPressed: () {
+                                  context
+                                      .read<FavouriteCubit>()
+                                      .removeFromFavourite(favourite);
+                                },
+                              ),
+                              Text(
+                                favourite.text,
+                                textAlign: TextAlign.center,
+                                textDirection: TextDirection.rtl,
+                              ),
+                            ],
+                          ),
                         ),
-                        Text(favourite.text,textAlign: TextAlign.center,
-                        textDirection: TextDirection.rtl,),
-                        ],
-                      )
-                    ),
-                  );
-                }),
+                      ),
+                    );
+                  },
+                ),
               );
             }
-      
+
             return const SizedBox();
           },
         ),

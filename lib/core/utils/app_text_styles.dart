@@ -51,6 +51,7 @@ class AppTextStyles {
     color: AppColors.orange,
     fontSize: 14,
   );
+  static TextStyle textGrey14 = TextStyle(color: AppColors.grey, fontSize: 14);
   static TextStyle textOrange18 = TextStyle(
     color: AppColors.orange,
     fontSize: 18,

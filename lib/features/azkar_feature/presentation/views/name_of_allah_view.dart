@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zker/core/widgets/custom_app_bar.dart';
 import 'package:zker/core/widgets/custom_shadow_contanier.dart';
 import 'package:zker/features/azkar_feature/presentation/cubits/name_of_allah_cubit/name_of_allah_cubit.dart';
 import 'package:zker/features/azkar_feature/presentation/cubits/name_of_allah_cubit/name_of_allah_state.dart';
@@ -12,7 +13,7 @@ class NameOfAllahView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("اسماء الله الحسنى")),
+      appBar: buildAppBar(context: context, title: "اسماء الله الحسني"),
       body: BlocBuilder<NameOfAllahCubit, NameOfAllahState>(
         builder: (context, state) {
           if (state is NameOfAllahLoading) {
