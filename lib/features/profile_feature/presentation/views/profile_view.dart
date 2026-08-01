@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 import 'package:zker/core/utils/app_texts.dart';
-import 'package:zker/features/profile_feature/presentation/views/widgets/custom_list_tile.dart';
+import 'package:zker/features/profile_feature/presentation/theme_cubit/theme_cubit.dart';
 import 'package:zker/features/profile_feature/presentation/views/widgets/custom_setting_option.dart';
+import 'package:zker/features/profile_feature/presentation/views/widgets/them_dailog.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -47,11 +49,21 @@ class ProfileView extends StatelessWidget {
               supTitle: "لمعرفه سياسه التطبيق",
               onTap: () {},
             ),
-            CustomSettingOption(
-              iconData: Icons.color_lens_outlined,
-              text: "السمه",
-              supTitle: "سمه التطبيق (فاتح)",
-              onTap: () {},
+            BlocBuilder<ThemeCubit, ThemeMode>(
+              builder: (context, state) {
+                final themeSubtitle = state == ThemeMode.dark
+                    ? 'سمه التطبيق (داكن)'
+                    : state == ThemeMode.light
+                    ? 'سمه التطبيق (فاتح)'
+                    : 'سمه التطبيق (نظام الجهاز)';
+
+                return CustomSettingOption(
+                  iconData: Icons.color_lens_outlined,
+                  text: "السمه",
+                  supTitle: themeSubtitle,
+                  onTap: () => showthemeDailog(context),
+                );
+              },
             ),
             CustomSettingOption(
               iconData: Icons.info_outline_rounded,

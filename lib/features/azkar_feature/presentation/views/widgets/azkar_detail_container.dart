@@ -15,7 +15,8 @@ class AzkarDetailContainer extends StatefulWidget {
   const AzkarDetailContainer({
     super.key,
     required this.azkarItemEntity,
-    required this.onCountChanged, required this.categoryId,
+    required this.onCountChanged,
+    required this.categoryId,
   });
   final AzkarItemEntity azkarItemEntity;
   final int categoryId;
@@ -50,49 +51,53 @@ class _AzkarDetailContainerState extends State<AzkarDetailContainer> {
                   ),
 
                   SizedBox(width: 10),
-                 BlocConsumer<FavouriteCubit, FavouriteState>(
-      builder: (context, state) {
-        final favCubit = context.read<FavouriteCubit>();
+                  BlocConsumer<FavouriteCubit, FavouriteState>(
+                    builder: (context, state) {
+                      final favCubit = context.read<FavouriteCubit>();
 
-        final isFav = favCubit.isFavourite(
-          FavouriteItemModel(id: widget.azkarItemEntity.id, text: widget.azkarItemEntity.text, categoryId: widget.categoryId
-           // azkar مفيهاش صورة
-          ),
-        );
+                      final isFav = favCubit.isFavourite(
+                        FavouriteItemModel(
+                          id: widget.azkarItemEntity.id,
+                          text: widget.azkarItemEntity.text,
+                          categoryId: widget.categoryId,
+                          // azkar مفيهاش صورة
+                        ),
+                      );
 
-        return GestureDetector(
-          onTap: () {
-            final favItem = FavouriteItemModel(
-              id: widget.azkarItemEntity.id,
-              text: widget.azkarItemEntity.text,
-              categoryId: widget.categoryId,
-            );
+                      return GestureDetector(
+                        onTap: () {
+                          final favItem = FavouriteItemModel(
+                            id: widget.azkarItemEntity.id,
+                            text: widget.azkarItemEntity.text,
+                            categoryId: widget.categoryId,
+                          );
 
-            if (isFav) {
-              favCubit.removeFromFavourite(favItem);
-              showSankBar(context, "تمت ازالتها من المفضله");
-            } else {
-              
-              favCubit.addToFavourite(favItem);
-                   showSankBar(context, "تمت الاضافه الي المفضله");
-            }
-          },
-          child: Icon(
-            isFav ? Icons.favorite : Icons.favorite_border,
-            color: isFav ? AppColors.mainColor : AppColors.mainColor,
-          ),
-        );
-      },
-  
-       listener: (BuildContext context, FavouriteState state) { 
-        // if(state is AddToFavouriteState){
-        //   showSankBar(context, "تمت الاضافه الي المفضله");
-        // }
-        // if(state is RemoveFromFavouriteState){
-        //   showSankBar(context, "تمت ازالتها من المفضله");
-        // }
-       },
-    ),
+                          if (isFav) {
+                            favCubit.removeFromFavourite(favItem);
+                            showSankBar(context, "تمت ازالتها من المفضله");
+                          } else {
+                            favCubit.addToFavourite(favItem);
+                            showSankBar(context, "تمت الاضافه الي المفضله");
+                          }
+                        },
+                        child: Icon(
+                          isFav ? Icons.favorite : Icons.favorite_border,
+                          color: isFav
+                              ? AppColors.mainColor
+                              : AppColors.mainColor,
+                        ),
+                      );
+                    },
+
+                    listener: (BuildContext context, FavouriteState state) {
+                      // if(state is AddToFavouriteState){
+                      //   showSankBar(context, "تمت الاضافه الي المفضله");
+                      // }
+                      // if(state is RemoveFromFavouriteState){
+                      //   showSankBar(context, "تمت ازالتها من المفضله");
+                      // }
+                    },
+                  ),
                   Spacer(),
                   CircleAvatar(
                     backgroundColor: AppColors.darkPink,
@@ -110,6 +115,7 @@ class _AzkarDetailContainerState extends State<AzkarDetailContainer> {
                 widget.azkarItemEntity.text,
                 textAlign: TextAlign.center,
                 textDirection: TextDirection.rtl,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               Divider(
                 thickness: 1.5,

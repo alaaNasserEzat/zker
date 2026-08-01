@@ -6,16 +6,7 @@ Widget showNameDes(BuildContext context, String title, String des) {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadiusGeometry.circular(30),
     ),
-    title: Center(
-      child: Text(
-        title,
-        style: AppTextStyles.zekerTextBold18.copyWith(fontSize: 24),
-      ),
-    ),
-    content: Text(
-      des,
-      style: AppTextStyles.zekerTextBold18,
-      textAlign: TextAlign.center,
-    ),
+    title: Center(child: Text(title)),
+    content: Text(des, textAlign: TextAlign.center),
   );
 }

@@ -10,12 +10,12 @@ class EmptyFavouriteView extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children:  [
-          Icon(Icons.favorite_border, size: 80, color: AppColors.mainColor),
+        children: [
+          Icon(Icons.favorite_border, size: 80),
           SizedBox(height: 12),
           Text(
             'لا يوجد عناصر في المفضلة',
-            style: AppTextStyles.zekerTextBold18.copyWith(color: AppColors.mainColor),
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],
       ),

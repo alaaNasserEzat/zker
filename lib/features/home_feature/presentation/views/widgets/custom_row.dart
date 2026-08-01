@@ -23,8 +23,7 @@ class CustomRow extends StatelessWidget {
               color: AppColors.orange,
             ),
           ),
-          Text("العبادات", style: AppTextStyles.titles),
-          //  Text("مشاهده الكل", style: AppTextStyles.titles),
+          Text("العبادات", style: Theme.of(context).textTheme.headlineLarge),
         ],
       ),
     );

@@ -24,8 +24,11 @@ class CustomSettingOption extends StatelessWidget {
         child: ListTile(
           contentPadding: EdgeInsets.all(8),
           leading: Icon(iconData),
-          title: Text(text, style: AppTextStyles.zekerTextBold18),
-          subtitle: Text(supTitle, style: AppTextStyles.textGrey14),
+          title: Text(text, style: Theme.of(context).textTheme.headlineLarge),
+          subtitle: Text(
+            supTitle,
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
         ),
       ),
     );

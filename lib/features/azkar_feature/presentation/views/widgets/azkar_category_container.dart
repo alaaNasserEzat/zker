@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zker/core/utils/app_colors.dart';
+import 'package:zker/core/widgets/custom_shadow_contanier.dart';
 
 class AzkarCategoryContainer extends StatelessWidget {
   const AzkarCategoryContainer({
@@ -15,45 +16,7 @@ class AzkarCategoryContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              // gradient: LinearGradient(
-              //               begin: Alignment.topLeft,
-              //               end: Alignment.bottomRight,
-              //               colors: [
-              //                 AppColors.mainColor.withOpacity(0.8),
-              //                 AppColors.mainColor.withOpacity(0.6),
-              //                 AppColors.mainColor.withOpacity(0.4),
-              //                 Colors.white.withOpacity(0.2),
-              //               ],
-
-              //             ),
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black12, // اضبط الشادو عشان يكون واضح
-                  offset: Offset(.5, .5),
-                  blurRadius: 2,
-                ),
-              ],
-            ),
-            child: child,
-          ),
-          // Positioned(
-          //   top: 8,
-          //   right: 8,
-          //   child: CircleAvatar(
-          //     radius: 15,
-          //     backgroundColor: AppColors.green,
-          //     child: Icon(Icons.check, color: AppColors.white,size: 25,),
-
-          //   ),
-          // )
-        ],
-      ),
+      child: CustomShadowContanier(child: child),
     );
   }
 }

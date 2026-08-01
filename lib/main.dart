@@ -15,14 +15,14 @@ import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
 import 'package:zker/features/profile_feature/presentation/theme_cubit/theme_cubit.dart';
 import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 
-void main() async{
-    WidgetsFlutterBinding.ensureInitialized();
-      await QuranLibrary.init();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await QuranLibrary.init();
   await Hive.initFlutter();
   Hive.registerAdapter(SphaModelAdapter());
-Hive.registerAdapter(FavouriteItemModelAdapter());
-await setupServiceLocator();
-tz.initializeTimeZones();
+  Hive.registerAdapter(FavouriteItemModelAdapter());
+  await setupServiceLocator();
+  tz.initializeTimeZones();
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorageDirectory.web
@@ -41,15 +41,15 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => ThemeCubit(),
       child: BlocBuilder<ThemeCubit, ThemeMode>(
-        builder: (context,newMode) {
+        builder: (context, newMode) {
           return MaterialApp.router(
-           themeMode: newMode,
+            themeMode: newMode,
             theme: getLightThem(),
             darkTheme: getDarkThem(),
             debugShowCheckedModeBanner: false,
-           routerConfig: appRouter,
+            routerConfig: appRouter,
           );
-        }
+        },
       ),
     );
   }

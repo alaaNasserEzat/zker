@@ -32,7 +32,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
           height: 60,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Theme.of(context).cardColor,
             //Colors.white.withOpacity(.8),
             borderRadius: BorderRadius.circular(20),
             boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 10)],
@@ -86,13 +86,15 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
             decoration: isSelected
                 ? BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: AppColors.mainColor,
+                    color: Theme.of(context).colorScheme.primaryContainer,
                   )
                 : null,
             child: Icon(
               icon,
               size: 20,
-              color: isSelected ? AppColors.white : AppColors.mainColor50,
+              color: isSelected
+                  ? AppColors.white
+                  : Theme.of(context).colorScheme.primary,
             ),
           ),
 
@@ -100,7 +102,9 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
             text,
             style: TextStyle(
               fontSize: 12,
-              color: isSelected ? AppColors.mainColor : AppColors.mainColor50,
+              color: isSelected
+                  ? Theme.of(context).colorScheme.primaryContainer
+                  : Theme.of(context).colorScheme.primary,
             ),
           ),
         ],

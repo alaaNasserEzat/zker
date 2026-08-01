@@ -47,39 +47,36 @@ class _QuranWidgetState extends State<QuranWidget> {
             textDirection: TextDirection.rtl,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SvgPicture.asset(AppImage.quran, width: 60),
+              // SvgPicture.asset(AppImage.quran, width: 60),
+              Image.asset(
+                "assets/images/quran-removebg-preview.png",
+                width: 90,
+              ),
               Column(
                 spacing: 3,
                 children: [
                   Text("اكمل من حيث توقفت ", style: AppTextStyles.textOrange14),
                   Text(
                     "${surah.arabicName}",
-                    style: AppTextStyles.zekerTextBold17main,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColors.mainColor,
-                      //const Color.fromARGB(255, 2, 37, 109),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        textDirection: TextDirection.rtl,
-                        spacing: 10,
-                        children: [
-                          Text(
-                            "متابعه القراءه",
-                            style: AppTextStyles.textwhiht12,
-                          ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: Row(
+                      textDirection: TextDirection.rtl,
+                      spacing: 10,
+                      children: [
+                        Text(
+                          "متابعه القراءه",
+                          style: AppTextStyles.textwhiht12,
+                        ),
 
-                          SvgPicture.asset(
-                            AppImage.quran2,
-                            width: 20,
-                            color: AppColors.orange,
-                          ),
-                        ],
-                      ),
+                        SvgPicture.asset(
+                          AppImage.quran2,
+                          width: 20,
+                          color: AppColors.orange,
+                        ),
+                      ],
                     ),
                   ),
                 ],

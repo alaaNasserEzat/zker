@@ -25,7 +25,7 @@ void showAddSphaDialog(BuildContext context) {
             if (state is AddSphaSuccess) {
               // نحدث الـ List فورًا
               context.read<SphaCubit>().getSpha();
-context.pop();  
+              context.pop();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('تمت إضافة السبحة بنجاح!')),
               );
@@ -41,7 +41,7 @@ context.pop();
                 borderRadius: BorderRadius.circular(20),
               ),
               title: const Text(
-                "إضافة زكر جديد",
+                "إضافة ذكر جديد",
                 style: TextStyle(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
@@ -56,7 +56,7 @@ context.pop();
                       TextFormField(
                         controller: nameController,
                         decoration: InputDecoration(
-                          labelText: "اسم الزكر",
+                          labelText: "اسم الذكر",
                           labelStyle: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -66,7 +66,7 @@ context.pop();
                         ),
                         validator: (value) {
                           if (value == null || value.trim().isEmpty) {
-                            return "اكتب اسم الزكر";
+                            return "اكتب اسم الذكر";
                           }
                           return null;
                         },
@@ -97,17 +97,17 @@ context.pop();
                 ),
               ),
               actions: [
-                DailogBtn(
-                  text: "اغلاق",
-                  onPressed: () => Navigator.pop(context),
+                ElevatedButton(
+                  child: Text("اغلاق"),
+                  onPressed: () => context.pop(),
                 ),
                 state is AddSphaLoading
                     ? const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         child: CircularProgressIndicator(),
                       )
-                    : DailogBtn(
-                        text: "اضافه",
+                    : ElevatedButton(
+                        child: Text("اضافه"),
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
                             final name = nameController.text.trim();

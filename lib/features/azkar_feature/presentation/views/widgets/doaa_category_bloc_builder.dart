@@ -50,19 +50,17 @@ class DoaaCategoryBlocBuilder extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-SvgIconWidget(icon: AppImage.dua),
+                          SvgIconWidget(icon: AppImage.dua),
                           Text(
                             textAlign: TextAlign.center,
                             state.azkar[index].category,
-                            style: AppTextStyles.zekerTextBold18,
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],
                       ),
                     ),
                   ),
                 );
-            
-                  
               },
             ),
           );
@@ -75,6 +73,5 @@ SvgIconWidget(icon: AppImage.dua),
         return const SizedBox();
       },
     );
-  
   }
 }

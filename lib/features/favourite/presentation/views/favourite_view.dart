@@ -61,6 +61,7 @@ class FavouriteView extends StatelessWidget {
                                 favourite.text,
                                 textAlign: TextAlign.center,
                                 textDirection: TextDirection.rtl,
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ],
                           ),

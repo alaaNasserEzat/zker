@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zker/core/routs/app_routs.dart';
@@ -22,7 +24,7 @@ class HomeCategoryRow extends StatelessWidget {
         "route": AppRoutes.doaaCategoryView,
       },
       {
-        "title": "ازكار",
+        "title": "أذكار",
         "image": AppImage.azkar,
         "route": AppRoutes.azkarCategoryView,
       },
@@ -49,7 +51,7 @@ class HomeCategoryRow extends StatelessWidget {
         final item = items[index];
 
         return Card(
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           shadowColor: Colors.black26,
           elevation: 10,
           shape: RoundedRectangleBorder(

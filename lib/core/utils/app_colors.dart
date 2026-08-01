@@ -14,4 +14,12 @@ class AppColors {
   static const Color pink = Color(0xfff2f8fa);
   static const Color darkPink = Color(0xfff2f8fa);
   static const Color orange = Color(0xfff9c885);
+
+  //dark
+  static const Color mainDarkColor = Color(0xff244662);
+  static const Color primaryDarkColor = Color(0xff244662);
+  static const Color onPrimaryDarkColor = Color(0xffb5c2cc);
+  static const Color primaryDarkContainerColor = Color(0xffb5c2cc);
+  static const Color cardDark = Color(0xff466780);
+  static const Color buttonDark = Color(0xffb5c2cc);
 }

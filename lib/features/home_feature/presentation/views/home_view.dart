@@ -48,13 +48,14 @@ class HomeView extends StatelessWidget {
                         bottomLeft: Radius.circular(20),
                         bottomRight: Radius.circular(20),
                       ),
-                      color: AppColors.mainColor.withOpacity(.90),
+                      color: Theme.of(context).colorScheme.surfaceContainer,
+                      // AppColors.mainColor.withOpacity(.90),
                     ),
                   ),
                   PrayerTimeSection(),
 
                   Positioned(
-                    bottom: -50,
+                    bottom: -55,
                     right: 25,
                     left: 25,
 

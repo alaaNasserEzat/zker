@@ -16,74 +16,63 @@ class SphaDetailsBlocWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<IncrementSphaCubit, IncrementSphaState>(
       builder: (context, state) {
-     
-          return Column(
-            textDirection: TextDirection.rtl,
-            spacing: 15,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 100),
-              Text(
-                textDirection: TextDirection.rtl,
-                sphaEntity.name,
-                style: AppTextStyles.titles,
-              ),
+        return Column(
+          textDirection: TextDirection.rtl,
+          spacing: 15,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 100),
+            Text(
+              textDirection: TextDirection.rtl,
+              sphaEntity.name,
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
 
-              Row(
-                children: [
-                  Text(
-                    "${sphaEntity.beadsCount}عدد الحبات ",
-                    style: AppTextStyles.titles,
-                  ),
-                  Spacer(),
-                  Text(
-                    "${sphaEntity.cyclesCount}عدد الدورات ",
-                    style: AppTextStyles.titles,
-                  ),
-                ],
-              ),
-              CirclePresentIndecator(
-                sphaEntity: sphaEntity,
-                ontap: () {
-                  BlocProvider.of<IncrementSphaCubit>(
-                    context,
-                  ).incrementSpha(sphaEntity);
+            Row(
+              children: [
+                Text(
+                  "${sphaEntity.beadsCount}عدد الحبات ",
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+                Spacer(),
+                Text(
+                  "${sphaEntity.cyclesCount}عدد الدورات ",
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+              ],
+            ),
+            CirclePresentIndecator(
+              sphaEntity: sphaEntity,
+              ontap: () {
+                BlocProvider.of<IncrementSphaCubit>(
+                  context,
+                ).incrementSpha(sphaEntity);
+              },
+            ),
+            Text(
+              "${sphaEntity.totalCount}  العدد الكلي",
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            GestureDetector(
+              onTap: () {
+                final cubit = context
+                    .read<IncrementSphaCubit>(); // ✅ context الصح
 
-                  print(
-                    " cuurrent count ${sphaEntity.currentcount} name ${sphaEntity.name} total count ${sphaEntity.totalCount}",
-                  );
-                },
-              ),
-              Text(
-                "${sphaEntity.totalCount}  العدد الكلي",
-                style: AppTextStyles.titles,
-              ),
-GestureDetector(
-  onTap: () {
-    final cubit = context.read<IncrementSphaCubit>(); // ✅ context الصح
-
-    showDialog(
-      context: context,
-      builder: (_) {
-        return BlocProvider.value(
-          value: cubit,
-          child: ZeroDilog(spha: sphaEntity),
+                showDialog(
+                  context: context,
+                  builder: (_) {
+                    return BlocProvider.value(
+                      value: cubit,
+                      child: ZeroDilog(spha: sphaEntity),
+                    );
+                  },
+                );
+              },
+              child: Icon(Icons.restart_alt_outlined, size: 50),
+            ),
+          ],
         );
       },
     );
-  },
-  child: Icon(
-    Icons.restart_alt_outlined,
-    color: AppColors.mainColor,
-    size: 50,
-  ),
-),
-
-            ],
-      
-      );
-      },
-    );
-  
   }
 }
