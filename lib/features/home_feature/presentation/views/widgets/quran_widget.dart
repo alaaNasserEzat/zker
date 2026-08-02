@@ -8,6 +8,7 @@ import 'package:zker/core/utils/app_image.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 import 'package:zker/core/widgets/custom_shadow_contanier.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/blur_container.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class QuranWidget extends StatefulWidget {
   const QuranWidget({super.key});
@@ -67,7 +68,7 @@ class _QuranWidgetState extends State<QuranWidget> {
                       spacing: 10,
                       children: [
                         Text(
-                          "متابعه القراءه",
+                          AppLocalizations.of(context)!.reading,
                           style: AppTextStyles.textwhiht12,
                         ),
 

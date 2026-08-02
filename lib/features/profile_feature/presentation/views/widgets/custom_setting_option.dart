@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zker/core/utils/app_colors.dart';
-import 'package:zker/core/utils/app_text_styles.dart';
-import 'package:zker/features/home_feature/presentation/views/widgets/back_icon_widgets.dart';
 
 class CustomSettingOption extends StatelessWidget {
   const CustomSettingOption({
