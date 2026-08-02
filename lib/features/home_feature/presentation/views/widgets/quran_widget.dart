@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quran_library/quran.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/routs/app_routs.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_image.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 import 'package:zker/core/widgets/custom_shadow_contanier.dart';
-import 'package:zker/features/home_feature/presentation/views/widgets/blur_container.dart';
 import 'package:zker/l10n/app_localizations.dart';
 
 class QuranWidget extends StatefulWidget {
@@ -45,7 +45,6 @@ class _QuranWidgetState extends State<QuranWidget> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
-            textDirection: TextDirection.rtl,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // SvgPicture.asset(AppImage.quran, width: 60),
@@ -56,7 +55,10 @@ class _QuranWidgetState extends State<QuranWidget> {
               Column(
                 spacing: 3,
                 children: [
-                  Text("اكمل من حيث توقفت ", style: AppTextStyles.textOrange14),
+                  Text(
+                    AppLocalizations.of(context)!.continueFromWhereYouStopped,
+                    style: AppTextStyles.textOrange14,
+                  ),
                   Text(
                     "${surah.arabicName}",
                     style: Theme.of(context).textTheme.titleLarge,
@@ -64,11 +66,10 @@ class _QuranWidgetState extends State<QuranWidget> {
                   ElevatedButton(
                     onPressed: () {},
                     child: Row(
-                      textDirection: TextDirection.rtl,
                       spacing: 10,
                       children: [
                         Text(
-                          AppLocalizations.of(context)!.reading,
+                          context.l10n.reading,
                           style: AppTextStyles.textwhiht12,
                         ),
 

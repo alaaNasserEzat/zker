@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zker/core/utils/app_colors.dart';
-import 'package:zker/core/utils/app_text_styles.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class CustomRow extends StatelessWidget {
   const CustomRow({super.key});
@@ -11,7 +11,6 @@ class CustomRow extends StatelessWidget {
       padding: const EdgeInsets.only(left: 8.0, right: 8),
       child: Row(
         spacing: 5,
-        textDirection: TextDirection.rtl,
 
         children: [
           CircleAvatar(
@@ -23,7 +22,10 @@ class CustomRow extends StatelessWidget {
               color: AppColors.orange,
             ),
           ),
-          Text("العبادات", style: Theme.of(context).textTheme.headlineLarge),
+          Text(
+            AppLocalizations.of(context)!.appTitle,
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
         ],
       ),
     );

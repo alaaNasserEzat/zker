@@ -10,6 +10,7 @@ import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
 import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
 import 'package:zker/features/favourite/presentation/cubits/favourite_state.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/custom_btn.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class AzkarDetailContainer extends StatefulWidget {
   const AzkarDetailContainer({
@@ -74,10 +75,18 @@ class _AzkarDetailContainerState extends State<AzkarDetailContainer> {
 
                           if (isFav) {
                             favCubit.removeFromFavourite(favItem);
-                            showSankBar(context, "تمت ازالتها من المفضله");
+                            showSankBar(
+                              context,
+                              AppLocalizations.of(
+                                context,
+                              )!.removedFromFavorites,
+                            );
                           } else {
                             favCubit.addToFavourite(favItem);
-                            showSankBar(context, "تمت الاضافه الي المفضله");
+                            showSankBar(
+                              context,
+                              AppLocalizations.of(context)!.addedToFavorites,
+                            );
                           }
                         },
                         child: Icon(

@@ -27,7 +27,9 @@ class CustomColom extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge!.copyWith(overflow: TextOverflow.ellipsis),
           ),
         ],
       ),

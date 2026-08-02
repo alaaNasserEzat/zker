@@ -11,6 +11,7 @@ import 'package:zker/features/home_feature/presentation/cubits/prayer_time_cubit
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_state.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/prayer_time_item.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/sketonaizer_prayer_time.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class PrayerRowWidget extends StatefulWidget {
   PrayerRowWidget({super.key});
@@ -53,26 +54,29 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
     return "${two(d.inHours)}:${two(d.inMinutes.remainder(60))}:${two(d.inSeconds.remainder(60))}";
   }
 
-  final List<PrayerModel> prayerList = [
+  List<PrayerModel> prayerList(BuildContext context) => [
     PrayerModel(
-      name: "الفجر",
+      name: AppLocalizations.of(context)!.fajr,
       icon: AppImage.moon,
     ), // "assets/images/cloudy.png"),
     PrayerModel(
-      name: "الشروق",
+      name: AppLocalizations.of(context)!.sunrise,
       icon: AppImage.shrook,
     ), // "assets/images/clear-sky.png"),
-    PrayerModel(name: "الظهر", icon: AppImage.sun), // "assets/images/sun.png"),
     PrayerModel(
-      name: "العصر",
+      name: AppLocalizations.of(context)!.dhuhr,
+      icon: AppImage.sun,
+    ), // "assets/images/sun.png"),
+    PrayerModel(
+      name: AppLocalizations.of(context)!.asr,
       icon: AppImage.cloudSun,
     ), // "assets/images/cloudy (1).png"),
     PrayerModel(
-      name: "المغرب",
+      name: AppLocalizations.of(context)!.maghrib,
       icon: AppImage.sunFog,
     ), // "assets/images/cloud.png"),
     PrayerModel(
-      name: "العشاء",
+      name: AppLocalizations.of(context)!.isha,
       icon: AppImage.helal,
     ), //"assets/images/moon.png"),
   ];
@@ -111,9 +115,12 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
           return Column(
             children: [
               SizedBox(height: 5),
-              Text("باقي علي صلاه", style: AppTextStyles.zekerTextBold17wihte),
               Text(
-                "${getNextPrayername(t.nextPrayerName)}",
+                AppLocalizations.of(context)!.remainingUntilPrayer,
+                style: AppTextStyles.zekerTextBold17wihte,
+              ),
+              Text(
+                "${getNextPrayername(t.nextPrayerName, context)}",
                 style: AppTextStyles.textOrange18,
               ),
               Text(formatDuration(remaining), style: AppTextStyles.zekerTitle),
@@ -125,9 +132,9 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
                 height: 110,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: prayerList.length,
+                  itemCount: 6,
                   itemBuilder: (context, index) {
-                    final prayer = prayerList[index];
+                    final prayer = prayerList(context)[index];
                     final time = times[index];
 
                     return PrayerTimeItem(
@@ -135,7 +142,8 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
                       time: time,
                       img: prayer.icon,
                       iscurrentPrayer:
-                          getNextPrayername(t.nextPrayerName) == prayer.name,
+                          getNextPrayername(t.nextPrayerName, context) ==
+                          prayer.name,
                     );
                   },
                 ),
@@ -144,7 +152,9 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
           );
         }
 
-        return const Center(child: Text("حدث خطأ في تحميل المواقيت"));
+        return Center(
+          child: Text(AppLocalizations.of(context)!.prayerTimeLoadError),
+        );
       },
     );
   }
@@ -162,20 +172,21 @@ class PrayerModel {
   PrayerModel({required this.name, required this.icon});
 }
 
-getNextPrayername(Prayer p) {
+getNextPrayername(Prayer p, BuildContext context) {
+  final l10n = AppLocalizations.of(context)!;
   switch (p) {
     case Prayer.fajr:
-      return "الفجر";
+      return l10n.fajr;
     case Prayer.sunrise:
-      return "الشروق";
+      return l10n.sunrise;
     case Prayer.dhuhr:
-      return "الظهر";
+      return l10n.dhuhr;
     case Prayer.asr:
-      return "العصر";
+      return l10n.asr;
     case Prayer.maghrib:
-      return "المغرب";
+      return l10n.maghrib;
     case Prayer.isha:
-      return "العشاء";
+      return l10n.isha;
     default:
       return "";
   }

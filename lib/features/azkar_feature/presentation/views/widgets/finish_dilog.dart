@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zker/core/utils/app_colors.dart';
@@ -11,17 +10,12 @@ void showFinishDialog(BuildContext context, String text) {
     builder: (_) {
       return AlertDialog(
         backgroundColor: AppColors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        title: const Text(
-          "🎉عاااااااش",
-          textAlign: TextAlign.center,
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        title: const Text("🎉عاااااااش", textAlign: TextAlign.center),
         content: Directionality(
           textDirection: TextDirection.rtl,
           child: Text(
-           "  خلصت كل $text \nتقبل الله منك",
+            "  خلصت كل $text \nتقبل الله منك",
             textAlign: TextAlign.center,
             style: AppTextStyles.zekerTextBold18,
           ),
@@ -31,7 +25,12 @@ void showFinishDialog(BuildContext context, String text) {
             onPressed: () {
               context.pop();
             },
-            child:  Text("تم",style: AppTextStyles.zekerTextBold18.copyWith(color: AppColors.mainColor),),
+            child: Text(
+              "تم",
+              style: AppTextStyles.zekerTextBold18.copyWith(
+                color: AppColors.mainColor,
+              ),
+            ),
           ),
         ],
       );

@@ -1,3 +1,82 @@
 {
- "reading":"keep reading"
+  "@@locale": "en",
+  "reading": "keep reading",
+  "appTitle": "Dhikr",
+  "home": "Home",
+  "favorites": "Favorites",
+  "prayerTimes": "Prayer Times",
+  "profile": "Profile",
+  "selectLanguage": "Choose language",
+  "english": "English",
+  "arabic": "Arabic",
+  "privacy": "Privacy",
+  "privacyPolicy": "Learn about the app privacy policy",
+  "theme": "Theme",
+  "aboutApp": "About the app",
+  "aboutAppInfo": "App information",
+  "selectAppTheme": "Choose app theme",
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System",
+  "cancel": "Cancel",
+  "apply": "Apply",
+  "addNewDhikr": "Add a new dhikr",
+  "dhikrName": "Dhikr name",
+  "writeDhikrName": "Please enter the dhikr name",
+  "dhikrCount": "Count",
+  "writeDhikrCount": "Please enter the count",
+  "writeValidNumber": "Please enter a valid number",
+  "close": "Close",
+  "add": "Add",
+  "addedDhikrSuccess": "Dhikr added successfully!",
+  "deletedDhikrSuccess": "Dhikr deleted successfully",
+  "noDhikr": "No dhikr available",
+  "resetCountConfirmation": "Do you want to reset the count?",
+  "reset": "Reset",
+  "noFavorites": "No items in favorites",
+  "addedToFavorites": "Added to favorites",
+  "removedFromFavorites": "Removed from favorites",
+  "azkar": "Azkar",
+  "doaa": "Duaa",
+  "namesOfAllah": "Names of Allah",
+  "tasbih": "Tasbih",
+  "sunnahOfFriday": "Sunnah of Friday",
+  "quranKarim": "Quran Karim",
+  "continueFromWhereYouStopped": "Continue from where you stopped",
+  "remainingUntilPrayer": "Remaining until prayer",
+  "prayerTimeLoadError": "An error occurred while loading prayer times",
+  "fajr": "Fajr",
+  "sunrise": "Sunrise",
+  "dhuhr": "Dhuhr",
+  "asr": "Asr",
+  "maghrib": "Maghrib",
+  "isha": "Isha",
+  "prayerTime": "Prayer Time",
+  "finishedAllMessage": "You have completed all {count} in {category}\nMay Allah accept it from you",
+  "finishedAllTitle": "Done",
+  "beadsCount": "Beads Count: {count}",
+  "roundsCount": "Rounds Count: {count}",
+  "totalCount": "Total Count: {count}",
+  "@beadsCount": {
+  "placeholders": {
+    "count": {
+      "type": "int"
+    }
+  }
+},
+"@roundsCount": {
+  "placeholders": {
+    "count": {
+      "type": "int"
+    }
+  }
+},
+"@totalCount": {
+  "placeholders": {
+    "count": {
+      "type": "int"
+    }
+  }
+}
+
 }

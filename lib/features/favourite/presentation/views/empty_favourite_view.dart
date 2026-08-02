@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zker/core/utils/app_colors.dart';
-import 'package:zker/core/utils/app_text_styles.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class EmptyFavouriteView extends StatelessWidget {
   const EmptyFavouriteView({super.key});
@@ -14,7 +13,7 @@ class EmptyFavouriteView extends StatelessWidget {
           Icon(Icons.favorite_border, size: 80),
           SizedBox(height: 12),
           Text(
-            'لا يوجد عناصر في المفضلة',
+            AppLocalizations.of(context)!.noFavorites,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ],

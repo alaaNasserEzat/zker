@@ -1,7 +1,14 @@
+import 'package:flutter/material.dart';
+import 'package:zker/l10n/app_localizations.dart';
+
 class AppTexts {
-  static const  String appTitle = "ذِكْر";
-  static const String home = "الرئيسية";
-  static const String favorite = "المفضلة";
-  static const String cart = "اوقات الصلاه";
-  static const String profile = "حسابي";
+  static String appTitle(BuildContext context) =>
+      AppLocalizations.of(context)!.appTitle;
+  static String home(BuildContext context) => AppLocalizations.of(context)!.home;
+  static String favorite(BuildContext context) =>
+      AppLocalizations.of(context)!.favorites;
+  static String cart(BuildContext context) =>
+      AppLocalizations.of(context)!.prayerTimes;
+  static String profile(BuildContext context) =>
+      AppLocalizations.of(context)!.profile;
 }

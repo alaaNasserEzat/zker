@@ -5,6 +5,7 @@ import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
 import 'package:zker/features/home_feature/presentation/views/home_view.dart';
 import 'package:zker/features/home_feature/presentation/views/prayer_time_view.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class CustomBottomNav extends StatefulWidget {
   const CustomBottomNav({super.key});
@@ -40,21 +41,25 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              bottomItem(index: 0, icon: Icons.home, text: AppTexts.home),
+              bottomItem(
+                index: 0,
+                icon: Icons.home,
+                text: AppTexts.home(context),
+              ),
               bottomItem(
                 index: 1,
                 icon: Icons.favorite_border_outlined,
-                text: AppTexts.favorite,
+                text: AppTexts.favorite(context),
               ),
               bottomItem(
                 index: 2,
                 icon: Icons.timer_outlined,
-                text: AppTexts.cart,
+                text: AppTexts.cart(context),
               ),
               bottomItem(
                 index: 3,
                 icon: Icons.person_outline_rounded,
-                text: AppTexts.profile,
+                text: AppTexts.profile(context),
               ),
             ],
           ),

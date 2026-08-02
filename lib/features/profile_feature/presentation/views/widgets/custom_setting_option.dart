@@ -16,17 +16,14 @@ class CustomSettingOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      child: Directionality(
-        textDirection: TextDirection.rtl,
-        child: ListTile(
-          contentPadding: EdgeInsets.all(8),
-          leading: Icon(iconData),
-          title: Text(text, style: Theme.of(context).textTheme.headlineLarge),
-          subtitle: Text(
-            supTitle,
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
+      child: ListTile(
+        contentPadding: EdgeInsets.all(8),
+        leading: Icon(iconData),
+        title: Text(
+          text,
+          style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 18),
         ),
+        subtitle: Text(supTitle, style: Theme.of(context).textTheme.bodySmall),
       ),
     );
   }

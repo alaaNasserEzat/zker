@@ -5,6 +5,7 @@ import 'package:zker/features/spaha_feature/presentation/views/widgets/spha_cont
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_state.dart';
 import 'package:zker/features/spaha_feature/presentation/delete_spha_cubit/delete_spha_cubit.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class SphaList extends StatelessWidget {
   const SphaList({super.key});
@@ -15,14 +16,15 @@ class SphaList extends StatelessWidget {
       listener: (context, state) {
         if (state is DeleteSphaSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("تم حذف السبحة بنجاح")),
+            SnackBar(
+              content: Text(AppLocalizations.of(context)!.deletedDhikrSuccess),
+            ),
           );
           context.read<SphaCubit>().getSpha();
-        } 
-        else if (state is DeleteSphaError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errorModel.message)),
-          );
+        } else if (state is DeleteSphaError) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.errorModel.message)));
         }
       },
       child: Padding(
@@ -31,12 +33,11 @@ class SphaList extends StatelessWidget {
           builder: (context, state) {
             if (state is SphaLoading) {
               return const Center(child: CircularProgressIndicator());
-            } 
-            else if (state is SphaLoaded) {
+            } else if (state is SphaLoaded) {
               final sphas = state.sphas;
 
               return sphas.isEmpty
-                  ? const Center(child: Text('لا يوجد سبحة'))
+                  ? Center(child: Text(AppLocalizations.of(context)!.noDhikr))
                   : ListView.builder(
                       itemCount: sphas.length,
                       itemBuilder: (context, index) {
@@ -46,11 +47,9 @@ class SphaList extends StatelessWidget {
                         );
                       },
                     );
-            } 
-            else if (state is SphaError) {
+            } else if (state is SphaError) {
               return Center(child: Text(state.error.message));
-            } 
-            else {
+            } else {
               return const SizedBox.shrink();
             }
           },

@@ -1,3 +1,81 @@
 {
- "reading":"متابعه القراءه"
+  "@@locale": "ar",
+  "reading": "متابعة القراءة",
+  "appTitle": "ذِكْر",
+  "home": "الرئيسية",
+  "favorites": "المفضلة",
+  "prayerTimes": "أوقات الصلاة",
+  "profile": "حسابي",
+  "selectLanguage": "اختر اللغة",
+  "english": "English",
+  "arabic": "العربية",
+  "privacy": "الخصوصية",
+  "privacyPolicy": "لمعرفة سياسة التطبيق",
+  "theme": "السمة",
+  "aboutApp": "حول التطبيق",
+  "aboutAppInfo": "معلومات عن التطبيق",
+  "selectAppTheme": "اختر سمة التطبيق",
+  "light": "فاتح",
+  "dark": "داكن",
+  "system": "نظام الجهاز",
+  "cancel": "إلغاء",
+  "apply": "تطبيق",
+  "addNewDhikr": "إضافة ذكر جديد",
+  "dhikrName": "اسم الذكر",
+  "writeDhikrName": "اكتب اسم الذكر",
+  "dhikrCount": "العدد",
+  "writeDhikrCount": "اكتب العدد",
+  "writeValidNumber": "اكتب رقم صحيح",
+  "close": "إغلاق",
+  "add": "إضافة",
+  "addedDhikrSuccess": "تمت إضافة الذكر بنجاح!",
+  "deletedDhikrSuccess": "تم حذف الذكر بنجاح",
+  "noDhikr": "لا يوجد ذكر",
+  "resetCountConfirmation": "هل تريد تصفير العدد؟",
+  "reset": "تصفير",
+  "noFavorites": "لا يوجد عناصر في المفضلة",
+  "addedToFavorites": "تمت الإضافة إلى المفضلة",
+  "removedFromFavorites": "تمت الإزالة من المفضلة",
+  "azkar": "أذكار",
+  "doaa": "أدعية",
+  "namesOfAllah": "أسماء الله",
+  "tasbih": "سبحة",
+  "sunnahOfFriday": "سنن الجمعة",
+  "quranKarim": "القرآن الكريم",
+  "continueFromWhereYouStopped": "اكمل من حيث توقفت",
+  "remainingUntilPrayer": "باقي على صلاة",
+  "prayerTimeLoadError": "حدث خطأ في تحميل المواقيت",
+  "fajr": "الفجر",
+  "sunrise": "الشروق",
+  "dhuhr": "الظهر",
+  "asr": "العصر",
+  "maghrib": "المغرب",
+  "isha": "العشاء",
+  "prayerTime": "Prayer Time",
+  "finishedAllMessage": "خلصت كل {count} في {category}\nتقبل الله منك",
+  "finishedAllTitle": "تم",
+  "beadsCount": "عدد الحبات: {count}",
+  "roundsCount": "عدد الدورات: {count}",
+  "totalCount": "العدد الكلي: {count}",
+  "@beadsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@roundsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@totalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

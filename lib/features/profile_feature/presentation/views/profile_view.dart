@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 import 'package:zker/core/utils/app_texts.dart';
@@ -33,7 +36,7 @@ class ProfileView extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  AppTexts.appTitle,
+                  AppTexts.appTitle(context),
                   style: AppTextStyles.appBarTitle.copyWith(
                     color: AppColors.white,
                   ),
@@ -48,7 +51,7 @@ class ProfileView extends StatelessWidget {
 
                 return CustomSettingOption(
                   iconData: Icons.language_outlined,
-                  text: "اختر لغه التطبيق",
+                  text: context.l10n.selectLanguage,
                   supTitle: languageTitle,
                   onTap: () => _showLanguageBottomSheet(context),
                 );
@@ -56,21 +59,21 @@ class ProfileView extends StatelessWidget {
             ),
             CustomSettingOption(
               iconData: Icons.lock_outline,
-              text: "الخصوصيه",
-              supTitle: "لمعرفه سياسه التطبيق",
+              text: context.l10n.privacy,
+              supTitle: context.l10n.privacyPolicy,
               onTap: () {},
             ),
             BlocBuilder<ThemeCubit, ThemeMode>(
               builder: (context, state) {
                 final themeSubtitle = state == ThemeMode.dark
-                    ? 'سمه التطبيق (داكن)'
+                    ? '${context.l10n.theme}(${context.l10n.dark})'
                     : state == ThemeMode.light
-                    ? 'سمه التطبيق (فاتح)'
-                    : 'سمه التطبيق (نظام الجهاز)';
+                    ? '${context.l10n.theme}(${context.l10n.light})'
+                    : '${context.l10n.theme}(${context.l10n.system})';
 
                 return CustomSettingOption(
                   iconData: Icons.color_lens_outlined,
-                  text: "السمه",
+                  text: context.l10n.selectAppTheme,
                   supTitle: themeSubtitle,
                   onTap: () => showthemeDailog(context),
                 );
@@ -78,8 +81,8 @@ class ProfileView extends StatelessWidget {
             ),
             CustomSettingOption(
               iconData: Icons.info_outline_rounded,
-              text: "حول التطبيق ",
-              supTitle: "معلومات عن التطبيق",
+              text: context.l10n.aboutApp,
+              supTitle: context.l10n.aboutAppInfo,
               onTap: () {},
             ),
           ],

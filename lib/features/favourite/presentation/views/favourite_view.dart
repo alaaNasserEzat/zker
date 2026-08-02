@@ -7,6 +7,7 @@ import 'package:zker/core/widgets/custom_shadow_contanier.dart';
 import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
 import 'package:zker/features/favourite/presentation/cubits/favourite_state.dart';
 import 'package:zker/features/favourite/presentation/views/empty_favourite_view.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class FavouriteView extends StatelessWidget {
   const FavouriteView({super.key});
@@ -16,7 +17,10 @@ class FavouriteView extends StatelessWidget {
     return BlocProvider(
       create: (context) => sl<FavouriteCubit>()..getFavourites(),
       child: Scaffold(
-        appBar: buildAppBar(context: context, title: "المفضلة"),
+        appBar: buildAppBar(
+          context: context,
+          title: AppLocalizations.of(context)!.favorites,
+        ),
         body: BlocBuilder<FavouriteCubit, FavouriteState>(
           builder: (context, state) {
             if (state is FavouriteLoading) {

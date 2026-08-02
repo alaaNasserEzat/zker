@@ -8,22 +8,22 @@ import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/in
 import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/views/widgets/circle_present_indecator.dart';
 import 'package:zker/features/spaha_feature/presentation/views/widgets/zero_dilog.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class SphaDetailsBlocWidget extends StatelessWidget {
   const SphaDetailsBlocWidget({super.key, required this.sphaEntity});
   final SphaEntity sphaEntity;
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return BlocBuilder<IncrementSphaCubit, IncrementSphaState>(
       builder: (context, state) {
         return Column(
-          textDirection: TextDirection.rtl,
           spacing: 15,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 100),
             Text(
-              textDirection: TextDirection.rtl,
               sphaEntity.name,
               style: Theme.of(context).textTheme.headlineLarge,
             ),
@@ -31,12 +31,12 @@ class SphaDetailsBlocWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "${sphaEntity.beadsCount}عدد الحبات ",
+                  l10n.beadsCount(sphaEntity.beadsCount),
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 Spacer(),
                 Text(
-                  "${sphaEntity.cyclesCount}عدد الدورات ",
+                  l10n.roundsCount(sphaEntity.cyclesCount),
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ],
@@ -50,7 +50,7 @@ class SphaDetailsBlocWidget extends StatelessWidget {
               },
             ),
             Text(
-              "${sphaEntity.totalCount}  العدد الكلي",
+              l10n.totalCount(sphaEntity.totalCount),
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             GestureDetector(

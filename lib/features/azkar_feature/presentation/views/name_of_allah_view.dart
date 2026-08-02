@@ -6,6 +6,7 @@ import 'package:zker/features/azkar_feature/presentation/cubits/name_of_allah_cu
 import 'package:zker/features/azkar_feature/presentation/cubits/name_of_allah_cubit/name_of_allah_state.dart';
 import 'package:zker/features/azkar_feature/presentation/views/widgets/name_alla_describtion.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/back_icon_widgets.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 class NameOfAllahView extends StatelessWidget {
   const NameOfAllahView({super.key});
@@ -13,7 +14,10 @@ class NameOfAllahView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context: context, title: "اسماء الله الحسني"),
+      appBar: buildAppBar(
+        context: context,
+        title: AppLocalizations.of(context)!.namesOfAllah,
+      ),
       body: BlocBuilder<NameOfAllahCubit, NameOfAllahState>(
         builder: (context, state) {
           if (state is NameOfAllahLoading) {

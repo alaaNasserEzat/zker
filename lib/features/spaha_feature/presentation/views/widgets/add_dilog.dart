@@ -6,6 +6,7 @@ import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha
 import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_state.dart';
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/views/widgets/dailog_btn.dart';
+import 'package:zker/l10n/app_localizations.dart';
 
 void showAddSphaDialog(BuildContext context) {
   final nameController = TextEditingController();
@@ -27,7 +28,11 @@ void showAddSphaDialog(BuildContext context) {
               context.read<SphaCubit>().getSpha();
               context.pop();
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('تمت إضافة السبحة بنجاح!')),
+                SnackBar(
+                  content: Text(
+                    AppLocalizations.of(context)!.addedDhikrSuccess,
+                  ),
+                ),
               );
             } else if (state is AddSphaError) {
               ScaffoldMessenger.of(
@@ -40,65 +45,62 @@ void showAddSphaDialog(BuildContext context) {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              title: const Text(
-                "إضافة ذكر جديد",
+              title: Text(
+                AppLocalizations.of(context)!.addNewDhikr,
                 style: TextStyle(fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               content: Form(
                 key: formKey,
-                child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      // اسم السبحة
-                      TextFormField(
-                        controller: nameController,
-                        decoration: InputDecoration(
-                          labelText: "اسم الذكر",
-                          labelStyle: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // اسم السبحة
+                    TextFormField(
+                      controller: nameController,
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.dhikrName,
+                        labelStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
                         ),
-                        validator: (value) {
-                          if (value == null || value.trim().isEmpty) {
-                            return "اكتب اسم الذكر";
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 15),
-                      // العدد
-                      TextFormField(
-                        controller: countController,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          labelText: "العدد",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
                         ),
-                        validator: (value) {
-                          if (value == null || value.trim().isEmpty) {
-                            return "اكتب العدد";
-                          }
-                          if (int.tryParse(value) == null) {
-                            return "اكتب رقم صحيح";
-                          }
-                          return null;
-                        },
                       ),
-                    ],
-                  ),
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return AppLocalizations.of(context)!.writeDhikrName;
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 15),
+                    // العدد
+                    TextFormField(
+                      controller: countController,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                        labelText: AppLocalizations.of(context)!.dhikrCount,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return AppLocalizations.of(context)!.writeDhikrCount;
+                        }
+                        if (int.tryParse(value) == null) {
+                          return AppLocalizations.of(context)!.writeValidNumber;
+                        }
+                        return null;
+                      },
+                    ),
+                  ],
                 ),
               ),
               actions: [
                 ElevatedButton(
-                  child: Text("اغلاق"),
+                  child: Text(AppLocalizations.of(context)!.close),
                   onPressed: () => context.pop(),
                 ),
                 state is AddSphaLoading
@@ -107,7 +109,7 @@ void showAddSphaDialog(BuildContext context) {
                         child: CircularProgressIndicator(),
                       )
                     : ElevatedButton(
-                        child: Text("اضافه"),
+                        child: Text(AppLocalizations.of(context)!.add),
                         onPressed: () async {
                           if (formKey.currentState!.validate()) {
                             final name = nameController.text.trim();
