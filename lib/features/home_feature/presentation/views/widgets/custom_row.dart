@@ -13,13 +13,18 @@ class CustomRow extends StatelessWidget {
         spacing: 5,
 
         children: [
-          CircleAvatar(
-            radius: 14,
-            backgroundColor: AppColors.mainColor,
-            child: Icon(
-              Icons.favorite_border_outlined,
-              size: 15,
-              color: AppColors.orange,
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: Theme.of(context).colorScheme.primaryContainer,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.favorite_border_outlined,
+                size: 15,
+                color: AppColors.white,
+              ),
             ),
           ),
           Text(

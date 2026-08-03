@@ -72,12 +72,12 @@ class _QuranWidgetState extends State<QuranWidget> {
                           context.l10n.reading,
                           style: AppTextStyles.textwhiht12,
                         ),
-
-                        SvgPicture.asset(
-                          AppImage.quran2,
-                          width: 20,
-                          color: AppColors.orange,
-                        ),
+                        Icon(Icons.menu_book_rounded),
+                        // SvgPicture.asset(
+                        //   AppImage.quran2,
+                        //   width: 20,
+                        //   color: AppColors.orange,
+                        // ),
                       ],
                     ),
                   ),

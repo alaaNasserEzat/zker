@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:zker/core/utils/app_colors.dart';
+import 'package:zker/features/home_feature/presentation/views/widgets/container_image_background.dart';
 
 import 'package:zker/features/home_feature/presentation/views/widgets/custom_row.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/home_category_row.dart';
@@ -23,22 +24,7 @@ class HomeView extends StatelessWidget {
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  Container(
-                    height: 350,
-
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                      ),
-                      child: Image.asset(
-                        "assets/images/m.jpg",
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                        height: 350,
-                      ),
-                    ),
-                  ),
+                  // ContainerImageBackground(),
                   Container(
                     height: 350,
                     width: double.infinity,

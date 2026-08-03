@@ -4,6 +4,7 @@ import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:zker/core/services/prayer_service.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_image.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
@@ -54,33 +55,6 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
     return "${two(d.inHours)}:${two(d.inMinutes.remainder(60))}:${two(d.inSeconds.remainder(60))}";
   }
 
-  List<PrayerModel> prayerList(BuildContext context) => [
-    PrayerModel(
-      name: AppLocalizations.of(context)!.fajr,
-      icon: AppImage.moon,
-    ), // "assets/images/cloudy.png"),
-    PrayerModel(
-      name: AppLocalizations.of(context)!.sunrise,
-      icon: AppImage.shrook,
-    ), // "assets/images/clear-sky.png"),
-    PrayerModel(
-      name: AppLocalizations.of(context)!.dhuhr,
-      icon: AppImage.sun,
-    ), // "assets/images/sun.png"),
-    PrayerModel(
-      name: AppLocalizations.of(context)!.asr,
-      icon: AppImage.cloudSun,
-    ), // "assets/images/cloudy (1).png"),
-    PrayerModel(
-      name: AppLocalizations.of(context)!.maghrib,
-      icon: AppImage.sunFog,
-    ), // "assets/images/cloud.png"),
-    PrayerModel(
-      name: AppLocalizations.of(context)!.isha,
-      icon: AppImage.helal,
-    ), //"assets/images/moon.png"),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PrayerCubit, PrayerTimeState>(
@@ -120,7 +94,7 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
                 style: AppTextStyles.zekerTextBold17wihte,
               ),
               Text(
-                "${getNextPrayername(t.nextPrayerName, context)}",
+                "${PrayerService.getNextPrayername(t.nextPrayerName, context)}",
                 style: AppTextStyles.textOrange18,
               ),
               Text(formatDuration(remaining), style: AppTextStyles.zekerTitle),
@@ -142,7 +116,10 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
                       time: time,
                       img: prayer.icon,
                       iscurrentPrayer:
-                          getNextPrayername(t.nextPrayerName, context) ==
+                          PrayerService.getNextPrayername(
+                            t.nextPrayerName,
+                            context,
+                          ) ==
                           prayer.name,
                     );
                   },
@@ -170,24 +147,4 @@ class PrayerModel {
   final String icon;
 
   PrayerModel({required this.name, required this.icon});
-}
-
-getNextPrayername(Prayer p, BuildContext context) {
-  final l10n = AppLocalizations.of(context)!;
-  switch (p) {
-    case Prayer.fajr:
-      return l10n.fajr;
-    case Prayer.sunrise:
-      return l10n.sunrise;
-    case Prayer.dhuhr:
-      return l10n.dhuhr;
-    case Prayer.asr:
-      return l10n.asr;
-    case Prayer.maghrib:
-      return l10n.maghrib;
-    case Prayer.isha:
-      return l10n.isha;
-    default:
-      return "";
-  }
 }

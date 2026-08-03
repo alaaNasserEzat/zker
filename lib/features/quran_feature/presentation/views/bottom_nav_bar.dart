@@ -90,7 +90,7 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
             padding: EdgeInsets.only(top: 2, bottom: 2),
             decoration: isSelected
                 ? BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(14),
                     color: Theme.of(context).colorScheme.primaryContainer,
                   )
                 : null,
