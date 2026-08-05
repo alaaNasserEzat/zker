@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:zker/core/errors/exptions.dart';
 
@@ -15,7 +17,7 @@ class LocationService {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        throw LocationPermissionException(message:  "تم رفض الصلاحية");
+        throw LocationPermissionException(message: "تم رفض الصلاحية");
       }
     }
 
@@ -26,5 +28,16 @@ class LocationService {
     return await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
+  }
+
+  Future<String> getLocationName(Position p, {required String locale}) async {
+    final geocoding = Geocoding();
+    List<Placemark> placemarks = await geocoding.placemarkFromCoordinates(
+      p.latitude,
+      p.longitude,
+      locale: Locale(locale),
+    );
+    final first = placemarks.first;
+    return "${first.country} ${first.administrativeArea}";
   }
 }

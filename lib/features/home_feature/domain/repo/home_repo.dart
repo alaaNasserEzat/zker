@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:zker/core/errors/error_model.dart';
 import 'package:zker/features/home_feature/domain/entitys/prayer_time_entity.dart';
- 
- abstract class HomeRepo {
+
+abstract class HomeRepo {
   Future<Either<ErrorModel, PrayerTimesEntity>> getPrayerTime();
+  Future<Either<ErrorModel, String>> getLocationName({required String locale});
 }

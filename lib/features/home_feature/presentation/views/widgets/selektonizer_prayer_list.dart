@@ -7,6 +7,7 @@ class SelektonizerPrayerList extends StatelessWidget {
   const SelektonizerPrayerList({super.key});
 
   @override
+
   Widget build(BuildContext context) {
     return Skeletonizer(
       enabled: true,

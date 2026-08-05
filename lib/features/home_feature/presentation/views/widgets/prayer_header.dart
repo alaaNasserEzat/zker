@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
+import 'package:zker/core/services/location_service.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
+import 'package:zker/features/home_feature/data/models/prayer_date.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/container_image_background.dart';
+import 'package:zker/features/home_feature/presentation/views/widgets/location_name_bloc_builder.dart';
+import 'package:zker/features/home_feature/presentation/views/widgets/prayer_row_widget.dart';
 
 class PrayerHeader extends StatelessWidget {
   const PrayerHeader({super.key});
@@ -29,13 +34,17 @@ class PrayerHeader extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          "الاحد 2 اغسطس 2026",
+                          PrayerDate.getGregorianDate(
+                            lanCode: context.l10n.localeName,
+                          ),
                           style: AppTextStyles.zekerTextBold17wihte.copyWith(
                             fontSize: 12,
                           ),
                         ),
                         Text(
-                          "7 صقر 1440ه",
+                          PrayerDate.getHijriDate(
+                            lanCode: context.l10n.localeName,
+                          ),
                           style: AppTextStyles.zekerTextBold17wihte.copyWith(
                             fontSize: 12,
                           ),
@@ -45,15 +54,10 @@ class PrayerHeader extends StatelessWidget {
                     Spacer(),
                     Icon(
                       Icons.location_on_outlined,
-                      color: AppColors.white,
+                      color: AppColors.orange,
                       size: 15,
                     ),
-                    Text(
-                      "القاهره  مصر",
-                      style: AppTextStyles.zekerTextBold17wihte.copyWith(
-                        fontSize: 15,
-                      ),
-                    ),
+                    LocationNameBlocBuilder(),
                   ],
                 ),
               ),

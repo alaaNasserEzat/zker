@@ -56,6 +56,8 @@ dependencies:
   quran_library: ^2.3.5
   flutter_svg: ^2.2.3
   hydrated_bloc: ^10.1.1
+  hijri: ^3.0.1
+  geocoding: ^5.0.0
 
 
 dev_dependencies:
