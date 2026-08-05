@@ -29,11 +29,11 @@ class PrayerBlocBuilder extends StatelessWidget {
           /// نربط الوقت الصحيح بكل صلاة
           final List<String> times = [
             DateFormat.jm().format(t.fajr),
-            formatTime(t.sunrise),
-            formatTime(t.dhuhr),
-            formatTime(t.asr),
-            formatTime(t.maghrib),
-            formatTime(t.isha),
+            DateFormat.jm().format(t.sunrise),
+            DateFormat.jm().format(t.dhuhr),
+            DateFormat.jm().format(t.asr),
+            DateFormat.jm().format(t.maghrib),
+            DateFormat.jm().format(t.isha),
           ];
 
           return Expanded(

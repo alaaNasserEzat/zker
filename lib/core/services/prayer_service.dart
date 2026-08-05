@@ -18,6 +18,8 @@ class PrayerService {
         return l10n.maghrib;
       case Prayer.isha:
         return l10n.isha;
+      case Prayer.fajrAfter:
+        return l10n.fajr;
       default:
         return "";
     }

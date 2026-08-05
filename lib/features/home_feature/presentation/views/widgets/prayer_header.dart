@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:zker/core/constent/extensions/localelization_extention.dart';
-import 'package:zker/core/services/location_service.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 import 'package:zker/features/home_feature/data/models/prayer_date.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/container_image_background.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/location_name_bloc_builder.dart';
-import 'package:zker/features/home_feature/presentation/views/widgets/prayer_row_widget.dart';
+import 'package:zker/features/home_feature/presentation/views/widgets/reming_bloc_builder.dart';
 
 class PrayerHeader extends StatelessWidget {
   const PrayerHeader({super.key});
@@ -25,8 +24,9 @@ class PrayerHeader extends StatelessWidget {
                 "مواقيت الصلاه",
                 style: AppTextStyles.zekerTitle.copyWith(fontSize: 24),
               ),
-              Text(" باقي علي العصر", style: AppTextStyles.textOrange18),
-              Text("10:20:00", style: AppTextStyles.zekerTitle),
+              // Text(" باقي علي العصر", style: AppTextStyles.textOrange18),
+              // Text("10:20:00", style: AppTextStyles.zekerTitle),
+              RemingBlocBuilder(),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: Row(

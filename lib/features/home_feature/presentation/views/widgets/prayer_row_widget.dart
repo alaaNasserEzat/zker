@@ -1,60 +1,23 @@
-import 'dart:async';
-
-import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:zker/core/services/prayer_service.dart';
 import 'package:zker/core/utils/app_colors.dart';
-import 'package:zker/core/utils/app_image.dart';
-import 'package:zker/core/utils/app_text_styles.dart';
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_cubit.dart';
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_state.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/prayer_time_item.dart';
+import 'package:zker/features/home_feature/presentation/views/widgets/remainin_section.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/sketonaizer_prayer_time.dart';
 import 'package:zker/l10n/app_localizations.dart';
 
 class PrayerRowWidget extends StatefulWidget {
-  PrayerRowWidget({super.key});
+  const PrayerRowWidget({super.key});
 
   @override
   State<PrayerRowWidget> createState() => _PrayerRowWidgetState();
 }
 
 class _PrayerRowWidgetState extends State<PrayerRowWidget> {
-  Timer? _timer;
-  Duration remaining = Duration.zero;
-
-  void startCountdown(DateTime nextPrayerTime) {
-    _timer?.cancel();
-
-    setState(() {
-      remaining = nextPrayerTime.difference(DateTime.now());
-    });
-
-    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      final diff = nextPrayerTime.difference(DateTime.now());
-      if (diff.isNegative) {
-        _timer?.cancel();
-      } else {
-        setState(() {
-          remaining = diff;
-        });
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  String formatDuration(Duration d) {
-    String two(int n) => n.toString().padLeft(2, '0');
-    return "${two(d.inHours)}:${two(d.inMinutes.remainder(60))}:${two(d.inSeconds.remainder(60))}";
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PrayerCubit, PrayerTimeState>(
@@ -69,35 +32,21 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
         }
         if (state is PrayerTimeLoaded) {
           final t = state.prayerTimesEntity;
-          print(t.nextPrayerName);
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (_timer == null) {
-              startCountdown(t.nextPrayerTime);
-            }
-          });
 
           /// نربط الوقت الصحيح بكل صلاة
           final List<String> times = [
             DateFormat.jm().format(t.fajr),
-            formatTime(t.sunrise),
-            formatTime(t.dhuhr),
-            formatTime(t.asr),
-            formatTime(t.maghrib),
-            formatTime(t.isha),
+            DateFormat.jm().format(t.sunrise),
+            DateFormat.jm().format(t.dhuhr),
+            DateFormat.jm().format(t.asr),
+            DateFormat.jm().format(t.maghrib),
+            DateFormat.jm().format(t.isha),
           ];
 
           return Column(
             children: [
               SizedBox(height: 5),
-              Text(
-                AppLocalizations.of(context)!.remainingUntilPrayer,
-                style: AppTextStyles.zekerTextBold17wihte,
-              ),
-              Text(
-                "${PrayerService.getNextPrayername(t.nextPrayerName, context)}",
-                style: AppTextStyles.textOrange18,
-              ),
-              Text(formatDuration(remaining), style: AppTextStyles.zekerTitle),
+              RemaininSection(prayerTimesEntity: t),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Divider(thickness: .5, color: AppColors.white),
@@ -135,11 +84,6 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
       },
     );
   }
-}
-
-/// 🔥 فورمات الوقت (AM/PM)
-String formatTime(DateTime time) {
-  return "${time.hour % 12 == 0 ? 12 : time.hour % 12}:${time.minute.toString().padLeft(2, '0')} ${time.hour >= 12 ? 'PM' : 'AM'}";
 }
 
 class PrayerModel {

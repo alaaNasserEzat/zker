@@ -38,6 +38,6 @@ class LocationService {
       locale: Locale(locale),
     );
     final first = placemarks.first;
-    return "${first.country} ${first.administrativeArea}";
+    return "${first.country} , ${first.locality}";
   }
 }

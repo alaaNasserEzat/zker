@@ -9,7 +9,6 @@ import 'package:zker/features/home_feature/domain/use_cases/get_prayer_time_use_
 import 'package:zker/features/home_feature/presentation/cubits/location_cubit.dart';
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_cubit.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/prayer_bloc_builder.dart';
-import 'package:zker/features/home_feature/presentation/views/widgets/prayer_card.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/prayer_header.dart';
 
 class PrayerTimeView extends StatelessWidget {
