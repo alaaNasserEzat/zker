@@ -23,9 +23,7 @@ class _PrayerRowWidgetState extends State<PrayerRowWidget> {
     return BlocBuilder<PrayerCubit, PrayerTimeState>(
       builder: (context, state) {
         if (state is PrayerTimeLoading) {
-          return const Center(
-            child: SizedBox(height: 110, child: SketonaizerPrayerTime()),
-          );
+          return const Center(child: SketonaizerPrayerTime());
         }
         if (state is PrayerTimeError) {
           return Center(child: Text(state.errorModel.message));

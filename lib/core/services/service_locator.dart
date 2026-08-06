@@ -14,6 +14,11 @@ import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
 import 'package:zker/features/favourite/data/repo/favourite_repo_impl.dart';
 import 'package:zker/features/favourite/domain/repo/favourite_repo.dart';
 import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
+import 'package:zker/features/friday_sunnah_feature/data/data_sources/friday_sunnah_local_data_source.dart';
+import 'package:zker/features/friday_sunnah_feature/data/repo/friday_sunnah_repository_impl.dart';
+import 'package:zker/features/friday_sunnah_feature/domain/repo/friday_sunnah_repository.dart';
+import 'package:zker/features/friday_sunnah_feature/domain/use_cases/get_friday_sunnah_use_case.dart';
+import 'package:zker/features/friday_sunnah_feature/presentation/cubit/friday_sunnah_cubit.dart';
 import 'package:zker/features/home_feature/data/data_source/home_data_source.dart';
 import 'package:zker/features/profile_feature/presentation/theme_cubit/theme_cubit.dart';
 import 'package:zker/features/spaha_feature/data/data_source/spha_data_source.dart';
@@ -37,7 +42,7 @@ Future<void> setupServiceLocator() async {
   // 1. فتح الـ Hive Box
   final sphaBox = await Hive.openBox<SphaModel>('spha_box');
   sl.registerSingleton<Box<SphaModel>>(sphaBox);
-    final fav = await Hive.openBox<FavouriteItemModel>('fav_box');
+  final fav = await Hive.openBox<FavouriteItemModel>('fav_box');
   sl.registerSingleton<Box<FavouriteItemModel>>(fav);
 
   // 2. تسجيل DataSource
@@ -45,17 +50,25 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton<AzkarLocalDataSource>(
     () => AzkarLocalDataSourceImp(),
   );
-  
-    sl.registerLazySingleton<HomeDataSource>(
+
+  sl.registerLazySingleton<HomeDataSource>(
     () => HomeDataSourceImpl(locationService: sl()),
   );
-    sl.registerLazySingleton<FavouriteLocalDataSource>(
+  sl.registerLazySingleton<FavouriteLocalDataSource>(
     () => FavouriteLocalDataSourceImpl(box: sl()),
   );
   // 3. تسجيل Repository
   sl.registerLazySingleton<SphaRepo>(() => SphaRepoImpl(sphaDataSource: sl()));
   sl.registerLazySingleton<AzkarRepo>(() => AzkarRepoImpl(sl()));
-  sl.registerLazySingleton<FavouriteRepo>(() => FavouriteRepoImpl( favouriteLocalDataSource: sl()));
+  sl.registerLazySingleton<FavouriteRepo>(
+    () => FavouriteRepoImpl(favouriteLocalDataSource: sl()),
+  );
+  sl.registerLazySingleton<FridaySunnahLocalDataSource>(
+    () => FridaySunnahLocalDataSourceImpl(),
+  );
+  sl.registerLazySingleton<FridaySunnahRepository>(
+    () => FridaySunnahRepositoryImpl(localDataSource: sl()),
+  );
 
   // 4. تسجيل Use Cases
   sl.registerLazySingleton<GetSphaUseCase>(
@@ -68,6 +81,7 @@ Future<void> setupServiceLocator() async {
   sl.registerLazySingleton(() => GetAzkarCategoryUseCase(sl()));
   sl.registerLazySingleton(() => GatDoaaCategoryDoaaUseCase(sl()));
   sl.registerLazySingleton(() => GetNameOfLlahUseCase(azkarRepo: sl()));
+  sl.registerLazySingleton(() => GetFridaySunnahUseCase(repository: sl()));
 
   // 5. تسجيل Cubit
   sl.registerFactory<SphaCubit>(() => SphaCubit(sl()));
@@ -76,20 +90,12 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory<IncrementSphaCubit>(
     () => IncrementSphaCubit(incrementUseCase: sl(), zeroSphaUseCase: sl()),
   );
-    sl.registerFactory<AzkarCategoryCubit>(
-    () => AzkarCategoryCubit( sl()),
-  );
-    sl.registerFactory<DoaaCubit>(
-    () => DoaaCubit( sl()),
-  );
-      sl.registerFactory<FavouriteCubit>(
-    () => FavouriteCubit( sl()),
-  );
-        sl.registerFactory<NameOfAllahCubit>(
-    () => NameOfAllahCubit( sl()),
-  );
-  sl.registerFactory(()=>ThemeCubit());
+  sl.registerFactory<AzkarCategoryCubit>(() => AzkarCategoryCubit(sl()));
+  sl.registerFactory<FridaySunnahCubit>(() => FridaySunnahCubit(sl()));
+  sl.registerFactory<DoaaCubit>(() => DoaaCubit(sl()));
+  sl.registerFactory<FavouriteCubit>(() => FavouriteCubit(sl()));
+  sl.registerFactory<NameOfAllahCubit>(() => NameOfAllahCubit(sl()));
+  sl.registerFactory(() => ThemeCubit());
 
   /// ✅ Data Source
-
 }

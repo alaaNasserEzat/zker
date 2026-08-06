@@ -39,7 +39,11 @@ class HomeCategoryRow extends StatelessWidget {
         "image": AppImage.allah,
         "route": AppRoutes.nameOfAllahView,
       },
-      {"title": l10n.sunnahOfFriday, "image": AppImage.mosque, "route": null},
+      {
+        "title": l10n.sunnahOfFriday,
+        "image": AppImage.mosque,
+        "route": AppRoutes.fridaySunnahView,
+      },
     ];
 
     return GridView.builder(

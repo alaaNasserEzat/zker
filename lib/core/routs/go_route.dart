@@ -1,4 +1,3 @@
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zker/core/routs/app_routs.dart';
@@ -11,6 +10,7 @@ import 'package:zker/features/azkar_feature/presentation/views/doaa_category_vie
 import 'package:zker/features/azkar_feature/presentation/views/name_of_allah_view.dart';
 import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
 import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
+import 'package:zker/features/friday_sunnah_feature/presentation/views/friday_sunnah_screen.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
 import 'package:zker/features/quran_feature/presentation/views/quran_view.dart';
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
@@ -22,8 +22,6 @@ import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cub
 import 'package:zker/features/spaha_feature/presentation/views/spha_view.dart';
 import 'package:zker/features/quran_feature/presentation/views/bottom_nav_bar.dart';
 
-
-
 final GoRouter appRouter = GoRouter(
   initialLocation: AppRoutes.home,
   routes: [
@@ -33,41 +31,31 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const CustomBottomNav(),
     ),
 
-   
-
     GoRoute(
       path: AppRoutes.azkarDetails,
       name: 'azkarDetails',
       builder: (context, state) {
-        
         final azkarCategoryEntity = state.extra as AzkarCategoryEntity;
         return BlocProvider(
           create: (context) => sl<FavouriteCubit>()..getFavourites(),
-          child: AzkarDetailsView(azkarCategoryEntity: azkarCategoryEntity,));
+          child: AzkarDetailsView(azkarCategoryEntity: azkarCategoryEntity),
+        );
       },
     ),
-GoRoute(
-  path: AppRoutes.sphaView,
-  name: 'sphaView',
-  builder: (context, state) {
-
-    return MultiBlocProvider(
-      providers: [
-            BlocProvider(
-          create: (_) => sl<DeleteSphaCubit>(),
-        ),
-        BlocProvider(
-          create: (_) => sl<SphaCubit>()..getSpha(),
-        ),
-        BlocProvider(
-          create: (_) => sl<AddSphaCubit>(),
-        ),
-      ],
-      child:
-       SphaView(),
-    );
-  },
-),
+    GoRoute(
+      path: AppRoutes.sphaView,
+      name: 'sphaView',
+      builder: (context, state) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => sl<DeleteSphaCubit>()),
+            BlocProvider(create: (_) => sl<SphaCubit>()..getSpha()),
+            BlocProvider(create: (_) => sl<AddSphaCubit>()),
+          ],
+          child: SphaView(),
+        );
+      },
+    ),
     GoRoute(
       path: AppRoutes.sphaDetailsView,
       name: 'sphaDetailsView',
@@ -75,7 +63,8 @@ GoRoute(
         final spaha = state.extra as SphaEntity;
         return BlocProvider(
           create: (context) => sl<IncrementSphaCubit>(),
-          child: SphaDetailsView(sphaEntity: spaha));
+          child: SphaDetailsView(sphaEntity: spaha),
+        );
       },
     ),
     GoRoute(
@@ -84,43 +73,47 @@ GoRoute(
       builder: (context, state) {
         return BlocProvider(
           create: (context) => sl<NameOfAllahCubit>()..getNameOfAllah(),
-          child: NameOfAllahView());
+          child: NameOfAllahView(),
+        );
       },
     ),
-       GoRoute(
+    GoRoute(
       path: AppRoutes.quran,
       name: 'quran',
       builder: (context, state) {
         return QuranView();
       },
     ),
-        GoRoute(
+    GoRoute(
       path: AppRoutes.profile,
       name: 'profile',
       builder: (context, state) {
         return ProfileView();
       },
     ),
-       GoRoute(
+    GoRoute(
       path: AppRoutes.favouriteView,
       name: 'favouriteView',
       builder: (context, state) {
         return FavouriteView();
       },
     ),
-         GoRoute(
+    GoRoute(
       path: AppRoutes.azkarCategoryView,
       name: 'azkarCategoryView',
       builder: (context, state) {
-                
         return AzkarCategoryView();
       },
     ),
-           GoRoute(
+    GoRoute(
+      path: AppRoutes.fridaySunnahView,
+      name: 'fridaySunnahView',
+      builder: (context, state) => const FridaySunnahScreen(),
+    ),
+    GoRoute(
       path: AppRoutes.doaaCategoryView,
       name: 'doaaCategoryView',
       builder: (context, state) {
-              
         return DoaaCategoryView();
       },
     ),

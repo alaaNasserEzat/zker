@@ -11,4 +11,5 @@ class AppRoutes {
   static const String prayerView = '/prayerView';
   static const String favouriteView = '/favouriteView';
   static const String nameOfAllahView = '/nameOfAllahView';
+  static const String fridaySunnahView = '/fridaySunnahView';
 }

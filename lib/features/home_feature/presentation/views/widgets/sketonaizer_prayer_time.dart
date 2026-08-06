@@ -12,7 +12,15 @@ class SketonaizerPrayerTime extends StatelessWidget {
       child: Column(
         spacing: 10,
         children: [
-          Expanded(
+          Text("data"),
+          Text("data"),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Divider(thickness: .5, color: AppColors.white),
+          ),
+
+          SizedBox(
+            height: 110,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 6,
