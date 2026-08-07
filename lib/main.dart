@@ -13,6 +13,8 @@ import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/them_data_dark.dart';
 import 'package:zker/core/utils/them_data_light.dart';
 import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
+import 'package:zker/features/goals_feature/data/models/goal_model.dart';
+import 'package:zker/features/goals_feature/domain/entities/goal_enums.dart';
 import 'package:zker/features/profile_feature/presentation/language_cubit/app_locale.dart';
 import 'package:zker/features/profile_feature/presentation/language_cubit/language_cubit.dart';
 import 'package:zker/features/profile_feature/presentation/theme_cubit/theme_cubit.dart';
@@ -25,6 +27,9 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(SphaModelAdapter());
   Hive.registerAdapter(FavouriteItemModelAdapter());
+  Hive.registerAdapter(GoalTypeAdapter());
+  Hive.registerAdapter(GoalRecurrenceAdapter());
+  Hive.registerAdapter(GoalModelAdapter());
   await setupServiceLocator();
   tz.initializeTimeZones();
   HydratedBloc.storage = await HydratedStorage.build(

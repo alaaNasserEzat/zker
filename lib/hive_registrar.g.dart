@@ -4,11 +4,16 @@
 
 import 'package:hive_ce/hive.dart';
 import 'package:zker/features/favourite/data/models/favourite_item_model.dart';
+import 'package:zker/features/goals_feature/data/models/goal_model.dart';
+import 'package:zker/features/goals_feature/domain/entities/goal_enums.dart';
 import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
     registerAdapter(FavouriteItemModelAdapter());
+    registerAdapter(GoalModelAdapter());
+    registerAdapter(GoalRecurrenceAdapter());
+    registerAdapter(GoalTypeAdapter());
     registerAdapter(SphaModelAdapter());
   }
 }
@@ -16,6 +21,9 @@ extension HiveRegistrar on HiveInterface {
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
     registerAdapter(FavouriteItemModelAdapter());
+    registerAdapter(GoalModelAdapter());
+    registerAdapter(GoalRecurrenceAdapter());
+    registerAdapter(GoalTypeAdapter());
     registerAdapter(SphaModelAdapter());
   }
 }

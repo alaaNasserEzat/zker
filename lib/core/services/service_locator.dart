@@ -19,6 +19,17 @@ import 'package:zker/features/friday_sunnah_feature/data/repo/friday_sunnah_repo
 import 'package:zker/features/friday_sunnah_feature/domain/repo/friday_sunnah_repository.dart';
 import 'package:zker/features/friday_sunnah_feature/domain/use_cases/get_friday_sunnah_use_case.dart';
 import 'package:zker/features/friday_sunnah_feature/presentation/cubit/friday_sunnah_cubit.dart';
+import 'package:zker/features/goals_feature/data/datasources/goal_local_data_source.dart';
+import 'package:zker/features/goals_feature/data/models/goal_model.dart';
+import 'package:zker/features/goals_feature/data/repositories/goal_repository_impl.dart';
+import 'package:zker/features/goals_feature/domain/repositories/goal_repository.dart';
+import 'package:zker/features/goals_feature/domain/use_cases/add_goal_use_case.dart';
+import 'package:zker/features/goals_feature/domain/use_cases/delete_goal_use_case.dart';
+import 'package:zker/features/goals_feature/domain/use_cases/get_goals_use_case.dart';
+import 'package:zker/features/goals_feature/domain/use_cases/reset_expired_goals_use_case.dart';
+import 'package:zker/features/goals_feature/domain/use_cases/update_goal_progress_use_case.dart';
+import 'package:zker/features/goals_feature/domain/use_cases/update_goal_use_case.dart';
+import 'package:zker/features/goals_feature/presentation/cubits/goals_cubit.dart';
 import 'package:zker/features/home_feature/data/data_source/home_data_source.dart';
 import 'package:zker/features/profile_feature/presentation/theme_cubit/theme_cubit.dart';
 import 'package:zker/features/spaha_feature/data/data_source/spha_data_source.dart';
@@ -98,4 +109,48 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory(() => ThemeCubit());
 
   /// ✅ Data Source
+  final goals = await Hive.openBox<GoalModel>('goals_box');
+  sl.registerSingleton<Box<GoalModel>>(goals);
+  sl.registerLazySingleton<GoalLocalDataSource>(
+    () => GoalLocalDataSourceImpl(box: sl()),
+  );
+
+  sl.registerLazySingleton<GoalRepository>(
+    () => GoalRepositoryImpl(localDataSource: sl<GoalLocalDataSource>()),
+  );
+
+  sl.registerLazySingleton<GetGoalsUseCase>(
+    () => GetGoalsUseCase(sl<GoalRepository>()),
+  );
+
+  sl.registerLazySingleton<AddGoalUseCase>(
+    () => AddGoalUseCase(sl<GoalRepository>()),
+  );
+
+  sl.registerLazySingleton<UpdateGoalUseCase>(
+    () => UpdateGoalUseCase(sl<GoalRepository>()),
+  );
+
+  sl.registerLazySingleton<DeleteGoalUseCase>(
+    () => DeleteGoalUseCase(sl<GoalRepository>()),
+  );
+
+  sl.registerLazySingleton<UpdateGoalProgressUseCase>(
+    () => UpdateGoalProgressUseCase(sl<GoalRepository>()),
+  );
+
+  sl.registerLazySingleton<ResetExpiredGoalsUseCase>(
+    () => ResetExpiredGoalsUseCase(sl<GoalRepository>()),
+  );
+
+  sl.registerFactory<GoalsCubit>(
+    () => GoalsCubit(
+      getGoalsUseCase: sl<GetGoalsUseCase>(),
+      addGoalUseCase: sl<AddGoalUseCase>(),
+      updateGoalUseCase: sl<UpdateGoalUseCase>(),
+      deleteGoalUseCase: sl<DeleteGoalUseCase>(),
+      updateGoalProgressUseCase: sl<UpdateGoalProgressUseCase>(),
+      resetExpiredGoalsUseCase: sl<ResetExpiredGoalsUseCase>(),
+    ),
+  );
 }

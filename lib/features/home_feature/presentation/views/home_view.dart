@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:zker/core/utils/app_colors.dart';
-import 'package:zker/features/home_feature/presentation/views/widgets/container_image_background.dart';
-
 import 'package:zker/features/home_feature/presentation/views/widgets/custom_row.dart';
+import 'package:zker/features/home_feature/presentation/views/widgets/goal_widget.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/home_category_row.dart';
-
 import 'package:zker/features/home_feature/presentation/views/widgets/prayer_time_section.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/quran_widget.dart';
 
@@ -52,8 +48,7 @@ class HomeView extends StatelessWidget {
               SizedBox(height: 60),
               CustomRow(),
               HomeCategoryRow(),
-
-              SizedBox(height: 100),
+              GoalWidget(),
             ],
           ),
         ),

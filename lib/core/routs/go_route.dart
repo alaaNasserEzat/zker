@@ -11,6 +11,7 @@ import 'package:zker/features/azkar_feature/presentation/views/name_of_allah_vie
 import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart';
 import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
 import 'package:zker/features/friday_sunnah_feature/presentation/views/friday_sunnah_screen.dart';
+import 'package:zker/features/goals_feature/presentation/views/goal_screen.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
 import 'package:zker/features/quran_feature/presentation/views/quran_view.dart';
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
@@ -115,6 +116,13 @@ final GoRouter appRouter = GoRouter(
       name: 'doaaCategoryView',
       builder: (context, state) {
         return DoaaCategoryView();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.goalsView,
+      name: 'goalsView',
+      builder: (context, state) {
+        return GoalsScreen();
       },
     ),
   ],
