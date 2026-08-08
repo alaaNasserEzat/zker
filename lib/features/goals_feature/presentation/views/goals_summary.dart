@@ -23,10 +23,7 @@ class GoalsSummary extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Your Progress',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          Text('Your Progress', style: Theme.of(context).textTheme.labelLarge),
 
           const SizedBox(height: 20),
 
@@ -78,7 +75,7 @@ class _SummaryItem extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          Icon(icon),
+          Icon(icon, color: Theme.of(context).colorScheme.onPrimary),
           const SizedBox(height: 6),
           Text(
             value,

@@ -18,6 +18,11 @@ getLightThem() {
       surfaceContainer: AppColors.mainColor.withOpacity(.90),
       brightness: Brightness.light,
       primary: AppColors.mainColor,
+      onPrimary: AppColors.white,
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.mainColor,
+      foregroundColor: AppColors.white,
     ),
     textTheme: TextTheme(
       bodyLarge: AppTextStyles.bodyLarge,

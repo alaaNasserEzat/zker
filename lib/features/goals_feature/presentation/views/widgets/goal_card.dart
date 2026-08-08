@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/widgets/custom_shadow_contanier.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_entity.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_enums.dart';
+import 'package:zker/features/goals_feature/presentation/views/widgets/goal_circlavatar_icon.dart';
+import 'package:zker/features/goals_feature/presentation/views/widgets/linear_progress.dart';
 
 class GoalCard extends StatelessWidget {
   final GoalEntity goal;
@@ -36,8 +39,14 @@ class GoalCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  CircleAvatar(child: Icon(_getGoalIcon(goal.type))),
-
+                  // CircleAvatar(
+                  //   backgroundColor: Theme.of(context).colorScheme.primary,
+                  //   child: Icon(
+                  //     getGoalIcon(goal.type),
+                  //     color: Theme.of(context).colorScheme.onPrimary,
+                  //   ),
+                  // ),
+                  GoalCirclavatarIcon(goal: goal),
                   const SizedBox(width: 12),
 
                   Expanded(
@@ -82,15 +91,7 @@ class GoalCard extends StatelessWidget {
 
               Row(
                 children: [
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: LinearProgressIndicator(
-                        value: progress,
-                        minHeight: 8,
-                      ),
-                    ),
-                  ),
+                  LinearProgress(value: progress),
 
                   const SizedBox(width: 12),
 
@@ -135,20 +136,20 @@ class GoalCard extends StatelessWidget {
       ),
     );
   }
+}
 
-  IconData _getGoalIcon(GoalType type) {
-    switch (type) {
-      case GoalType.quran:
-        return Icons.menu_book;
-      case GoalType.azkar:
-        return Icons.auto_awesome;
-      case GoalType.tasbeeh:
-        return Icons.radio_button_checked;
-      case GoalType.prayer:
-        return Icons.mosque;
-      case GoalType.custom:
-        return Icons.flag;
-    }
+IconData getGoalIcon(GoalType type) {
+  switch (type) {
+    case GoalType.quran:
+      return Icons.menu_book;
+    case GoalType.azkar:
+      return Icons.auto_awesome;
+    case GoalType.tasbeeh:
+      return Icons.radio_button_checked;
+    case GoalType.prayer:
+      return Icons.mosque;
+    case GoalType.custom:
+      return Icons.flag;
   }
 }
 
@@ -163,11 +164,11 @@ class _RecurrenceBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Theme.of(context).colorScheme.secondaryContainer,
+        color: AppColors.orange,
       ),
       child: Text(
         _getLabel(recurrence),
-        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+        style: Theme.of(context).textTheme.labelLarge,
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zker/core/services/service_locator.dart';
+import 'package:zker/core/widgets/snack_bar.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_entity.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_enums.dart';
 import 'package:zker/features/goals_feature/presentation/cubits/goals_cubit.dart';
@@ -58,150 +59,156 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => sl<GoalsCubit>(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.isEditing ? 'Edit Goal' : 'Create Goal'),
-        ),
-        body: BlocListener<GoalsCubit, GoalsState>(
-          listener: (context, state) {
-            if (state is GoalsLoaded || state is GoalsEmpty) {
-              Navigator.pop(context);
-            }
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.isEditing ? 'Edit Goal' : 'Create Goal'),
+      ),
+      body: BlocListener<GoalsCubit, GoalsState>(
+        listener: (context, state) {
+          if (state is GoalsLoaded || state is GoalsEmpty) {
+            Navigator.pop(context);
+          }
 
-            if (state is GoalsFailure) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(state.message)));
-            }
-          },
-          child: Form(
-            key: _formKey,
-            child: ListView(
-              padding: const EdgeInsets.all(20),
-              children: [
-                TextFormField(
-                  controller: _titleController,
-                  decoration: const InputDecoration(
-                    labelText: 'Goal Title',
-                    hintText: 'Example: Read Quran',
-                    prefixIcon: Icon(Icons.title),
+          if (state is GoalsFailure) {
+            showSankBar(context, state.message);
+          }
+        },
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            padding: const EdgeInsets.all(20),
+            children: [
+              TextFormField(
+                controller: _titleController,
+                decoration: InputDecoration(
+                  labelText: 'Goal Title',
+                  hintText: 'Example: Read Quran',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  validator: (value) {
-                    if (value == null || value.trim().isEmpty) {
-                      return 'Please enter a title';
-                    }
-
-                    return null;
-                  },
+                  prefixIcon: Icon(Icons.title),
                 ),
+                validator: (value) {
+                  if (value == null || value.trim().isEmpty) {
+                    return 'Please enter a title';
+                  }
 
-                const SizedBox(height: 16),
+                  return null;
+                },
+              ),
 
-                TextFormField(
-                  controller: _descriptionController,
-                  maxLines: 3,
-                  decoration: const InputDecoration(
-                    labelText: 'Description',
-                    prefixIcon: Icon(Icons.description),
+              const SizedBox(height: 16),
+
+              TextFormField(
+                controller: _descriptionController,
+                maxLines: 3,
+                decoration: InputDecoration(
+                  labelText: 'Description',
+                  prefixIcon: Icon(Icons.description),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
                 ),
+              ),
 
-                const SizedBox(height: 16),
+              const SizedBox(height: 16),
 
-                DropdownButtonFormField<GoalType>(
-                  value: _selectedType,
-                  decoration: const InputDecoration(
-                    labelText: 'Goal Type',
-                    prefixIcon: Icon(Icons.category),
+              DropdownButtonFormField<GoalType>(
+                value: _selectedType,
+                decoration: InputDecoration(
+                  labelText: 'Goal Type',
+                  prefixIcon: Icon(Icons.category),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  items: GoalType.values.map((type) {
-                    return DropdownMenuItem(
-                      value: type,
-                      child: Text(_typeLabel(type)),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    if (value == null) return;
-
-                    setState(() {
-                      _selectedType = value;
-                    });
-                  },
                 ),
+                items: GoalType.values.map((type) {
+                  return DropdownMenuItem(
+                    value: type,
+                    child: Text(_typeLabel(type)),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  if (value == null) return;
 
-                const SizedBox(height: 16),
+                  setState(() {
+                    _selectedType = value;
+                  });
+                },
+              ),
 
-                TextFormField(
-                  controller: _targetController,
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
-                    labelText: 'Target Value',
-                    hintText: 'Example: 10',
-                    prefixIcon: Icon(Icons.track_changes),
+              const SizedBox(height: 16),
+
+              TextFormField(
+                controller: _targetController,
+                keyboardType: TextInputType.number,
+
+                decoration: InputDecoration(
+                  labelText: 'Target Value',
+                  hintText: 'Example: 10',
+                  prefixIcon: Icon(Icons.track_changes),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15),
                   ),
-                  validator: (value) {
-                    final target = int.tryParse(value ?? '');
-
-                    if (target == null || target <= 0) {
-                      return 'Enter a valid target';
-                    }
-
-                    return null;
-                  },
                 ),
+                validator: (value) {
+                  final target = int.tryParse(value ?? '');
 
-                const SizedBox(height: 16),
+                  if (target == null || target <= 0) {
+                    return 'Enter a valid target';
+                  }
 
-                DropdownButtonFormField<GoalRecurrence>(
-                  value: _selectedRecurrence,
-                  decoration: const InputDecoration(
-                    labelText: 'Recurrence',
-                    prefixIcon: Icon(Icons.repeat),
-                  ),
-                  items: GoalRecurrence.values.map((recurrence) {
-                    return DropdownMenuItem(
-                      value: recurrence,
-                      child: Text(_recurrenceLabel(recurrence)),
-                    );
-                  }).toList(),
-                  onChanged: (value) {
-                    if (value == null) return;
+                  return null;
+                },
+              ),
 
-                    setState(() {
-                      _selectedRecurrence = value;
-                    });
-                  },
+              const SizedBox(height: 16),
+
+              DropdownButtonFormField<GoalRecurrence>(
+                value: _selectedRecurrence,
+                decoration: const InputDecoration(
+                  labelText: 'Recurrence',
+                  prefixIcon: Icon(Icons.repeat),
                 ),
+                items: GoalRecurrence.values.map((recurrence) {
+                  return DropdownMenuItem(
+                    value: recurrence,
+                    child: Text(_recurrenceLabel(recurrence)),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  if (value == null) return;
 
-                const SizedBox(height: 32),
+                  setState(() {
+                    _selectedRecurrence = value;
+                  });
+                },
+              ),
 
-                BlocBuilder<GoalsCubit, GoalsState>(
-                  builder: (context, state) {
-                    final isLoading = state is GoalsLoading;
+              const SizedBox(height: 32),
 
-                    return SizedBox(
-                      height: 52,
-                      child: FilledButton(
-                        onPressed: isLoading
-                            ? null
-                            : () {
-                                _saveGoal(context);
-                              },
-                        child: isLoading
-                            ? const CircularProgressIndicator()
-                            : Text(
-                                widget.isEditing
-                                    ? 'Update Goal'
-                                    : 'Create Goal',
-                              ),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
+              BlocBuilder<GoalsCubit, GoalsState>(
+                builder: (context, state) {
+                  final isLoading = state is GoalsLoading;
+
+                  return SizedBox(
+                    height: 52,
+                    child: ElevatedButton(
+                      onPressed: isLoading
+                          ? null
+                          : () {
+                              _saveGoal(context);
+                            },
+                      child: isLoading
+                          ? const CircularProgressIndicator()
+                          : Text(
+                              widget.isEditing ? 'Update Goal' : 'Create Goal',
+                            ),
+                    ),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),

@@ -11,11 +11,14 @@ getDarkThem() {
       surfaceContainer: AppColors.mainDarkColor.withOpacity(.90),
       brightness: Brightness.dark,
       primary: AppColors.primaryDarkColor,
-
+      onPrimary: AppColors.mainColor70,
       surface: AppColors.cardDark,
     ),
     brightness: Brightness.dark,
-
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: AppColors.primaryDarkContainerColor,
+      foregroundColor: AppColors.white,
+    ),
     textTheme: TextTheme(
       bodyLarge: AppTextStyles.bodyLarge.copyWith(color: AppColors.white),
       bodyMedium: AppTextStyles.bodyMedium.copyWith(color: AppColors.white),

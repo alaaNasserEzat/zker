@@ -4,6 +4,7 @@ import 'package:zker/features/goals_feature/domain/entities/goal_entity.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_enums.dart';
 import 'package:zker/features/goals_feature/presentation/cubits/goals_cubit.dart';
 import 'package:zker/features/goals_feature/presentation/cubits/goals_state.dart';
+import 'package:zker/features/goals_feature/presentation/views/widgets/linear_progress.dart';
 
 class GoalDetailsScreen extends StatelessWidget {
   final GoalEntity goal;
@@ -75,7 +76,7 @@ class _GoalHeader extends StatelessWidget {
     return Column(
       children: [
         CircleAvatar(radius: 42, child: Icon(_getIcon(goal.type), size: 40)),
-
+        // GoalCirclavatarIcon(goal: goal, size: 35),
         const SizedBox(height: 16),
 
         Text(
@@ -142,7 +143,7 @@ class _ProgressSection extends StatelessWidget {
 
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: LinearProgressIndicator(value: progress, minHeight: 14),
+          child: LinearProgress(value: progress),
         ),
 
         const SizedBox(height: 12),

@@ -3,7 +3,8 @@ import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/l10n/app_localizations.dart';
 
 class CustomRow extends StatelessWidget {
-  const CustomRow({super.key});
+  const CustomRow({super.key, required this.text});
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +22,13 @@ class CustomRow extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Icon(
-                Icons.favorite_border_outlined,
+                Icons.auto_awesome_rounded,
                 size: 15,
                 color: AppColors.white,
               ),
             ),
           ),
-          Text(
-            AppLocalizations.of(context)!.appTitle,
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
+          Text(text, style: Theme.of(context).textTheme.headlineLarge),
         ],
       ),
     );
