@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_ce/hive.dart';
+import 'package:zker/core/services/local_notification_service.dart';
 import 'package:zker/features/azkar_feature/data/azkar_local_data_source/azkar_local_data_source.dart';
 import 'package:zker/features/azkar_feature/data/repo_impl/azkar_repo_impl.dart';
 import 'package:zker/features/azkar_feature/domain/repo/azkar_repo.dart';
@@ -32,6 +33,15 @@ import 'package:zker/features/goals_feature/domain/use_cases/update_goal_use_cas
 import 'package:zker/features/goals_feature/presentation/cubits/goals_cubit.dart';
 import 'package:zker/features/home_feature/data/data_source/home_data_source.dart';
 import 'package:zker/features/profile_feature/presentation/theme_cubit/theme_cubit.dart';
+import 'package:zker/features/notifications/data/datasources/notification_local_data_source.dart';
+import 'package:zker/features/notifications/data/repositories/notification_repository_impl.dart';
+import 'package:zker/features/notifications/domain/repositories/notification_repository.dart';
+import 'package:zker/features/notifications/domain/usecases/get_notification_settings.dart';
+import 'package:zker/features/notifications/domain/usecases/update_evening_adhkar.dart';
+import 'package:zker/features/notifications/domain/usecases/update_hourly_adhkar.dart';
+import 'package:zker/features/notifications/domain/usecases/update_morning_adhkar.dart';
+import 'package:zker/features/notifications/domain/usecases/update_prophet_reminder.dart';
+import 'package:zker/features/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:zker/features/spaha_feature/data/data_source/spha_data_source.dart';
 import 'package:zker/features/spaha_feature/data/models/spha_model.dart';
 import 'package:zker/features/spaha_feature/data/spha_repo_impl.dart';
@@ -55,6 +65,33 @@ Future<void> setupServiceLocator() async {
   sl.registerSingleton<Box<SphaModel>>(sphaBox);
   final fav = await Hive.openBox<FavouriteItemModel>('fav_box');
   sl.registerSingleton<Box<FavouriteItemModel>>(fav);
+  final notificationBox = await Hive.openBox<dynamic>(
+    'notification_settings_box',
+  );
+  sl.registerSingleton<Box<dynamic>>(notificationBox);
+  sl.registerLazySingleton<LocalNotificationService>(
+    () => LocalNotificationService(),
+  );
+  sl.registerLazySingleton<NotificationLocalDataSource>(
+    () => NotificationLocalDataSourceImpl(box: sl(), notificationService: sl()),
+  );
+  sl.registerLazySingleton<NotificationRepository>(
+    () => NotificationRepositoryImpl(localDataSource: sl()),
+  );
+  sl.registerLazySingleton(() => GetNotificationSettings(sl()));
+  sl.registerLazySingleton(() => UpdateMorningAdhkar(sl()));
+  sl.registerLazySingleton(() => UpdateEveningAdhkar(sl()));
+  sl.registerLazySingleton(() => UpdateProphetReminder(sl()));
+  sl.registerLazySingleton(() => UpdateHourlyAdhkar(sl()));
+  sl.registerFactory(
+    () => NotificationCubit(
+      getSettings: sl(),
+      updateMorning: sl(),
+      updateEvening: sl(),
+      updateProphet: sl(),
+      updateHourly: sl(),
+    ),
+  );
 
   // 2. تسجيل DataSource
   sl.registerLazySingleton<SphaDataSource>(() => SphaDataSourceImp(box: sl()));

@@ -58,6 +58,8 @@ dependencies:
   hydrated_bloc: ^10.1.1
   hijri: ^3.0.1
   geocoding: ^5.0.0
+  flutter_local_notifications: ^19.4.2
+  flutter_timezone: ^4.0.1
 
 
 dev_dependencies:

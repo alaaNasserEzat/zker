@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +10,7 @@ import 'package:zker/features/profile_feature/presentation/language_cubit/langua
 import 'package:zker/features/profile_feature/presentation/theme_cubit/theme_cubit.dart';
 import 'package:zker/features/profile_feature/presentation/views/widgets/custom_setting_option.dart';
 import 'package:zker/features/profile_feature/presentation/views/widgets/them_dailog.dart';
+import 'package:zker/core/routs/app_routs.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -78,6 +77,12 @@ class ProfileView extends StatelessWidget {
                   onTap: () => showthemeDailog(context),
                 );
               },
+            ),
+            CustomSettingOption(
+              iconData: Icons.notifications_none,
+              text: 'الإشعارات',
+              supTitle: 'تخصيص تذكيرات الأذكار',
+              onTap: () => context.push(AppRoutes.notifications),
             ),
             CustomSettingOption(
               iconData: Icons.info_outline_rounded,

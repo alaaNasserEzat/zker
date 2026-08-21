@@ -13,6 +13,8 @@ import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
 import 'package:zker/features/friday_sunnah_feature/presentation/views/friday_sunnah_screen.dart';
 import 'package:zker/features/goals_feature/presentation/views/goal_screen.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
+import 'package:zker/features/notifications/presentation/pages/notifications_page.dart';
+import 'package:zker/features/notifications/presentation/cubit/notification_cubit.dart';
 import 'package:zker/features/quran_feature/presentation/views/quran_view.dart';
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 import 'package:zker/features/spaha_feature/presentation/increment_spha_cubit/increment_spha_cubit.dart';
@@ -91,6 +93,14 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) {
         return ProfileView();
       },
+    ),
+    GoRoute(
+      path: AppRoutes.notifications,
+      name: 'notifications',
+      builder: (context, state) => BlocProvider(
+        create: (_) => sl<NotificationCubit>()..load(),
+        child: const NotificationsPage(),
+      ),
     ),
     GoRoute(
       path: AppRoutes.favouriteView,
