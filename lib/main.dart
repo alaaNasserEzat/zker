@@ -12,7 +12,6 @@ import 'package:timezone/data/latest.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:zker/core/cloc_observer.dart';
 import 'package:zker/core/routs/go_route.dart';
-import 'package:zker/core/services/local_notification_service.dart';
 import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/features/notifications/data/datasources/notification_local_data_source.dart';
 import 'package:zker/core/utils/them_data_dark.dart';
@@ -28,29 +27,49 @@ import 'package:zker/l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await QuranLibrary.init();
-  await Hive.initFlutter();
+
+  // 1. تشغيل المهام المستقلة بالتوازي لتقليل وقت التجهيز
+  await Future.wait([QuranLibrary.init(), Hive.initFlutter(), _initTimezone()]);
+
+  // 2. تسجيل Adapters الخاصة بـ Hive (سريعة جداً ولا تحتاج await)
   Hive.registerAdapter(SphaModelAdapter());
   Hive.registerAdapter(FavouriteItemModelAdapter());
   Hive.registerAdapter(GoalTypeAdapter());
   Hive.registerAdapter(GoalRecurrenceAdapter());
   Hive.registerAdapter(GoalModelAdapter());
-  tzdata.initializeTimeZones();
 
-  final timeZoneName = await FlutterTimezone.getLocalTimezone();
-  tz.setLocalLocation(tz.getLocation(timeZoneName));
-  await setupServiceLocator();
-  await sl<NotificationLocalDataSource>().initialize();
-  await LocalNotificationService().showTestNotification();
+  // 3. تشغيل باقي التهييئات بالتوازي
+  await Future.wait([
+    setupServiceLocator().then(
+      (_) => sl<NotificationLocalDataSource>().initialize(),
+    ),
+    _initHydratedStorage(),
+  ]);
+
+  Bloc.observer = AppBlocObserver();
+
+  runApp(const MyApp());
+}
+
+// دالة منفصلة لتهيئة التوقيت
+Future<void> _initTimezone() async {
+  tzdata.initializeTimeZones();
+  try {
+    final timeZoneName = await FlutterTimezone.getLocalTimezone();
+    tz.setLocalLocation(tz.getLocation(timeZoneName));
+  } catch (_) {
+    // التراجع للتوقيت المحلي في حال فشل الجلب
+    tz.setLocalLocation(tz.getLocation('UTC'));
+  }
+}
+
+// دالة منفصلة لتهيئة HydratedStorage
+Future<void> _initHydratedStorage() async {
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorageDirectory.web
         : HydratedStorageDirectory((await getTemporaryDirectory()).path),
   );
-
-  Bloc.observer = AppBlocObserver();
-
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
