@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zker/core/errors/error_model.dart';
 import 'package:zker/core/utils/app_image.dart';
 import 'package:zker/features/home_feature/domain/use_cases/get_prayer_time_use_case.dart';
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_state.dart';

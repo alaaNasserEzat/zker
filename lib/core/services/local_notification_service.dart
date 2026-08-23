@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 
@@ -72,15 +73,25 @@ class LocalNotificationService {
     required String body,
     required int minutes,
   }) async {
-    await plugin.zonedSchedule(
-      id,
-      title,
-      body,
-      _nextTime(minutes),
-      _details,
-      androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-      matchDateTimeComponents: DateTimeComponents.time,
-    );
+    final scheduledDate = _nextTime(minutes);
+
+    try {
+      await plugin.zonedSchedule(
+        id,
+        title,
+        body,
+        scheduledDate,
+        _details,
+        androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
+        matchDateTimeComponents: DateTimeComponents.time,
+      );
+
+      debugPrint('✅ NOTIFICATION SCHEDULED SUCCESSFULLY');
+      debugPrint('════════════════════════════════');
+    } catch (e, stackTrace) {
+      debugPrint('❌ SCHEDULE FAILED: $e');
+      debugPrint('$stackTrace');
+    }
   }
 
   Future<void> scheduleRecurring({
@@ -101,15 +112,28 @@ class LocalNotificationService {
 
   tz.TZDateTime _nextTime(int minutes) {
     final now = tz.TZDateTime.now(tz.local);
+
+    final hour = minutes ~/ 60;
+    final minute = minutes % 60;
+
     var result = tz.TZDateTime(
       tz.local,
       now.year,
       now.month,
       now.day,
-      minutes ~/ 60,
-      minutes % 60,
+      hour,
+      minute,
     );
-    if (!result.isAfter(now)) result = result.add(const Duration(days: 1));
+
+    if (!result.isAfter(now)) {
+      result = result.add(const Duration(days: 1));
+    }
+
+    debugPrint('🧮 _nextTime($minutes)');
+    debugPrint('   Hour: $hour');
+    debugPrint('   Minute: $minute');
+    debugPrint('   Result: $result');
+
     return result;
   }
 

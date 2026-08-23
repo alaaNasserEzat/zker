@@ -18,6 +18,8 @@ class NotificationUpdating extends NotificationState {
   List<Object?> get props => [settings];
 }
 
+class UpdateMorningAdhkarState extends NotificationState {}
+
 class NotificationLoaded extends NotificationState {
   const NotificationLoaded(this.settings);
   final NotificationSettings settings;

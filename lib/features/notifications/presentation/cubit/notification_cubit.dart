@@ -133,4 +133,18 @@ class NotificationCubit extends Cubit<NotificationState> {
       (_) => load(),
     );
   }
+
+  //morin
+  updateMorningAdhkar({required bool enabled, required int timeMinutes}) async {
+    final res = await updateMorning(enabled: enabled, timeMinutes: timeMinutes);
+
+    res.fold(
+      (ifLeft) {
+        emit(NotificationError(ifLeft.message));
+      },
+      (no) {
+        emit(UpdateMorningAdhkarState());
+      },
+    );
+  }
 }

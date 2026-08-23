@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:zker/core/errors/failure.dart';
 import 'package:zker/features/notifications/domain/repositories/notification_repository.dart';
 
@@ -8,8 +9,14 @@ class UpdateMorningAdhkar {
   Future<Either<Failure, void>> call({
     required bool enabled,
     required int timeMinutes,
-  }) => repository.updateMorningAdhkar(
-    enabled: enabled,
-    timeMinutes: timeMinutes,
-  );
+  }) {
+    debugPrint(
+      '🔔 MORNING ENABLED: $enabled '
+      'TIME: $timeMinutes',
+    );
+    return repository.updateMorningAdhkar(
+      enabled: enabled,
+      timeMinutes: timeMinutes,
+    );
+  }
 }

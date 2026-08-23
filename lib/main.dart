@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:hive_ce_flutter/adapters.dart';
@@ -9,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:quran_library/quran.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
+import 'package:zker/core/cloc_observer.dart';
 import 'package:zker/core/routs/go_route.dart';
 import 'package:zker/core/services/local_notification_service.dart';
 import 'package:zker/core/services/service_locator.dart';
@@ -34,6 +36,7 @@ void main() async {
   Hive.registerAdapter(GoalRecurrenceAdapter());
   Hive.registerAdapter(GoalModelAdapter());
   tzdata.initializeTimeZones();
+
   final timeZoneName = await FlutterTimezone.getLocalTimezone();
   tz.setLocalLocation(tz.getLocation(timeZoneName));
   await setupServiceLocator();
@@ -44,6 +47,8 @@ void main() async {
         ? HydratedStorageDirectory.web
         : HydratedStorageDirectory((await getTemporaryDirectory()).path),
   );
+
+  Bloc.observer = AppBlocObserver();
 
   runApp(const MyApp());
 }
