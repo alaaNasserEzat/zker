@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zker/core/routs/app_routs.dart';
@@ -26,7 +24,7 @@ class HomeCategoryRow extends StatelessWidget {
       },
       {
         "title": l10n.azkar,
-        "image": AppImage.azkar,
+        "image": AppImage.helal,
         "route": AppRoutes.azkarCategoryView,
       },
       {

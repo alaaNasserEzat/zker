@@ -14,10 +14,10 @@ class AppImage {
   static String moon = "assets/images/moon-star-svgrepo-com.svg";
   static String helal = "assets/images/moon-svgrepo-com.svg";
   static String sunFog = "assets/images/sun-fog-svgrepo-com.svg";
-  static String mic="assets/images/microphone1-broadcasting-svgrepo-com.svg";
-  static String ariPlan="assets/images/airplane-outline-svgrepo-com.svg";
-  static String mosque="assets/images/mosque-svgrepo-com.svg";
-  static String allah="assets/images/arabic-muslim-svgrepo-com.svg";
-  static String quran2="assets/images/quran-book-svgrepo-com.svg";
-  static String shrook="assets/images/sun-cloudy-svgrepo-com.svg";
+  static String mic = "assets/images/microphone1-broadcasting-svgrepo-com.svg";
+  static String ariPlan = "assets/images/airplane-outline-svgrepo-com.svg";
+  static String mosque = "assets/images/al-aqsa-mosque.svg";
+  static String allah = "assets/images/arabic-muslim-svgrepo-com.svg";
+  static String quran2 = "assets/images/quran-book-svgrepo-com.svg";
+  static String shrook = "assets/images/sun-cloudy-svgrepo-com.svg";
 }
