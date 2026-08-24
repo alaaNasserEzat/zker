@@ -11,8 +11,11 @@ import 'package:quran_library/quran.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 import 'package:zker/core/cloc_observer.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/routs/go_route.dart';
 import 'package:zker/core/services/service_locator.dart';
+import 'package:zker/features/home_feature/presentation/cubits/location_cubit.dart';
+import 'package:zker/features/home_feature/presentation/cubits/prayer_time_cubit.dart';
 import 'package:zker/features/notifications/data/datasources/notification_local_data_source.dart';
 import 'package:zker/core/utils/them_data_dark.dart';
 import 'package:zker/core/utils/them_data_light.dart';
@@ -82,11 +85,16 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => ThemeCubit()),
         BlocProvider(create: (context) => LanguageCubit()),
+        BlocProvider(create: (_) => sl<PrayerCubit>()..loadPrayerTimes()),
+        BlocProvider(create: (_) => sl<LocationCubit>()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeMode>(
         builder: (context, newMode) {
           return BlocBuilder<LanguageCubit, Locale>(
             builder: (context, locale) {
+              context.read<LocationCubit>().getLocationName(
+                locale: locale.languageCode,
+              );
               return MaterialApp.router(
                 locale: locale,
                 localizationsDelegates: [

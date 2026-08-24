@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:zker/core/services/prayer_service.dart';
+import 'package:zker/core/widgets/custom_error_widget.dart';
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_cubit.dart';
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_state.dart';
 import 'package:zker/features/home_feature/presentation/views/widgets/prayer_card.dart';
@@ -21,7 +22,13 @@ class PrayerBlocBuilder extends StatelessWidget {
           return SelektonizerPrayerList();
         }
         if (state is PrayerTimeError) {
-          return Center(child: Text(state.errorModel.message));
+          //   return Center(child: Text(state.errorModel.message));
+          return CustomErrorWidget(
+            message: state.errorModel.message,
+            onRetry: () {
+              context.read<PrayerCubit>().loadPrayerTimes();
+            },
+          );
         }
         if (state is PrayerTimeLoaded) {
           final t = state.prayerTimesEntity;

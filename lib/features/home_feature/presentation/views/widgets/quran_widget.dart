@@ -60,11 +60,17 @@ class _QuranWidgetState extends State<QuranWidget> {
                     style: AppTextStyles.textOrange14,
                   ),
                   Text(
-                    "${surah.arabicName}",
+                    '${surah.arabicName} — صفحة $surahNumber',
+
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      await context.push(AppRoutes.quran);
+                      if (mounted) {
+                        setState(() {});
+                      }
+                    },
                     child: Row(
                       spacing: 10,
                       children: [

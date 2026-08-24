@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zker/core/widgets/snack_bar.dart';
 import 'package:zker/features/spaha_feature/presentation/delete_spha_cubit/delete_spha_state.dart';
 import 'package:zker/features/spaha_feature/presentation/views/widgets/spha_container.dart';
 import 'package:zker/features/spaha_feature/presentation/get_spha_cubit/spha_cubit.dart';
@@ -15,16 +16,13 @@ class SphaList extends StatelessWidget {
     return BlocListener<DeleteSphaCubit, DeleteSphaState>(
       listener: (context, state) {
         if (state is DeleteSphaSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(AppLocalizations.of(context)!.deletedDhikrSuccess),
-            ),
+          showSankBar(
+            context,
+            AppLocalizations.of(context)!.deletedDhikrSuccess,
           );
           context.read<SphaCubit>().getSpha();
         } else if (state is DeleteSphaError) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(state.errorModel.message)));
+          showSankBar(context, state.errorModel.message);
         }
       },
       child: Padding(

@@ -79,8 +79,19 @@ class _GoalWidgetState extends State<GoalWidget> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {
-                      context.push(AppRoutes.goalsView);
+                    onPressed: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => BlocProvider.value(
+                            value: context.read<GoalsCubit>(),
+                            child: GoalsView(),
+                          ),
+                        ),
+                      );
+                      if (mounted) {
+                        setState(() {});
+                      }
                     },
                     child: Text("go to your check list"),
                   ),

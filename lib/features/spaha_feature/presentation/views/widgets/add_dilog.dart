@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zker/core/widgets/snack_bar.dart';
 import 'package:zker/features/spaha_feature/domain/entity/spha_entity.dart';
 import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_cubit.dart';
 import 'package:zker/features/spaha_feature/presentation/add_spha_cubit/add_spha_state.dart';
@@ -27,17 +28,12 @@ void showAddSphaDialog(BuildContext context) {
               // نحدث الـ List فورًا
               context.read<SphaCubit>().getSpha();
               context.pop();
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    AppLocalizations.of(context)!.addedDhikrSuccess,
-                  ),
-                ),
+              showSankBar(
+                context,
+                AppLocalizations.of(context)!.addedDhikrSuccess,
               );
             } else if (state is AddSphaError) {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(SnackBar(content: Text(state.error.message)));
+              showSankBar(context, state.error.message);
             }
           },
           builder: (context, state) {

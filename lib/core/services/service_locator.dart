@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:zker/core/services/local_notification_service.dart';
+import 'package:zker/core/services/location_service.dart';
 import 'package:zker/features/azkar_feature/data/azkar_local_data_source/azkar_local_data_source.dart';
 import 'package:zker/features/azkar_feature/data/repo_impl/azkar_repo_impl.dart';
 import 'package:zker/features/azkar_feature/domain/repo/azkar_repo.dart';
@@ -32,6 +33,12 @@ import 'package:zker/features/goals_feature/domain/use_cases/update_goal_progres
 import 'package:zker/features/goals_feature/domain/use_cases/update_goal_use_case.dart';
 import 'package:zker/features/goals_feature/presentation/cubits/goals_cubit.dart';
 import 'package:zker/features/home_feature/data/data_source/home_data_source.dart';
+import 'package:zker/features/home_feature/data/repo_imp/home_repo_impl.dart';
+import 'package:zker/features/home_feature/domain/repo/home_repo.dart';
+import 'package:zker/features/home_feature/domain/use_cases/get_location_name_use_case.dart';
+import 'package:zker/features/home_feature/domain/use_cases/get_prayer_time_use_case.dart';
+import 'package:zker/features/home_feature/presentation/cubits/location_cubit.dart';
+import 'package:zker/features/home_feature/presentation/cubits/prayer_time_cubit.dart';
 import 'package:zker/features/profile_feature/presentation/theme_cubit/theme_cubit.dart';
 import 'package:zker/features/notifications/data/datasources/notification_local_data_source.dart';
 import 'package:zker/features/notifications/data/repositories/notification_repository_impl.dart';
@@ -99,9 +106,44 @@ Future<void> setupServiceLocator() async {
     () => AzkarLocalDataSourceImp(),
   );
 
+  // ==========================================================
+  // HOME / PRAYER TIMES
+  // ==========================================================
+
+  // Location Service
+  sl.registerLazySingleton<LocationService>(() => LocationService());
+
+  // Data Source
   sl.registerLazySingleton<HomeDataSource>(
-    () => HomeDataSourceImpl(locationService: sl()),
+    () => HomeDataSourceImpl(locationService: sl<LocationService>()),
   );
+
+  // Repository
+  sl.registerLazySingleton<HomeRepo>(
+    () => HomeRepoImpl(homeDataSource: sl<HomeDataSource>()),
+  );
+
+  // Use Case
+  sl.registerLazySingleton<GetPrayerTimeUseCase>(
+    () => GetPrayerTimeUseCase(sl<HomeRepo>()),
+  );
+
+  // Cubit
+  sl.registerFactory<PrayerCubit>(
+    () => PrayerCubit(sl<GetPrayerTimeUseCase>()),
+  );
+  // ==========================================================
+  // LOCATION
+  // ==========================================================
+
+  sl.registerLazySingleton<GetLocationNameUseCase>(
+    () => GetLocationNameUseCase(sl<HomeRepo>()),
+  );
+
+  sl.registerFactory<LocationCubit>(
+    () => LocationCubit(sl<GetLocationNameUseCase>()),
+  );
+
   sl.registerLazySingleton<FavouriteLocalDataSource>(
     () => FavouriteLocalDataSourceImpl(box: sl()),
   );
