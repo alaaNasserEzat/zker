@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
+import 'package:zker/core/widgets/custom_app_bar.dart';
 import 'package:zker/core/widgets/snack_bar.dart';
 import 'package:zker/features/notifications/domain/entities/notification_settings.dart';
 import 'package:zker/features/notifications/presentation/cubit/notification_cubit.dart';
@@ -13,7 +15,10 @@ class NotificationsPage extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        appBar: AppBar(title: const Text('الإشعارات'), centerTitle: true),
+        appBar: buildAppBar(
+          context: context,
+          title: context.l10n.notificationsTitle,
+        ),
         body: BlocConsumer<NotificationCubit, NotificationState>(
           // إعادة الرسم تحدث فقط إذا كانت الحالة Loaded أو Initial لضمان ثبات الواجهة
           buildWhen: (previous, current) =>
@@ -36,8 +41,8 @@ class NotificationsPage extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               children: [
                 _NotificationSection(
-                  title: 'أذكار الصباح',
-                  subtitle: 'تذكير يومي بأذكار الصباح',
+                  title: context.l10n.morningAdhkarTitle,
+                  subtitle: context.l10n.morningAdhkarSubtitle,
                   enabled: settings.morningAdhkarEnabled,
                   minutes: settings.morningAdhkarTimeMinutes,
                   isTimePicker: true,
@@ -47,8 +52,8 @@ class NotificationsPage extends StatelessWidget {
                       context.read<NotificationCubit>().setMorningTime(minutes),
                 ),
                 _NotificationSection(
-                  title: 'أذكار المساء',
-                  subtitle: 'تذكير يومي بأذكار المساء',
+                  title: context.l10n.eveningAdhkarTitle,
+                  subtitle: context.l10n.eveningAdhkarSubtitle,
                   enabled: settings.eveningAdhkarEnabled,
                   minutes: settings.eveningAdhkarTimeMinutes,
                   isTimePicker: true,
@@ -58,8 +63,8 @@ class NotificationsPage extends StatelessWidget {
                       context.read<NotificationCubit>().setEveningTime(minutes),
                 ),
                 _NotificationSection(
-                  title: 'الصلاة على النبي ﷺ',
-                  subtitle: 'تذكير بالصلاة على النبي',
+                  title: context.l10n.prophetReminderTitle,
+                  subtitle: context.l10n.prophetReminderSubtitle,
                   enabled: settings.prophetReminderEnabled,
                   minutes: settings.prophetReminderIntervalMinutes,
                   isTimePicker: false,
@@ -70,8 +75,8 @@ class NotificationsPage extends StatelessWidget {
                       .setProphetInterval(minutes),
                 ),
                 _NotificationSection(
-                  title: 'أذكار كل ساعة',
-                  subtitle: 'تذكير بالذكر كل فترة',
+                  title: context.l10n.hourlyAdhkarTitle,
+                  subtitle: context.l10n.hourlyAdhkarSubtitle,
                   enabled: settings.hourlyAdhkarEnabled,
                   minutes: settings.hourlyAdhkarIntervalMinutes,
                   isTimePicker: false,
@@ -134,7 +139,9 @@ class _NotificationSection extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.schedule_rounded),
               title: Text(
-                isTimePicker ? _formatTime(minutes) : _formatInterval(minutes),
+                isTimePicker
+                    ? _formatTime(context, minutes)
+                    : _formatInterval(minutes),
               ),
               trailing: const Icon(Icons.arrow_forward_ios_rounded, size: 14),
               onTap: () => isTimePicker
@@ -199,7 +206,7 @@ class _NotificationSection extends StatelessWidget {
     }
   }
 
-  static String _formatTime(int minutes) {
+  String _formatTime(BuildContext context, int minutes) {
     final hour = minutes ~/ 60;
     final minute = minutes % 60;
     final isPm = hour >= 12;

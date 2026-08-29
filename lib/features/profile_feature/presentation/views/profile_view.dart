@@ -80,8 +80,8 @@ class ProfileView extends StatelessWidget {
             ),
             CustomSettingOption(
               iconData: Icons.notifications_none,
-              text: 'الإشعارات',
-              supTitle: 'تخصيص تذكيرات الأذكار',
+              text: context.l10n.notificationsTitle,
+              supTitle: context.l10n.customizeAdhkarReminders,
               onTap: () => context.push(AppRoutes.notifications),
             ),
             CustomSettingOption(

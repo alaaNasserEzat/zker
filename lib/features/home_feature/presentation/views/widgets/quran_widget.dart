@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:quran_library/quran.dart';
 import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/routs/app_routs.dart';
-import 'package:zker/core/utils/app_colors.dart';
-import 'package:zker/core/utils/app_image.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
 import 'package:zker/core/widgets/custom_shadow_contanier.dart';
 import 'package:zker/l10n/app_localizations.dart';

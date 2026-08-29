@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_entity.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_enums.dart';
 import 'package:zker/features/goals_feature/presentation/cubits/goals_cubit.dart';
@@ -14,7 +15,7 @@ class GoalDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Goal Details')),
+      appBar: AppBar(title: Text(context.l10n.goalDetails)),
       body: BlocBuilder<GoalsCubit, GoalsState>(
         builder: (context, state) {
           final currentGoal = _findCurrentGoal(context, goal.id);
@@ -32,9 +33,12 @@ class GoalDetailsScreen extends StatelessWidget {
 
               const SizedBox(height: 30),
 
-              const Text(
-                'Update Progress',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              Text(
+                context.l10n.updateProgress,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
 
               const SizedBox(height: 16),
@@ -97,9 +101,9 @@ class _GoalHeader extends StatelessWidget {
         const SizedBox(height: 12),
 
         if (goal.isCompleted)
-          const Chip(
-            avatar: Icon(Icons.check, size: 18),
-            label: Text('Completed'),
+          Chip(
+            avatar: const Icon(Icons.check, size: 18),
+            label: Text(context.l10n.completed),
           ),
       ],
     );
@@ -141,9 +145,12 @@ class _ProgressSection extends StatelessWidget {
 
         const SizedBox(height: 12),
 
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: LinearProgress(value: progress),
+        SizedBox(
+          height: 8,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: LinearProgress(value: progress),
+          ),
         ),
 
         const SizedBox(height: 12),
@@ -231,7 +238,7 @@ class _ProgressControlsState extends State<_ProgressControls> {
           keyboardType: TextInputType.number,
           textAlign: TextAlign.center,
           decoration: InputDecoration(
-            labelText: 'Set current value',
+            labelText: context.l10n.setCurrentValue,
             suffixIcon: IconButton(
               onPressed: isLoading
                   ? null
@@ -273,35 +280,35 @@ class _GoalInfo extends StatelessWidget {
       children: [
         _InfoRow(
           icon: Icons.repeat,
-          title: 'Recurrence',
-          value: _recurrenceLabel(goal.recurrence),
+          title: context.l10n.recurrence,
+          value: _recurrenceLabel(context, goal.recurrence),
         ),
 
         _InfoRow(
           icon: Icons.calendar_today,
-          title: 'Created',
+          title: context.l10n.created,
           value: _formatDate(goal.createdAt),
         ),
 
         _InfoRow(
           icon: Icons.refresh,
-          title: 'Last Reset',
+          title: context.l10n.lastReset,
           value: _formatDate(goal.lastResetAt),
         ),
       ],
     );
   }
 
-  String _recurrenceLabel(GoalRecurrence recurrence) {
+  String _recurrenceLabel(BuildContext context, GoalRecurrence recurrence) {
     switch (recurrence) {
       case GoalRecurrence.daily:
-        return 'Daily';
+        return context.l10n.daily;
       case GoalRecurrence.weekly:
-        return 'Weekly';
+        return context.l10n.weekly;
       case GoalRecurrence.monthly:
-        return 'Monthly';
+        return context.l10n.monthly;
       case GoalRecurrence.once:
-        return 'Once';
+        return context.l10n.once;
     }
   }
 

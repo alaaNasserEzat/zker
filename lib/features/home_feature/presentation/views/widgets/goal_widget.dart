@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:zker/core/routs/app_routs.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/widgets/custom_shadow_contanier.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_entity.dart';
@@ -11,6 +10,7 @@ import 'package:zker/features/goals_feature/presentation/views/goal_view.dart';
 
 class GoalWidget extends StatefulWidget {
   const GoalWidget({super.key, required this.goals});
+
   final List<GoalEntity> goals;
 
   @override
@@ -27,6 +27,7 @@ class _GoalWidgetState extends State<GoalWidget> {
     final totalGoals = widget.goals.length;
 
     final percentage = totalGoals == 0 ? 0.0 : completedGoals / totalGoals;
+
     return InkWell(
       onTap: () async {
         Navigator.push(
@@ -38,6 +39,7 @@ class _GoalWidgetState extends State<GoalWidget> {
             ),
           ),
         );
+
         if (mounted) {
           setState(() {});
         }
@@ -54,28 +56,36 @@ class _GoalWidgetState extends State<GoalWidget> {
                 Row(
                   children: [
                     Text(
-                      "اهداف اليوم",
+                      context.l10n.todayGoals,
                       style: Theme.of(context).textTheme.headlineLarge,
                     ),
-                    Spacer(),
+
+                    const Spacer(),
+
                     ElevatedButton(
                       onPressed: () {
-                        //context.push(AppRoutes.goalsView);
+                        // context.push(AppRoutes.goalsView);
                       },
                       child: Text('${(percentage * 100).round()}%'),
                     ),
                   ],
                 ),
+
                 Text(
-                  "كمل اهدافك انقر للمتابعه",
+                  context.l10n.continueGoals,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
-                Text("$completedGoals من $totalGoals هدف"),
+
+                Text(
+                  context.l10n.completedGoalsCount(completedGoals, totalGoals),
+                ),
+
                 LinearPercentIndicator(
                   percent: percentage,
                   backgroundColor: AppColors.cardDark,
                   progressColor: AppColors.green,
                 ),
+
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -89,11 +99,12 @@ class _GoalWidgetState extends State<GoalWidget> {
                           ),
                         ),
                       );
+
                       if (mounted) {
                         setState(() {});
                       }
                     },
-                    child: Text("go to your check list"),
+                    child: Text(context.l10n.goToChecklist),
                   ),
                 ),
               ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/core/widgets/snack_bar.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_entity.dart';
@@ -81,8 +82,8 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
               TextFormField(
                 controller: _titleController,
                 decoration: InputDecoration(
-                  labelText: 'Goal Title',
-                  hintText: 'Example: Read Quran',
+                  labelText: context.l10n.goalTitle,
+                  hintText: context.l10n.exampleReadQuran,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -103,7 +104,7 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
                 controller: _descriptionController,
                 maxLines: 3,
                 decoration: InputDecoration(
-                  labelText: 'Description',
+                  labelText: context.l10n.description,
                   prefixIcon: Icon(Icons.description),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -116,7 +117,7 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
               DropdownButtonFormField<GoalType>(
                 value: _selectedType,
                 decoration: InputDecoration(
-                  labelText: 'Goal Type',
+                  labelText: context.l10n.goalType,
                   prefixIcon: Icon(Icons.category),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -125,7 +126,7 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
                 items: GoalType.values.map((type) {
                   return DropdownMenuItem(
                     value: type,
-                    child: Text(_typeLabel(type)),
+                    child: Text(_typeLabel(context, type)),
                   );
                 }).toList(),
                 onChanged: (value) {
@@ -144,8 +145,8 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
                 keyboardType: TextInputType.number,
 
                 decoration: InputDecoration(
-                  labelText: 'Target Value',
-                  hintText: 'Example: 10',
+                  labelText: context.l10n.targetValue,
+                  hintText: context.l10n.exampleTargetValue,
                   prefixIcon: Icon(Icons.track_changes),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -166,14 +167,14 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
 
               DropdownButtonFormField<GoalRecurrence>(
                 value: _selectedRecurrence,
-                decoration: const InputDecoration(
-                  labelText: 'Recurrence',
+                decoration: InputDecoration(
+                  labelText: context.l10n.recurrence,
                   prefixIcon: Icon(Icons.repeat),
                 ),
                 items: GoalRecurrence.values.map((recurrence) {
                   return DropdownMenuItem(
                     value: recurrence,
-                    child: Text(_recurrenceLabel(recurrence)),
+                    child: Text(_recurrenceLabel(context, recurrence)),
                   );
                 }).toList(),
                 onChanged: (value) {
@@ -202,7 +203,9 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
                       child: isLoading
                           ? const CircularProgressIndicator()
                           : Text(
-                              widget.isEditing ? 'Update Goal' : 'Create Goal',
+                              widget.isEditing
+                                  ? context.l10n.updateGoal
+                                  : context.l10n.createGoal,
                             ),
                     ),
                   );
@@ -256,31 +259,31 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
     }
   }
 
-  String _typeLabel(GoalType type) {
+  String _typeLabel(BuildContext context, GoalType type) {
     switch (type) {
       case GoalType.quran:
-        return 'Quran';
+        return context.l10n.quran;
       case GoalType.azkar:
-        return 'Azkar';
+        return context.l10n.azkarGoalType;
       case GoalType.tasbeeh:
-        return 'Tasbeeh';
+        return context.l10n.tasbeeh;
       case GoalType.prayer:
-        return 'Prayer';
+        return context.l10n.prayer;
       case GoalType.custom:
-        return 'Custom';
+        return context.l10n.custom;
     }
   }
 
-  String _recurrenceLabel(GoalRecurrence recurrence) {
+  String _recurrenceLabel(BuildContext context, GoalRecurrence recurrence) {
     switch (recurrence) {
       case GoalRecurrence.daily:
-        return 'Daily';
+        return context.l10n.daily;
       case GoalRecurrence.weekly:
-        return 'Weekly';
+        return context.l10n.weekly;
       case GoalRecurrence.monthly:
-        return 'Monthly';
+        return context.l10n.monthly;
       case GoalRecurrence.once:
-        return 'Once';
+        return context.l10n.once;
     }
   }
 }

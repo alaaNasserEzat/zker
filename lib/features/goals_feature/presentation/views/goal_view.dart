@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/widgets/custom_app_bar.dart';
 import 'package:zker/core/widgets/snack_bar.dart';
 import 'package:zker/features/goals_feature/presentation/cubits/goals_cubit.dart';
@@ -16,7 +17,7 @@ class GoalsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context: context, title: "my goals"),
+      appBar: buildAppBar(context: context, title: context.l10n.goalsTitle),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -71,9 +72,9 @@ class GoalsView extends StatelessWidget {
 
                   Row(
                     children: [
-                      const Text(
-                        'Your Goals',
-                        style: TextStyle(
+                      Text(
+                        context.l10n.yourGoals,
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),

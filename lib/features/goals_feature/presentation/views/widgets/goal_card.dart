@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/widgets/custom_shadow_contanier.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_entity.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_enums.dart';
 import 'package:zker/features/goals_feature/presentation/views/widgets/goal_circlavatar_icon.dart';
-import 'package:zker/features/goals_feature/presentation/views/widgets/linear_progress.dart';
 
 class GoalCard extends StatelessWidget {
   final GoalEntity goal;
@@ -79,9 +79,15 @@ class GoalCard extends StatelessWidget {
                         onDelete();
                       }
                     },
-                    itemBuilder: (_) => const [
-                      PopupMenuItem(value: 'edit', child: Text('Edit')),
-                      PopupMenuItem(value: 'delete', child: Text('Delete')),
+                    itemBuilder: (_) => [
+                      PopupMenuItem(
+                        value: 'edit',
+                        child: Text(context.l10n.edit),
+                      ),
+                      PopupMenuItem(
+                        value: 'delete',
+                        child: Text(context.l10n.delete),
+                      ),
                     ],
                   ),
                 ],
@@ -89,19 +95,18 @@ class GoalCard extends StatelessWidget {
 
               const SizedBox(height: 18),
 
-              Row(
-                children: [
-                  LinearProgress(value: progress),
+              // Row(
+              //   children: [
+              //     LinearProgress(value: progress),
 
-                  const SizedBox(width: 12),
+              //     const SizedBox(width: 12),
 
-                  Text(
-                    '$percentage%',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-
+              //     Text(
+              //       '$percentage%',
+              //       style: const TextStyle(fontWeight: FontWeight.bold),
+              //     ),
+              //   ],
+              // ),
               const SizedBox(height: 10),
 
               Row(
@@ -119,13 +124,13 @@ class GoalCard extends StatelessWidget {
 
               if (goal.isCompleted) ...[
                 const SizedBox(height: 12),
-                const Row(
+                Row(
                   children: [
-                    Icon(Icons.check_circle, size: 18),
-                    SizedBox(width: 6),
+                    const Icon(Icons.check_circle, size: 18),
+                    const SizedBox(width: 6),
                     Text(
-                      'Completed',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      context.l10n.completed,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -167,22 +172,22 @@ class _RecurrenceBadge extends StatelessWidget {
         color: AppColors.orange,
       ),
       child: Text(
-        _getLabel(recurrence),
+        _getLabel(context, recurrence),
         style: Theme.of(context).textTheme.labelLarge,
       ),
     );
   }
 
-  String _getLabel(GoalRecurrence recurrence) {
+  String _getLabel(BuildContext context, GoalRecurrence recurrence) {
     switch (recurrence) {
       case GoalRecurrence.daily:
-        return 'Daily';
+        return context.l10n.daily;
       case GoalRecurrence.weekly:
-        return 'Weekly';
+        return context.l10n.weekly;
       case GoalRecurrence.monthly:
-        return 'Monthly';
+        return context.l10n.monthly;
       case GoalRecurrence.once:
-        return 'Once';
+        return context.l10n.once;
     }
   }
 }

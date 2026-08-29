@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zker/core/services/service_locator.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 
 import 'package:zker/features/goals_feature/domain/entities/goal_entity.dart';
 import 'package:zker/features/goals_feature/presentation/cubits/goals_cubit.dart';
@@ -20,14 +20,14 @@ void showDeleteDialog(BuildContext context, GoalEntity goal) {
     context: context,
     builder: (dialogContext) {
       return AlertDialog(
-        title: const Text('Delete Goal'),
-        content: Text('Are you sure you want to delete "${goal.title}"?'),
+        title: Text(context.l10n.deleteGoal),
+        content: Text(context.l10n.areYouSureDeleteGoal(goal.title)),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.pop(dialogContext);
             },
-            child: const Text('Cancel'),
+            child: Text(context.l10n.cancel),
           ),
           FilledButton(
             onPressed: () {
@@ -35,7 +35,7 @@ void showDeleteDialog(BuildContext context, GoalEntity goal) {
 
               context.read<GoalsCubit>().deleteGoal(goal.id);
             },
-            child: const Text('Delete'),
+            child: Text(context.l10n.delete),
           ),
         ],
       );
@@ -56,13 +56,13 @@ class EmptyGoalsView extends StatelessWidget {
           children: [
             Icon(Icons.flag_outlined, size: 80, color: Colors.grey.shade400),
             const SizedBox(height: 20),
-            const Text(
-              'No Goals Yet',
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            Text(
+              context.l10n.noGoalsYet,
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Text(
-              'Create your first goal and start your journey.',
+              context.l10n.createFirstGoal,
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.grey.shade600),
             ),
@@ -91,7 +91,7 @@ class ErrorView extends StatelessWidget {
             const SizedBox(height: 16),
             Text(message, textAlign: TextAlign.center),
             const SizedBox(height: 16),
-            FilledButton(onPressed: onRetry, child: const Text('Retry')),
+            FilledButton(onPressed: onRetry, child: Text(context.l10n.retry)),
           ],
         ),
       ),

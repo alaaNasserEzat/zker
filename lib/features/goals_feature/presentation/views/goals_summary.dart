@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/features/goals_feature/domain/entities/goal_entity.dart';
 
 class GoalsSummary extends StatelessWidget {
@@ -23,24 +24,27 @@ class GoalsSummary extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Your Progress', style: Theme.of(context).textTheme.labelLarge),
+          Text(
+            context.l10n.yourProgress,
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
 
           const SizedBox(height: 20),
 
           Row(
             children: [
               _SummaryItem(
-                title: 'Completed',
+                title: context.l10n.completed,
                 value: '$completedGoals',
                 icon: Icons.check_circle_outline,
               ),
               _SummaryItem(
-                title: 'Total',
+                title: context.l10n.total,
                 value: '$totalGoals',
                 icon: Icons.flag_outlined,
               ),
               _SummaryItem(
-                title: 'Progress',
+                title: context.l10n.progress,
                 value: '${(percentage * 100).round()}%',
                 icon: Icons.trending_up,
               ),

@@ -187,4 +187,188 @@ class AppLocalizationsEn extends AppLocalizations {
   String totalCount(int count) {
     return 'Total Count: $count';
   }
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get morningAdhkarTitle => 'Morning Adhkar';
+
+  @override
+  String get morningAdhkarSubtitle => 'Daily reminder for morning adhkar';
+
+  @override
+  String get eveningAdhkarTitle => 'Evening Adhkar';
+
+  @override
+  String get eveningAdhkarSubtitle => 'Daily reminder for evening adhkar';
+
+  @override
+  String get prophetReminderTitle => 'Prophet Prayer Reminder';
+
+  @override
+  String get prophetReminderSubtitle => 'Prophet reminder';
+
+  @override
+  String get hourlyAdhkarTitle => 'Hourly Adhkar';
+
+  @override
+  String get hourlyAdhkarSubtitle => 'Periodic reminder';
+
+  @override
+  String everyMinutes(int minutes) {
+    return 'Every $minutes minute';
+  }
+
+  @override
+  String get hour => 'hour';
+
+  @override
+  String get hours => 'hours';
+
+  @override
+  String get am => 'AM';
+
+  @override
+  String get pm => 'PM';
+
+  @override
+  String get goalsTitle => 'Goals';
+
+  @override
+  String get createGoal => 'Create Goal';
+
+  @override
+  String get editGoal => 'Edit Goal';
+
+  @override
+  String get updateGoal => 'Update Goal';
+
+  @override
+  String get goalTitle => 'Goal Title';
+
+  @override
+  String get exampleReadQuran => 'Example: Read Quran';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get goalType => 'Goal Type';
+
+  @override
+  String get targetValue => 'Target Value';
+
+  @override
+  String get exampleTargetValue => 'Example: 10';
+
+  @override
+  String get recurrence => 'Recurrence';
+
+  @override
+  String get deleteGoal => 'Delete Goal';
+
+  @override
+  String areYouSureDeleteGoal(String goalTitle) {
+    return 'Are you sure you want to delete \"$goalTitle\"?';
+  }
+
+  @override
+  String get delete => 'Delete';
+
+  @override
+  String get retry => 'Retry';
+
+  @override
+  String get noGoalsYet => 'No Goals Yet';
+
+  @override
+  String get createFirstGoal =>
+      'Create your first goal and start your journey.';
+
+  @override
+  String get yourGoals => 'Your Goals';
+
+  @override
+  String get yourProgress => 'Your Progress';
+
+  @override
+  String get completed => 'Completed';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get progress => 'Progress';
+
+  @override
+  String get updateProgress => 'Update Progress';
+
+  @override
+  String get setCurrentValue => 'Set current value';
+
+  @override
+  String get goalDetails => 'Goal Details';
+
+  @override
+  String get daily => 'Daily';
+
+  @override
+  String get weekly => 'Weekly';
+
+  @override
+  String get monthly => 'Monthly';
+
+  @override
+  String get once => 'Once';
+
+  @override
+  String get quran => 'Quran';
+
+  @override
+  String get azkarGoalType => 'Azkar';
+
+  @override
+  String get tasbeeh => 'Tasbeeh';
+
+  @override
+  String get prayer => 'Prayer';
+
+  @override
+  String get custom => 'Custom';
+
+  @override
+  String get created => 'Created';
+
+  @override
+  String get lastReset => 'Last Reset';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get worship => 'Worship';
+
+  @override
+  String get goToYourCheckList => 'Go to your check list';
+
+  @override
+  String get congratulations => '🎉 Congratulations!';
+
+  @override
+  String get customizeAdhkarReminders => 'Customize adhkar reminders';
+
+  @override
+  String get todayGoals => 'Today\'s Goals';
+
+  @override
+  String get continueGoals => 'Complete your goals, tap to continue';
+
+  @override
+  String completedGoalsCount(int completed, int total) {
+    return '$completed of $total goals';
+  }
+
+  @override
+  String get goToChecklist => 'Go to your checklist';
 }

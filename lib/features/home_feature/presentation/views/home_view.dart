@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/features/goals_feature/presentation/cubits/goals_cubit.dart';
 import 'package:zker/features/goals_feature/presentation/cubits/goals_state.dart';
@@ -55,9 +56,9 @@ class HomeView extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 60),
-                CustomRow(text: "العبادات"),
+                CustomRow(text: context.l10n.worship),
                 HomeCategoryRow(),
-                CustomRow(text: "الاهداف"),
+                CustomRow(text: context.l10n.goalsTitle),
                 BlocBuilder<GoalsCubit, GoalsState>(
                   builder: (context, state) {
                     if (state is GoalsLoaded) {

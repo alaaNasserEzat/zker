@@ -4,7 +4,7 @@
   "appTitle": "ذِكْر",
   "home": "الرئيسية",
   "favorites": "المفضلة",
-  "prayerTimes": "أوقات الصلاة",
+  "prayerTimes": "مواقيت الصلاة",
   "profile": "حسابي",
   "selectLanguage": "اختر اللغة",
   "english": "English",
@@ -77,5 +77,89 @@
         "type": "int"
       }
     }
+  },
+  "notificationsTitle": "الإشعارات",
+  "morningAdhkarTitle": "أذكار الصباح",
+  "morningAdhkarSubtitle": "تذكير يومي بأذكار الصباح",
+  "eveningAdhkarTitle": "أذكار المساء",
+  "eveningAdhkarSubtitle": "تذكير يومي بأذكار المساء",
+  "prophetReminderTitle": "الصلاة على النبي ﷺ",
+  "prophetReminderSubtitle": "تذكير بالصلاة على النبي",
+  "hourlyAdhkarTitle": "أذكار كل ساعة",
+  "hourlyAdhkarSubtitle": "تذكير بالذكر كل فترة",
+  "everyMinutes": "كل {minutes} دقيقة",
+  "@everyMinutes": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "hour": "ساعة",
+  "hours": "ساعات",
+  "am": "ص",
+  "pm": "م",
+  "goalsTitle": "الأهداف",
+  "createGoal": "إنشاء هدف",
+  "editGoal": "تعديل الهدف",
+  "worship": "العبادات",
+  "updateGoal": "تحديث الهدف",
+  "goalTitle": "اسم الهدف",
+  "exampleReadQuran": "مثال: قراءة القرآن",
+  "description": "الوصف",
+  "goalType": "نوع الهدف",
+  "targetValue": "القيمة المستهدفة",
+  "exampleTargetValue": "مثال: 10",
+  "recurrence": "التكرار",
+  "deleteGoal": "حذف الهدف",
+  "areYouSureDeleteGoal": "هل أنت متأكد من حذف \"{goalTitle}\"؟",
+  "@areYouSureDeleteGoal": {
+    "placeholders": {
+      "goalTitle": {
+        "type": "String"
+      }
+    }
+  },
+  "delete": "حذف",
+  "retry": "إعادة المحاولة",
+  "noGoalsYet": "لا توجد أهداف بعد",
+  "createFirstGoal": "أنشئ هدفك الأول وابدأ رحلتك.",
+  "yourGoals": "أهدافك",
+  "yourProgress": "تقدمك",
+  "completed": "مكتمل",
+  "total": "الإجمالي",
+  "progress": "التقدم",
+  "updateProgress": "تحديث التقدم",
+  "setCurrentValue": "تعيين القيمة الحالية",
+  "goalDetails": "تفاصيل الهدف",
+  "daily": "يومي",
+  "weekly": "أسبوعي",
+  "monthly": "شهري",
+  "once": "مرة واحدة",
+  "quran": "القرآن",
+  "azkarGoalType": "أذكار",
+  "tasbeeh": "تسبيح",
+  "prayer": "صلاة",
+  "custom": "مخصص",
+  "created": "تم الإنشاء",
+  "lastReset": "آخر تعديل",
+  "edit": "تعديل",
+  "goToYourCheckList": "انتقل إلى قائمة المراجعة الخاصة بك",
+  "congratulations": "🎉 مبروك!",
+  "customizeAdhkarReminders": "تخصيص تذكيرات الأذكار",
+  "todayGoals": "أهداف اليوم",
+  "continueGoals": "كمل أهدافك، اضغط للمتابعة",
+  "completedGoalsCount": "أنجزت {completed} من {total} أهداف",
+  "goToChecklist": "اذهب إلى قائمة أهدافك",
+  "@completedGoalsCount": {
+    "placeholders": {
+      "completed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
   }
+
 }

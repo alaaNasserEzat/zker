@@ -21,7 +21,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get favorites => 'المفضلة';
 
   @override
-  String get prayerTimes => 'أوقات الصلاة';
+  String get prayerTimes => 'مواقيت الصلاة';
 
   @override
   String get profile => 'حسابي';
@@ -186,4 +186,187 @@ class AppLocalizationsAr extends AppLocalizations {
   String totalCount(int count) {
     return 'العدد الكلي: $count';
   }
+
+  @override
+  String get notificationsTitle => 'الإشعارات';
+
+  @override
+  String get morningAdhkarTitle => 'أذكار الصباح';
+
+  @override
+  String get morningAdhkarSubtitle => 'تذكير يومي بأذكار الصباح';
+
+  @override
+  String get eveningAdhkarTitle => 'أذكار المساء';
+
+  @override
+  String get eveningAdhkarSubtitle => 'تذكير يومي بأذكار المساء';
+
+  @override
+  String get prophetReminderTitle => 'الصلاة على النبي ﷺ';
+
+  @override
+  String get prophetReminderSubtitle => 'تذكير بالصلاة على النبي';
+
+  @override
+  String get hourlyAdhkarTitle => 'أذكار كل ساعة';
+
+  @override
+  String get hourlyAdhkarSubtitle => 'تذكير بالذكر كل فترة';
+
+  @override
+  String everyMinutes(int minutes) {
+    return 'كل $minutes دقيقة';
+  }
+
+  @override
+  String get hour => 'ساعة';
+
+  @override
+  String get hours => 'ساعات';
+
+  @override
+  String get am => 'ص';
+
+  @override
+  String get pm => 'م';
+
+  @override
+  String get goalsTitle => 'الأهداف';
+
+  @override
+  String get createGoal => 'إنشاء هدف';
+
+  @override
+  String get editGoal => 'تعديل الهدف';
+
+  @override
+  String get updateGoal => 'تحديث الهدف';
+
+  @override
+  String get goalTitle => 'اسم الهدف';
+
+  @override
+  String get exampleReadQuran => 'مثال: قراءة القرآن';
+
+  @override
+  String get description => 'الوصف';
+
+  @override
+  String get goalType => 'نوع الهدف';
+
+  @override
+  String get targetValue => 'القيمة المستهدفة';
+
+  @override
+  String get exampleTargetValue => 'مثال: 10';
+
+  @override
+  String get recurrence => 'التكرار';
+
+  @override
+  String get deleteGoal => 'حذف الهدف';
+
+  @override
+  String areYouSureDeleteGoal(String goalTitle) {
+    return 'هل أنت متأكد من حذف \"$goalTitle\"؟';
+  }
+
+  @override
+  String get delete => 'حذف';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
+  String get noGoalsYet => 'لا توجد أهداف بعد';
+
+  @override
+  String get createFirstGoal => 'أنشئ هدفك الأول وابدأ رحلتك.';
+
+  @override
+  String get yourGoals => 'أهدافك';
+
+  @override
+  String get yourProgress => 'تقدمك';
+
+  @override
+  String get completed => 'مكتمل';
+
+  @override
+  String get total => 'الإجمالي';
+
+  @override
+  String get progress => 'التقدم';
+
+  @override
+  String get updateProgress => 'تحديث التقدم';
+
+  @override
+  String get setCurrentValue => 'تعيين القيمة الحالية';
+
+  @override
+  String get goalDetails => 'تفاصيل الهدف';
+
+  @override
+  String get daily => 'يومي';
+
+  @override
+  String get weekly => 'أسبوعي';
+
+  @override
+  String get monthly => 'شهري';
+
+  @override
+  String get once => 'مرة واحدة';
+
+  @override
+  String get quran => 'القرآن';
+
+  @override
+  String get azkarGoalType => 'أذكار';
+
+  @override
+  String get tasbeeh => 'تسبيح';
+
+  @override
+  String get prayer => 'صلاة';
+
+  @override
+  String get custom => 'مخصص';
+
+  @override
+  String get created => 'تم الإنشاء';
+
+  @override
+  String get lastReset => 'آخر تعديل';
+
+  @override
+  String get edit => 'تعديل';
+
+  @override
+  String get worship => 'العبادات';
+
+  @override
+  String get goToYourCheckList => 'انتقل إلى قائمة المراجعة الخاصة بك';
+
+  @override
+  String get congratulations => '🎉 مبروك!';
+
+  @override
+  String get customizeAdhkarReminders => 'تخصيص تذكيرات الأذكار';
+
+  @override
+  String get todayGoals => 'أهداف اليوم';
+
+  @override
+  String get continueGoals => 'كمل أهدافك، اضغط للمتابعة';
+
+  @override
+  String completedGoalsCount(int completed, int total) {
+    return 'أنجزت $completed من $total أهداف';
+  }
+
+  @override
+  String get goToChecklist => 'اذهب إلى قائمة أهدافك';
 }

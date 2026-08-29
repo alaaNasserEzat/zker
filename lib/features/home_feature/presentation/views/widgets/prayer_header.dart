@@ -21,7 +21,7 @@ class PrayerHeader extends StatelessWidget {
             spacing: 5,
             children: [
               Text(
-                "مواقيت الصلاه",
+                context.l10n.prayerTimes,
                 style: AppTextStyles.zekerTitle.copyWith(fontSize: 24),
               ),
               // Text(" باقي علي العصر", style: AppTextStyles.textOrange18),

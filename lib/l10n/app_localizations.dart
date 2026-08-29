@@ -439,6 +439,360 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Total Count: {count}'**
   String totalCount(int count);
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @morningAdhkarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Morning Adhkar'**
+  String get morningAdhkarTitle;
+
+  /// No description provided for @morningAdhkarSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily reminder for morning adhkar'**
+  String get morningAdhkarSubtitle;
+
+  /// No description provided for @eveningAdhkarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Evening Adhkar'**
+  String get eveningAdhkarTitle;
+
+  /// No description provided for @eveningAdhkarSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily reminder for evening adhkar'**
+  String get eveningAdhkarSubtitle;
+
+  /// No description provided for @prophetReminderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prophet Prayer Reminder'**
+  String get prophetReminderTitle;
+
+  /// No description provided for @prophetReminderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prophet reminder'**
+  String get prophetReminderSubtitle;
+
+  /// No description provided for @hourlyAdhkarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hourly Adhkar'**
+  String get hourlyAdhkarTitle;
+
+  /// No description provided for @hourlyAdhkarSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Periodic reminder'**
+  String get hourlyAdhkarSubtitle;
+
+  /// No description provided for @everyMinutes.
+  ///
+  /// In en, this message translates to:
+  /// **'Every {minutes} minute'**
+  String everyMinutes(int minutes);
+
+  /// No description provided for @hour.
+  ///
+  /// In en, this message translates to:
+  /// **'hour'**
+  String get hour;
+
+  /// No description provided for @hours.
+  ///
+  /// In en, this message translates to:
+  /// **'hours'**
+  String get hours;
+
+  /// No description provided for @am.
+  ///
+  /// In en, this message translates to:
+  /// **'AM'**
+  String get am;
+
+  /// No description provided for @pm.
+  ///
+  /// In en, this message translates to:
+  /// **'PM'**
+  String get pm;
+
+  /// No description provided for @goalsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Goals'**
+  String get goalsTitle;
+
+  /// No description provided for @createGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Create Goal'**
+  String get createGoal;
+
+  /// No description provided for @editGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Goal'**
+  String get editGoal;
+
+  /// No description provided for @updateGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Goal'**
+  String get updateGoal;
+
+  /// No description provided for @goalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Title'**
+  String get goalTitle;
+
+  /// No description provided for @exampleReadQuran.
+  ///
+  /// In en, this message translates to:
+  /// **'Example: Read Quran'**
+  String get exampleReadQuran;
+
+  /// No description provided for @description.
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// No description provided for @goalType.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Type'**
+  String get goalType;
+
+  /// No description provided for @targetValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Target Value'**
+  String get targetValue;
+
+  /// No description provided for @exampleTargetValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Example: 10'**
+  String get exampleTargetValue;
+
+  /// No description provided for @recurrence.
+  ///
+  /// In en, this message translates to:
+  /// **'Recurrence'**
+  String get recurrence;
+
+  /// No description provided for @deleteGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete Goal'**
+  String get deleteGoal;
+
+  /// No description provided for @areYouSureDeleteGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete \"{goalTitle}\"?'**
+  String areYouSureDeleteGoal(String goalTitle);
+
+  /// No description provided for @delete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get delete;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get retry;
+
+  /// No description provided for @noGoalsYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No Goals Yet'**
+  String get noGoalsYet;
+
+  /// No description provided for @createFirstGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'Create your first goal and start your journey.'**
+  String get createFirstGoal;
+
+  /// No description provided for @yourGoals.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Goals'**
+  String get yourGoals;
+
+  /// No description provided for @yourProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Progress'**
+  String get yourProgress;
+
+  /// No description provided for @completed.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get completed;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @progress.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get progress;
+
+  /// No description provided for @updateProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Update Progress'**
+  String get updateProgress;
+
+  /// No description provided for @setCurrentValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Set current value'**
+  String get setCurrentValue;
+
+  /// No description provided for @goalDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Details'**
+  String get goalDetails;
+
+  /// No description provided for @daily.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily'**
+  String get daily;
+
+  /// No description provided for @weekly.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly'**
+  String get weekly;
+
+  /// No description provided for @monthly.
+  ///
+  /// In en, this message translates to:
+  /// **'Monthly'**
+  String get monthly;
+
+  /// No description provided for @once.
+  ///
+  /// In en, this message translates to:
+  /// **'Once'**
+  String get once;
+
+  /// No description provided for @quran.
+  ///
+  /// In en, this message translates to:
+  /// **'Quran'**
+  String get quran;
+
+  /// No description provided for @azkarGoalType.
+  ///
+  /// In en, this message translates to:
+  /// **'Azkar'**
+  String get azkarGoalType;
+
+  /// No description provided for @tasbeeh.
+  ///
+  /// In en, this message translates to:
+  /// **'Tasbeeh'**
+  String get tasbeeh;
+
+  /// No description provided for @prayer.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer'**
+  String get prayer;
+
+  /// No description provided for @custom.
+  ///
+  /// In en, this message translates to:
+  /// **'Custom'**
+  String get custom;
+
+  /// No description provided for @created.
+  ///
+  /// In en, this message translates to:
+  /// **'Created'**
+  String get created;
+
+  /// No description provided for @lastReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Reset'**
+  String get lastReset;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @worship.
+  ///
+  /// In en, this message translates to:
+  /// **'Worship'**
+  String get worship;
+
+  /// No description provided for @goToYourCheckList.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to your check list'**
+  String get goToYourCheckList;
+
+  /// No description provided for @congratulations.
+  ///
+  /// In en, this message translates to:
+  /// **'🎉 Congratulations!'**
+  String get congratulations;
+
+  /// No description provided for @customizeAdhkarReminders.
+  ///
+  /// In en, this message translates to:
+  /// **'Customize adhkar reminders'**
+  String get customizeAdhkarReminders;
+
+  /// No description provided for @todayGoals.
+  ///
+  /// In en, this message translates to:
+  /// **'Today\'s Goals'**
+  String get todayGoals;
+
+  /// No description provided for @continueGoals.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete your goals, tap to continue'**
+  String get continueGoals;
+
+  /// No description provided for @completedGoalsCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{completed} of {total} goals'**
+  String completedGoalsCount(int completed, int total);
+
+  /// No description provided for @goToChecklist.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to your checklist'**
+  String get goToChecklist;
 }
 
 class _AppLocalizationsDelegate

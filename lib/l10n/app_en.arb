@@ -77,6 +77,88 @@
       "type": "int"
     }
   }
-}
-
+},
+"notificationsTitle": "Notifications",
+"morningAdhkarTitle": "Morning Adhkar",
+"morningAdhkarSubtitle": "Daily reminder for morning adhkar",
+"eveningAdhkarTitle": "Evening Adhkar",
+"eveningAdhkarSubtitle": "Daily reminder for evening adhkar",
+"prophetReminderTitle": "Prophet Prayer Reminder",
+"prophetReminderSubtitle": "Prophet reminder",
+"hourlyAdhkarTitle": "Hourly Adhkar",
+"hourlyAdhkarSubtitle": "Periodic reminder",
+"everyMinutes": "Every {minutes} minute",
+"@everyMinutes": {
+  "placeholders": {
+    "minutes": {
+      "type": "int"
+    }
+  }
+},
+"hour": "hour",
+"hours": "hours",
+"am": "AM",
+"pm": "PM",
+"goalsTitle": "Goals",
+"createGoal": "Create Goal",
+"editGoal": "Edit Goal",
+"updateGoal": "Update Goal",
+"goalTitle": "Goal Title",
+"exampleReadQuran": "Example: Read Quran",
+"description": "Description",
+"goalType": "Goal Type",
+"targetValue": "Target Value",
+"exampleTargetValue": "Example: 10",
+"recurrence": "Recurrence",
+"deleteGoal": "Delete Goal",
+"areYouSureDeleteGoal": "Are you sure you want to delete \"{goalTitle}\"?",
+"@areYouSureDeleteGoal": {
+  "placeholders": {
+    "goalTitle": {
+      "type": "String"
+    }
+  }
+},
+"delete": "Delete",
+"retry": "Retry",
+"noGoalsYet": "No Goals Yet",
+"createFirstGoal": "Create your first goal and start your journey.",
+"yourGoals": "Your Goals",
+"yourProgress": "Your Progress",
+"completed": "Completed",
+"total": "Total",
+"progress": "Progress",
+"updateProgress": "Update Progress",
+"setCurrentValue": "Set current value",
+"goalDetails": "Goal Details",
+"daily": "Daily",
+"weekly": "Weekly",
+"monthly": "Monthly",
+"once": "Once",
+"quran": "Quran",
+"azkarGoalType": "Azkar",
+"tasbeeh": "Tasbeeh",
+"prayer": "Prayer",
+"custom": "Custom",
+"created": "Created",
+"lastReset": "Last Reset",
+"edit": "Edit",
+"worship": "Worship",
+"goToYourCheckList": "Go to your check list",
+"congratulations": "🎉 Congratulations!",
+"customizeAdhkarReminders": "Customize adhkar reminders",
+"todayGoals": "Today's Goals",
+"continueGoals": "Complete your goals, tap to continue",
+"completedGoalsCount": "{completed} of {total} goals",
+"@completedGoalsCount": {
+  "placeholders": {
+    "completed": {
+      "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "goToChecklist": "Go to your checklist"
 }
