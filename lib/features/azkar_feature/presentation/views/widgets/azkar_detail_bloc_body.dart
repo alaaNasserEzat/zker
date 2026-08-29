@@ -13,49 +13,53 @@ class AzkarDetailBody extends StatefulWidget {
 }
 
 class _AzkarDetailBodyState extends State<AzkarDetailBody> {
-  bool _isFinishedShown=false;double get totalProgress {
-  int totalCount = widget.azkarCategoryEntity.azkar
-      .fold(0, (sum, item) => sum + item.count);
+  bool _isFinishedShown = false;
+  double get totalProgress {
+    int totalCount = widget.azkarCategoryEntity.azkar.fold(
+      0,
+      (sum, item) => sum + item.count,
+    );
 
-  int totalCurrent = widget.azkarCategoryEntity.azkar
-      .fold(0, (sum, item) => sum + item.currCount);
+    int totalCurrent = widget.azkarCategoryEntity.azkar.fold(
+      0,
+      (sum, item) => sum + item.currCount,
+    );
 
-  if (totalCount == 0) return 0;
+    if (totalCount == 0) return 0;
 
-  double progress = totalCurrent / totalCount;
+    double progress = totalCurrent / totalCount;
 
-  if (progress == 1 && !_isFinishedShown) {
-    _isFinishedShown = true;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      showFinishDialog(context,widget.azkarCategoryEntity.category);
-    });
+    if (progress == 1 && !_isFinishedShown) {
+      _isFinishedShown = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showFinishDialog(context, widget.azkarCategoryEntity.category);
+      });
+    }
+
+    return progress;
   }
-
-  return progress;
-}
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-               LinearProgressIndicator(
-              minHeight: 5,
-              value: totalProgress.clamp(0, 1),
-            color: AppColors.green,backgroundColor: AppColors.grey,),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SizedBox(
-            height:  MediaQuery.heightOf(context) * 0.83,
+        LinearProgressIndicator(
+          minHeight: 5,
+          value: totalProgress.clamp(0, 1),
+          color: AppColors.green,
+          backgroundColor: AppColors.grey,
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: ListView.builder(
               itemCount: widget.azkarCategoryEntity.azkar.length,
               itemBuilder: (context, index) {
                 return AzkarDetailContainer(
                   azkarItemEntity: widget.azkarCategoryEntity.azkar[index],
                   categoryId: widget.azkarCategoryEntity.id,
-                  onCountChanged: (){
-                    setState(() {
-                      
-                    });
+                  onCountChanged: () {
+                    setState(() {});
                   },
                 );
               },

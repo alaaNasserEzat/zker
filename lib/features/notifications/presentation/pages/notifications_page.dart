@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zker/core/constent/extensions/localelization_extention.dart';
+import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/widgets/custom_app_bar.dart';
 import 'package:zker/core/widgets/snack_bar.dart';
 import 'package:zker/features/notifications/domain/entities/notification_settings.dart';
@@ -12,84 +13,81 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: buildAppBar(
-          context: context,
-          title: context.l10n.notificationsTitle,
-        ),
-        body: BlocConsumer<NotificationCubit, NotificationState>(
-          // إعادة الرسم تحدث فقط إذا كانت الحالة Loaded أو Initial لضمان ثبات الواجهة
-          buildWhen: (previous, current) =>
-              current is NotificationLoaded || current is NotificationLoading,
-          listener: (context, state) {
-            if (state is NotificationError) {
-              showSankBar(context, state.message);
-            }
-          },
-          builder: (context, state) {
-            if (state is NotificationLoading || state is NotificationInitial) {
-              return const Center(child: CircularProgressIndicator());
-            }
+    return Scaffold(
+      appBar: buildAppBar(
+        context: context,
+        title: context.l10n.notificationsTitle,
+      ),
+      body: BlocConsumer<NotificationCubit, NotificationState>(
+        // إعادة الرسم تحدث فقط إذا كانت الحالة Loaded أو Initial لضمان ثبات الواجهة
+        buildWhen: (previous, current) =>
+            current is NotificationLoaded || current is NotificationLoading,
+        listener: (context, state) {
+          if (state is NotificationError) {
+            showSankBar(context, state.message);
+          }
+        },
+        builder: (context, state) {
+          if (state is NotificationLoading || state is NotificationInitial) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-            final settings = state is NotificationLoaded
-                ? state.settings
-                : NotificationSettings.defaults();
+          final settings = state is NotificationLoaded
+              ? state.settings
+              : NotificationSettings.defaults();
 
-            return ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                _NotificationSection(
-                  title: context.l10n.morningAdhkarTitle,
-                  subtitle: context.l10n.morningAdhkarSubtitle,
-                  enabled: settings.morningAdhkarEnabled,
-                  minutes: settings.morningAdhkarTimeMinutes,
-                  isTimePicker: true,
-                  onChanged: (val) =>
-                      context.read<NotificationCubit>().toggleMorning(val),
-                  onTimePicked: (minutes) =>
-                      context.read<NotificationCubit>().setMorningTime(minutes),
-                ),
-                _NotificationSection(
-                  title: context.l10n.eveningAdhkarTitle,
-                  subtitle: context.l10n.eveningAdhkarSubtitle,
-                  enabled: settings.eveningAdhkarEnabled,
-                  minutes: settings.eveningAdhkarTimeMinutes,
-                  isTimePicker: true,
-                  onChanged: (val) =>
-                      context.read<NotificationCubit>().toggleEvening(val),
-                  onTimePicked: (minutes) =>
-                      context.read<NotificationCubit>().setEveningTime(minutes),
-                ),
-                _NotificationSection(
-                  title: context.l10n.prophetReminderTitle,
-                  subtitle: context.l10n.prophetReminderSubtitle,
-                  enabled: settings.prophetReminderEnabled,
-                  minutes: settings.prophetReminderIntervalMinutes,
-                  isTimePicker: false,
-                  onChanged: (val) =>
-                      context.read<NotificationCubit>().toggleProphet(val),
-                  onTimePicked: (minutes) => context
-                      .read<NotificationCubit>()
-                      .setProphetInterval(minutes),
-                ),
-                _NotificationSection(
-                  title: context.l10n.hourlyAdhkarTitle,
-                  subtitle: context.l10n.hourlyAdhkarSubtitle,
-                  enabled: settings.hourlyAdhkarEnabled,
-                  minutes: settings.hourlyAdhkarIntervalMinutes,
-                  isTimePicker: false,
-                  onChanged: (val) =>
-                      context.read<NotificationCubit>().toggleHourly(val),
-                  onTimePicked: (minutes) => context
-                      .read<NotificationCubit>()
-                      .setHourlyInterval(minutes),
-                ),
-              ],
-            );
-          },
-        ),
+          return ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              _NotificationSection(
+                title: context.l10n.morningAdhkarTitle,
+                subtitle: context.l10n.morningAdhkarSubtitle,
+                enabled: settings.morningAdhkarEnabled,
+                minutes: settings.morningAdhkarTimeMinutes,
+                isTimePicker: true,
+                onChanged: (val) =>
+                    context.read<NotificationCubit>().toggleMorning(val),
+                onTimePicked: (minutes) =>
+                    context.read<NotificationCubit>().setMorningTime(minutes),
+              ),
+              _NotificationSection(
+                title: context.l10n.eveningAdhkarTitle,
+                subtitle: context.l10n.eveningAdhkarSubtitle,
+                enabled: settings.eveningAdhkarEnabled,
+                minutes: settings.eveningAdhkarTimeMinutes,
+                isTimePicker: true,
+                onChanged: (val) =>
+                    context.read<NotificationCubit>().toggleEvening(val),
+                onTimePicked: (minutes) =>
+                    context.read<NotificationCubit>().setEveningTime(minutes),
+              ),
+              _NotificationSection(
+                title: context.l10n.prophetReminderTitle,
+                subtitle: context.l10n.prophetReminderSubtitle,
+                enabled: settings.prophetReminderEnabled,
+                minutes: settings.prophetReminderIntervalMinutes,
+                isTimePicker: false,
+                onChanged: (val) =>
+                    context.read<NotificationCubit>().toggleProphet(val),
+                onTimePicked: (minutes) => context
+                    .read<NotificationCubit>()
+                    .setProphetInterval(minutes),
+              ),
+              _NotificationSection(
+                title: context.l10n.hourlyAdhkarTitle,
+                subtitle: context.l10n.hourlyAdhkarSubtitle,
+                enabled: settings.hourlyAdhkarEnabled,
+                minutes: settings.hourlyAdhkarIntervalMinutes,
+                isTimePicker: false,
+                onChanged: (val) =>
+                    context.read<NotificationCubit>().toggleHourly(val),
+                onTimePicked: (minutes) => context
+                    .read<NotificationCubit>()
+                    .setHourlyInterval(minutes),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
@@ -125,6 +123,8 @@ class _NotificationSection extends StatelessWidget {
       child: Column(
         children: [
           SwitchListTile.adaptive(
+            activeColor: AppColors.mainColor,
+
             title: Text(
               title,
               style: const TextStyle(fontWeight: FontWeight.bold),

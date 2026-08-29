@@ -62,7 +62,9 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.isEditing ? 'Edit Goal' : 'Create Goal'),
+        title: Text(
+          widget.isEditing ? context.l10n.editGoal : context.l10n.createGoal,
+        ),
       ),
       body: BlocListener<GoalsCubit, GoalsState>(
         listener: (context, state) {

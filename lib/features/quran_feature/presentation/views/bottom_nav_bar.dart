@@ -18,8 +18,8 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
   int currentIndex = 0;
   List<Widget> screens = [
     HomeView(),
-    FavouriteView(),
     PrayerTimeView(),
+    FavouriteView(),
     ProfileView(),
   ];
   @override
@@ -48,14 +48,15 @@ class _CustomBottomNavState extends State<CustomBottomNav> {
               ),
               bottomItem(
                 index: 1,
-                icon: Icons.favorite_border_outlined,
-                text: AppTexts.favorite(context),
-              ),
-              bottomItem(
-                index: 2,
                 icon: Icons.timer_outlined,
                 text: AppTexts.cart(context),
               ),
+              bottomItem(
+                index: 2,
+                icon: Icons.favorite_border_outlined,
+                text: AppTexts.favorite(context),
+              ),
+
               bottomItem(
                 index: 3,
                 icon: Icons.person_outline_rounded,
