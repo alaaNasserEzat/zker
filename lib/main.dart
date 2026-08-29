@@ -13,6 +13,7 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:zker/core/cloc_observer.dart';
 import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/routs/go_route.dart';
+import 'package:zker/core/services/local_notification_service.dart';
 import 'package:zker/core/services/service_locator.dart';
 import 'package:zker/features/home_feature/presentation/cubits/location_cubit.dart';
 import 'package:zker/features/home_feature/presentation/cubits/prayer_time_cubit.dart';
@@ -48,10 +49,10 @@ void main() async {
     ),
     _initHydratedStorage(),
   ]);
-
+  final initialPayload = await LocalNotificationService().getInitialPayload();
   Bloc.observer = AppBlocObserver();
 
-  runApp(const MyApp());
+  runApp(MyApp(payload: initialPayload));
 }
 
 // دالة منفصلة لتهيئة التوقيت
@@ -75,8 +76,22 @@ Future<void> _initHydratedStorage() async {
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key, this.payload});
+  final String? payload;
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.payload != null) {
+        LocalNotificationService().handelNotificationTap(widget.payload!);
+      }
+    });
+  }
 
   // This widget is the root of your application.
   @override

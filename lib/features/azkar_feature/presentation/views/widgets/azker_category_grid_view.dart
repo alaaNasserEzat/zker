@@ -23,44 +23,41 @@ class AzkerCategoryGridView extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: GridView.builder(
-        padding: const EdgeInsets.all(16),
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          mainAxisSpacing: 16,
-          crossAxisSpacing: 16,
-          childAspectRatio: 0.9,
-        ),
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          return AzkarCategoryContainer(
-            title: categories[index].category,
-            onTap: () {
-              context.push(AppRoutes.azkarDetails, extra: categories[index]);
-            },
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  spacing: 5,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SvgIconWidget(icon: azkarIcons[index % azkarIcons.length]),
-                    Text(
-                      textAlign: TextAlign.center,
-                      categories[index].category,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
+    return GridView.builder(
+      padding: const EdgeInsets.all(16),
+      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 200,
+        mainAxisSpacing: 16,
+        crossAxisSpacing: 16,
+        childAspectRatio: 0.9,
+      ),
+      itemCount: categories.length,
+      itemBuilder: (context, index) {
+        return AzkarCategoryContainer(
+          title: categories[index].category,
+          onTap: () {
+            context.push(AppRoutes.azkarDetails, extra: categories[index]);
+          },
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                spacing: 5,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SvgIconWidget(icon: azkarIcons[index % azkarIcons.length]),
+                  Text(
+                    textAlign: TextAlign.center,
+                    categories[index].category,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ],
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

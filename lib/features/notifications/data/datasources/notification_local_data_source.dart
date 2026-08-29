@@ -161,6 +161,7 @@ class NotificationLocalDataSourceImpl implements NotificationLocalDataSource {
         title: 'أذكار الصباح',
         body: 'حان وقت أذكار الصباح',
         minutes: minutes,
+        payload: "أذكار الصباح",
       );
   Future<void> _scheduleEvening(int minutes) =>
       notificationService.scheduleDaily(
@@ -168,6 +169,7 @@ class NotificationLocalDataSourceImpl implements NotificationLocalDataSource {
         title: 'أذكار المساء',
         body: 'حان وقت أذكار المساء',
         minutes: minutes,
+        payload: "أذكارالمساء",
       );
   Future<void> _scheduleProphet(int minutes) =>
       notificationService.scheduleRecurring(

@@ -1,6 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
+import 'package:zker/core/routs/app_routs.dart';
+import 'package:zker/core/routs/go_route.dart';
+import 'package:zker/features/azkar_feature/data/azkar_local_data_source/azkar_local_data_source.dart';
+import 'package:zker/features/azkar_feature/data/repo_impl/azkar_repo_impl.dart';
+import 'package:zker/features/azkar_feature/domain/repo/azkar_repo.dart';
+import 'package:zker/features/azkar_feature/domain/usecases/get_azkar_category_use_case.dart';
 
 class LocalNotificationService {
   LocalNotificationService({FlutterLocalNotificationsPlugin? plugin})
@@ -14,6 +21,30 @@ class LocalNotificationService {
   final FlutterLocalNotificationsPlugin plugin;
   bool _initialized = false;
 
+  Future<String?> getInitialPayload() async {
+    final NotificationAppLaunchDetails? details = await plugin
+        .getNotificationAppLaunchDetails();
+    if (details?.didNotificationLaunchApp ?? false) {
+      return details?.notificationResponse?.payload;
+    }
+    return null;
+  }
+
+  Future<void> handelNotificationTap(String? payload) async {
+    if (payload == null) return;
+    final AzkarLocalDataSource azkarLocalDataSource = AzkarLocalDataSourceImp();
+    final AzkarRepo azkarRepo = AzkarRepoImpl(azkarLocalDataSource);
+    final useCase = GetAzkarCategoryUseCase(azkarRepo);
+    final allAzkar = await useCase();
+
+    allAzkar.fold((failure) => print(failure), (categories) {
+      final category = categories.firstWhere(
+        (element) => element.category == payload,
+      );
+      appRouter.push(AppRoutes.azkarDetails, extra: category);
+    });
+  }
+
   Future<bool> initialize() async {
     if (_initialized) return true;
     try {
@@ -26,7 +57,12 @@ class LocalNotificationService {
           defaultActionName: 'Open notification',
         ),
       );
-      final initialized = await plugin.initialize(settings);
+      final initialized = await plugin.initialize(
+        settings,
+        onDidReceiveNotificationResponse: (respose) {
+          handelNotificationTap(respose.payload);
+        },
+      );
       if (initialized != true) return false;
       _initialized = true;
       final androidPlugin = plugin
@@ -72,6 +108,7 @@ class LocalNotificationService {
     required String title,
     required String body,
     required int minutes,
+    String? payload,
   }) async {
     final scheduledDate = _nextTime(minutes);
 
@@ -84,6 +121,7 @@ class LocalNotificationService {
         _details,
         androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
         matchDateTimeComponents: DateTimeComponents.time,
+        payload: payload,
       );
 
       debugPrint('✅ NOTIFICATION SCHEDULED SUCCESSFULLY');
