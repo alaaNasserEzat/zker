@@ -93,7 +93,7 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
                 ),
                 validator: (value) {
                   if (value == null || value.trim().isEmpty) {
-                    return 'Please enter a title';
+                    return context.l10n.writeGoalName;
                   }
 
                   return null;
@@ -158,7 +158,7 @@ class _GoalFormScreenState extends State<GoalFormScreen> {
                   final target = int.tryParse(value ?? '');
 
                   if (target == null || target <= 0) {
-                    return 'Enter a valid target';
+                    return context.l10n.writeGoalCount;
                   }
 
                   return null;

@@ -105,6 +105,8 @@
   "worship": "العبادات",
   "updateGoal": "تحديث الهدف",
   "goalTitle": "اسم الهدف",
+  "writeGoalName": "اكتب اسم الهدف",
+  "writeGoalCount": "اكتب القيمه المستهدفة",
   "exampleReadQuran": "مثال: قراءة القرآن",
   "description": "الوصف",
   "goalType": "نوع الهدف",
@@ -160,6 +162,35 @@
         "type": "int"
       }
     }
-  }
+  },
+  "about": "عن التطبيق",
+  "aboutZekr": "عن تطبيق ذكر",
+  "zekrTagline": "رفيقك اليومي للذكر والعبادة",
+
+  "aboutDescription": "ذكر هو تطبيق إسلامي بسيط يساعدك على الحفاظ على ذكرك وعبادتك اليومية.",
+
+  "quran": "القرآن الكريم",
+  "quranDescription": "اقرأ القرآن الكريم",
+
+  "azkar": "الأذكار",
+  "azkarDescription": "الأذكار اليومية والأدعية",
+
+  "tasbeeh": "التسبيح",
+  "tasbeehDescription": "عداد تسبيح بسيط",
+
+  "prayerTimes": "مواقيت الصلاة",
+  "prayerTimesDescription": "مواقيت الصلاة حسب موقعك",
+
+  "namesOfAllah": "أسماء الله الحسنى",
+  "namesOfAllahDescription": "تعرّف على أسماء الله الحسنى",
+
+  "version": "الإصدار",
+  "privacyPolicy": "سياسة الخصوصية",
+  "contactUs": "تواصل معنا",
+
+  "allahAcceptOurDeeds": "تقبل الله منا ومنكم 🤍",
+
+  "contactEmailSubject": "تطبيق ذكر - تواصل معنا"
+
 
 }

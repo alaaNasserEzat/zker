@@ -39,7 +39,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get privacy => 'الخصوصية';
 
   @override
-  String get privacyPolicy => 'لمعرفة سياسة التطبيق';
+  String get privacyPolicy => 'سياسة الخصوصية';
 
   @override
   String get theme => 'السمة';
@@ -117,13 +117,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get removedFromFavorites => 'تمت الإزالة من المفضلة';
 
   @override
-  String get azkar => 'أذكار';
+  String get azkar => 'الأذكار';
 
   @override
   String get doaa => 'أدعية';
 
   @override
-  String get namesOfAllah => 'أسماء الله';
+  String get namesOfAllah => 'أسماء الله الحسنى';
 
   @override
   String get tasbih => 'سبحة';
@@ -247,6 +247,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get goalTitle => 'اسم الهدف';
 
   @override
+  String get writeGoalName => 'اكتب اسم الهدف';
+
+  @override
+  String get writeGoalCount => 'اكتب القيمه المستهدفة';
+
+  @override
   String get exampleReadQuran => 'مثال: قراءة القرآن';
 
   @override
@@ -321,13 +327,13 @@ class AppLocalizationsAr extends AppLocalizations {
   String get once => 'مرة واحدة';
 
   @override
-  String get quran => 'القرآن';
+  String get quran => 'القرآن الكريم';
 
   @override
   String get azkarGoalType => 'أذكار';
 
   @override
-  String get tasbeeh => 'تسبيح';
+  String get tasbeeh => 'التسبيح';
 
   @override
   String get prayer => 'صلاة';
@@ -369,4 +375,44 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get goToChecklist => 'اذهب إلى قائمة أهدافك';
+
+  @override
+  String get about => 'عن التطبيق';
+
+  @override
+  String get aboutZekr => 'عن تطبيق ذكر';
+
+  @override
+  String get zekrTagline => 'رفيقك اليومي للذكر والعبادة';
+
+  @override
+  String get aboutDescription =>
+      'ذكر هو تطبيق إسلامي بسيط يساعدك على الحفاظ على ذكرك وعبادتك اليومية.';
+
+  @override
+  String get quranDescription => 'اقرأ القرآن الكريم';
+
+  @override
+  String get azkarDescription => 'الأذكار اليومية والأدعية';
+
+  @override
+  String get tasbeehDescription => 'عداد تسبيح بسيط';
+
+  @override
+  String get prayerTimesDescription => 'مواقيت الصلاة حسب موقعك';
+
+  @override
+  String get namesOfAllahDescription => 'تعرّف على أسماء الله الحسنى';
+
+  @override
+  String get version => 'الإصدار';
+
+  @override
+  String get contactUs => 'تواصل معنا';
+
+  @override
+  String get allahAcceptOurDeeds => 'تقبل الله منا ومنكم 🤍';
+
+  @override
+  String get contactEmailSubject => 'تطبيق ذكر - تواصل معنا';
 }

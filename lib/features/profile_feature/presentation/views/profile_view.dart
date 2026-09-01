@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:zker/core/constent/extensions/localelization_extention.dart';
 import 'package:zker/core/utils/app_colors.dart';
 import 'package:zker/core/utils/app_text_styles.dart';
@@ -60,7 +61,11 @@ class ProfileView extends StatelessWidget {
               iconData: Icons.lock_outline,
               text: context.l10n.privacy,
               supTitle: context.l10n.privacyPolicy,
-              onTap: () {},
+              onTap: () async {
+                final url = Uri.parse("https://sites.google.com/view/zker-app");
+
+                await launchUrl(url, mode: LaunchMode.externalApplication);
+              },
             ),
             BlocBuilder<ThemeCubit, ThemeMode>(
               builder: (context, state) {
@@ -88,7 +93,9 @@ class ProfileView extends StatelessWidget {
               iconData: Icons.info_outline_rounded,
               text: context.l10n.aboutApp,
               supTitle: context.l10n.aboutAppInfo,
-              onTap: () {},
+              onTap: () {
+                context.push(AppRoutes.about);
+              },
             ),
           ],
         ),

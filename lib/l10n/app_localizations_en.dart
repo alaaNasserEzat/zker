@@ -39,7 +39,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privacy => 'Privacy';
 
   @override
-  String get privacyPolicy => 'Learn about the app privacy policy';
+  String get privacyPolicy => 'Privacy Policy';
 
   @override
   String get theme => 'Theme';
@@ -248,6 +248,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get goalTitle => 'Goal Title';
 
   @override
+  String get writeGoalName => 'Please enter goal title';
+
+  @override
+  String get writeGoalCount => 'Enter a valid target';
+
+  @override
   String get exampleReadQuran => 'Example: Read Quran';
 
   @override
@@ -371,4 +377,44 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get goToChecklist => 'Go to your checklist';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get aboutZekr => 'About Zekr';
+
+  @override
+  String get zekrTagline => 'Your daily companion for remembrance';
+
+  @override
+  String get aboutDescription =>
+      'Zekr is a simple Islamic application designed to help you stay connected with your daily remembrance and worship.';
+
+  @override
+  String get quranDescription => 'Read the Holy Quran';
+
+  @override
+  String get azkarDescription => 'Daily remembrance and supplications';
+
+  @override
+  String get tasbeehDescription => 'Simple digital Tasbeeh';
+
+  @override
+  String get prayerTimesDescription => 'Prayer times based on your location';
+
+  @override
+  String get namesOfAllahDescription => 'Learn the beautiful names of Allah';
+
+  @override
+  String get version => 'Version';
+
+  @override
+  String get contactUs => 'Contact Us';
+
+  @override
+  String get allahAcceptOurDeeds => 'May Allah accept our deeds 🤍';
+
+  @override
+  String get contactEmailSubject => 'Zekr App - Contact';
 }

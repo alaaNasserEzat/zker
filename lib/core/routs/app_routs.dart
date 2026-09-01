@@ -14,4 +14,5 @@ class AppRoutes {
   static const String fridaySunnahView = '/fridaySunnahView';
   static const String goalsView = '/goalsView';
   static const String notifications = '/notifications';
+  static const String about = '/about';
 }

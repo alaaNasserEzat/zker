@@ -104,6 +104,8 @@
 "editGoal": "Edit Goal",
 "updateGoal": "Update Goal",
 "goalTitle": "Goal Title",
+"writeGoalName": "Please enter goal title",
+"writeGoalCount": "Enter a valid target",
 "exampleReadQuran": "Example: Read Quran",
 "description": "Description",
 "goalType": "Goal Type",
@@ -160,5 +162,34 @@
       }
     }
   },
-  "goToChecklist": "Go to your checklist"
+  "goToChecklist": "Go to your checklist",
+    "about": "About",
+  "aboutZekr": "About Zekr",
+  "zekrTagline": "Your daily companion for remembrance",
+
+  "aboutDescription": "Zekr is a simple Islamic application designed to help you stay connected with your daily remembrance and worship.",
+
+  "quran": "Quran",
+  "quranDescription": "Read the Holy Quran",
+
+  "azkar": "Azkar",
+  "azkarDescription": "Daily remembrance and supplications",
+
+  "tasbeeh": "Tasbeeh",
+  "tasbeehDescription": "Simple digital Tasbeeh",
+
+  "prayerTimes": "Prayer Times",
+  "prayerTimesDescription": "Prayer times based on your location",
+
+  "namesOfAllah": "Names of Allah",
+  "namesOfAllahDescription": "Learn the beautiful names of Allah",
+
+  "version": "Version",
+  "privacyPolicy": "Privacy Policy",
+  "contactUs": "Contact Us",
+
+  "allahAcceptOurDeeds": "May Allah accept our deeds 🤍",
+
+  "contactEmailSubject": "Zekr App - Contact"
+
 }

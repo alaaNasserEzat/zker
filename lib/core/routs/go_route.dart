@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zker/core/routs/app_routs.dart';
@@ -12,6 +13,7 @@ import 'package:zker/features/favourite/presentation/cubits/favourite_cubit.dart
 import 'package:zker/features/favourite/presentation/views/favourite_view.dart';
 import 'package:zker/features/friday_sunnah_feature/presentation/views/friday_sunnah_screen.dart';
 import 'package:zker/features/goals_feature/presentation/views/goal_screen.dart';
+import 'package:zker/features/profile_feature/presentation/views/about.dart';
 import 'package:zker/features/profile_feature/presentation/views/profile_view.dart';
 import 'package:zker/features/notifications/presentation/pages/notifications_page.dart';
 import 'package:zker/features/notifications/presentation/cubit/notification_cubit.dart';
@@ -114,6 +116,13 @@ final GoRouter appRouter = GoRouter(
       name: 'azkarCategoryView',
       builder: (context, state) {
         return AzkarCategoryView();
+      },
+    ),
+    GoRoute(
+      path: AppRoutes.about,
+      name: 'about',
+      builder: (context, state) {
+        return AboutScreen();
       },
     ),
     GoRoute(

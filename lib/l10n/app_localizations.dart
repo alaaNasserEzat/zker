@@ -161,7 +161,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyPolicy.
   ///
   /// In en, this message translates to:
-  /// **'Learn about the app privacy policy'**
+  /// **'Privacy Policy'**
   String get privacyPolicy;
 
   /// No description provided for @theme.
@@ -554,6 +554,18 @@ abstract class AppLocalizations {
   /// **'Goal Title'**
   String get goalTitle;
 
+  /// No description provided for @writeGoalName.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter goal title'**
+  String get writeGoalName;
+
+  /// No description provided for @writeGoalCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid target'**
+  String get writeGoalCount;
+
   /// No description provided for @exampleReadQuran.
   ///
   /// In en, this message translates to:
@@ -793,6 +805,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Go to your checklist'**
   String get goToChecklist;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @aboutZekr.
+  ///
+  /// In en, this message translates to:
+  /// **'About Zekr'**
+  String get aboutZekr;
+
+  /// No description provided for @zekrTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Your daily companion for remembrance'**
+  String get zekrTagline;
+
+  /// No description provided for @aboutDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Zekr is a simple Islamic application designed to help you stay connected with your daily remembrance and worship.'**
+  String get aboutDescription;
+
+  /// No description provided for @quranDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Read the Holy Quran'**
+  String get quranDescription;
+
+  /// No description provided for @azkarDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily remembrance and supplications'**
+  String get azkarDescription;
+
+  /// No description provided for @tasbeehDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple digital Tasbeeh'**
+  String get tasbeehDescription;
+
+  /// No description provided for @prayerTimesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer times based on your location'**
+  String get prayerTimesDescription;
+
+  /// No description provided for @namesOfAllahDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the beautiful names of Allah'**
+  String get namesOfAllahDescription;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'Version'**
+  String get version;
+
+  /// No description provided for @contactUs.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact Us'**
+  String get contactUs;
+
+  /// No description provided for @allahAcceptOurDeeds.
+  ///
+  /// In en, this message translates to:
+  /// **'May Allah accept our deeds 🤍'**
+  String get allahAcceptOurDeeds;
+
+  /// No description provided for @contactEmailSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Zekr App - Contact'**
+  String get contactEmailSubject;
 }
 
 class _AppLocalizationsDelegate
