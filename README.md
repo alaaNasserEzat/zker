@@ -13,6 +13,10 @@ goals through a simple and modern interface.
 
 ## 📱 Screenshots
 
+### splash & Home 
+
+![Home](assets/screenshots/home.jpeg)
+
 ### Quran
 
 ![Quran](assets/screenshots/quran.jpeg)
@@ -29,13 +33,14 @@ goals through a simple and modern interface.
 
 ![Goals](assets/screenshots/goals.jpeg)
 
-### Notifications
+### Tasbeeh
 
-![Notifications](assets/screenshots/notification.jpeg)
+![Tasbeeh](assets/screenshots/spha.jpeg)
 
-### Home
+### Sunnah
 
-![Home](assets/screenshots/home.jpeg)
+![Sunnah](assets/screenshots/sunha.jpeg)
+
 
 ### Allah's Names
 
@@ -45,13 +50,12 @@ goals through a simple and modern interface.
 
 ![Profile](assets/screenshots/profile.jpeg)
 
-### Tasbeeh
 
-![Tasbeeh](assets/screenshots/spha.jpeg)
+### Notifications
 
-### Sunnah
+![Notifications](assets/screenshots/notification.jpeg)
 
-![Sunnah](assets/screenshots/sunha.jpeg)
+
 
 ------------------------------------------------------------------------
 
