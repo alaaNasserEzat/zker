@@ -7,7 +7,7 @@ goals through a simple and modern interface.
 ## 🎥 Demo Video
 
 > **Watch the full demo:**\
-> [▶️ Open Zker Demo Video](assets/demo/demo.mp4)
+> [▶️ Open Zker Demo Video](assets/demo/zker_demo.mp4)
 
 ------------------------------------------------------------------------
 
