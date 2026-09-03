@@ -160,7 +160,6 @@ feature/
 -   **Feature-First Architecture**
 -   **GetIt** for Dependency Injection
 -   **Hive** for local storage
--   **Firebase** services where required
 -   **GoRouter** for navigation
 -   **Dio** for API communication
 -   **Flutter Local Notifications**
